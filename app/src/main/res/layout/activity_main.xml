@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:gravity="center"
+        android:visibility="invisible"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Change Profile"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id='@+id/profile_image'
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_launcher_background"
+            app:civ_border_color="@color/design_default_color_on_primary"
+            />
+
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        android:gravity="center"
+        android:layout_marginTop="30dp">
+
+        <EditText
+            android:id="@+id/txtName"
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:hint="Nhập tên"
+            >
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/txtphoneNumber"
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:hint="Số điện thoại"
+
+           >
+
+        </EditText>
+        <EditText
+            android:id="@+id/txtMail"
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:hint="Email ..."
+            >
+
+        </EditText>
+        <EditText
+            android:id="@+id/txtJob"
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:hint="Công việc ..."
+
+            >
+
+        </EditText>
+
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp">
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:color="#D3D3D3"
+            android:text="Quay lại"
+            android:layout_marginRight="20dp"
+            >
+
+        </Button>
+        <Button
+            android:id="@+id/btnConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:color="#D3D3D3"
+            android:text="Lưu"
+            >
+
+        </Button>
+
+
+    </LinearLayout>
+</LinearLayout>
