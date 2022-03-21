@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/pvude/AndroidStudioProjects/AlwayDisplayMenu/app/src/main/res/drawable/btn.xml" value="0.235" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/AlwayDisplayMenu/app/src/main/res/drawable/icon_btn_main_menu.xml" value="0.1535" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/AlwayDisplayMenu/app/src/main/res/drawable/icon_menu.xml" value="0.235" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/AlwayDisplayMenu/app/src/main/res/drawable/icon_view_mode.xml" value="0.245" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/AlwayDisplayMenu/app/src/main/res/drawable/main_menu.xml" value="0.235" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/AlwayDisplayMenu/app/src/main/res/drawable/shape_main_menu.xml" value="0.235" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/AlwayDisplayMenu/app/src/main/res/drawable/shape_view_mode.xml" value="0.235" />
