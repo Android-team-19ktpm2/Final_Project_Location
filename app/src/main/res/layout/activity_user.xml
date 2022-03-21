@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="45dp">
+
+        <ImageButton
+            android:id="@+id/profile_image_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:background="@color/white"
+            android:layout_gravity="right"></ImageButton>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/profile_image_avatar"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginRight="50dp"></ImageView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/profile_tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Emma Phillip"
+                    android:textColor="#C91C1C"
+                    android:textSize="27dp"></TextView>
+
+                <TextView
+                    android:id="@+id/profile_tv_job"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fashion Model"
+                    android:textSize="18dp"></TextView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/profile_tv_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0912176368"
+                    android:textSize="18dp"></TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/profile_tv_mail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="19127633@hcmus.edu.vn"
+                    android:textSize="18dp"></TextView>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
+
+            <TextView
+                android:id="@+id/profile_families"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="14"
+                android:textColor="#C91C1C"
+                android:textSize="38dp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Families"
+                android:textColor="#C91C1C"
+                android:textSize="38dp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/profile_image_favour"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    android:layout_marginRight="30dp"></ImageButton>
+
+                <TextView
+                    android:id="@+id/profile_tv_favour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Your favorite location"
+                    android:textColor="@color/black"
+                    android:textSize="22dp"
+                    android:textStyle="bold"></TextView>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/profile_image_list"
+                    android:layout_width="48dp"
+                    android:background="@color/white"
+                    android:layout_height="48dp"
+                    android:layout_marginRight="30dp"></ImageButton>
+
+                <TextView
+                    android:id="@+id/profile_tv_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="List Family"
+                    android:textColor="@color/black"
+                    android:textSize="22dp"
+                    android:textStyle="bold"></TextView>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/profile_image_logout"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    android:layout_marginRight="30dp"></ImageButton>
+
+                <TextView
+                    android:id="@+id/profile_tv_logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Logout"
+                    android:textColor="@color/black"
+                    android:textSize="22dp"
+                    android:textStyle="bold"></TextView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+<!--        <RelativeLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="74dp"-->
+<!--            android:layout_gravity="center">-->
+
+<!--            <FrameLayout-->
+<!--                android:layout_width="340dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:background="@drawable/navigation">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:gravity="center">-->
+
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/profile_image_map"-->
+<!--                        android:layout_width="38dp"-->
+<!--                        android:layout_height="38dp"></ImageButton>-->
+
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/profile_image_family"-->
+<!--                        android:layout_width="38dp"-->
+<!--                        android:layout_height="38dp"-->
+<!--                        android:layout_marginLeft="40dp"></ImageButton>-->
+
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/profile_image_home"-->
+<!--                        android:layout_width="38dp"-->
+<!--                        android:layout_height="38dp"-->
+<!--                        android:layout_marginLeft="40dp"></ImageButton>-->
+
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/profile_image_profile"-->
+<!--                        android:layout_width="38dp"-->
+<!--                        android:layout_height="38dp"-->
+<!--                        android:layout_marginLeft="40dp"></ImageButton>-->
+
+<!--                </LinearLayout>-->
+
+
+<!--            </FrameLayout>-->
+<!--        </RelativeLayout>-->
+
+    </LinearLayout>
+
+</LinearLayout>
