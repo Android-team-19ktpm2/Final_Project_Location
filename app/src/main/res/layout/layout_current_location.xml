@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/current_container"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="10dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:background="@drawable/shape_slide_up">
+
+    <Button
+        android:id="@+id/btn_current_location_slide_down"
+        android:layout_width="60dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_slide_down"
+        ></Button>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Vị trí hiện tại"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:textColor="@color/black">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gần trường Đại học Giao thông Vận Tải"
+        android:textColor="@color/black"
+        android:textSize="12dp">
+    </TextView>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/gtvt"
+        android:layout_marginTop="10dp"
+        ></ImageView>
+
+    <Button
+        android:id="@+id/btn_favourite"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_gravity="right"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/btn_radius"
+        android:text="Yêu thích"
+        android:textSize="12dp"></Button>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#F4EFEF"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="40dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trường Đại học giao thông vận tải"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:textColor="@color/black"
+            android:text="02 Võ Oanh, phường 25, Bình Thạnh, Thành phố Hồ Chí Minh, Việt Nam"></TextView>
+
+    </LinearLayout>
+
+
+</LinearLayout>
