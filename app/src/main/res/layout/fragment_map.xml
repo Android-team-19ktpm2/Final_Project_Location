@@ -26,16 +26,6 @@
 
     </Button>
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="583dp"
-        android:src="@drawable/ic_baseline_my_location_24" />
-
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

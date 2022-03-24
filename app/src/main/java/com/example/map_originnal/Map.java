@@ -2,9 +2,22 @@ package com.example.map_originnal;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Looper;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,21 +26,44 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 public class Map extends Fragment {
 
     Button btnHideMap;
     ImageButton btnSetting;
     MainActivity main;
-    View main_menu,view_mode;
-    Boolean show_main_menu=false;
-    Boolean show_view_mode=false;
+    View main_menu, view_mode;
+    Boolean show_main_menu = false;
+    Boolean show_view_mode = false;
+    GoogleMap mMap;
+    ProgressDialog progressDialog;
+    GoogleMap.OnMyLocationChangeListener locationChangeListener = new GoogleMap.OnMyLocationChangeListener() {
+        @Override
+        public void onMyLocationChange(@NonNull Location location) {
+
+            LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
+            if (mMap != null) {
+                mMap.clear();
+                Marker marker = mMap.addMarker(new MarkerOptions().position(loc));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
+            }
+        }
+    };
+
+    FusedLocationProviderClient client;
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
@@ -42,9 +78,33 @@ public class Map extends Fragment {
          */
         @Override
         public void onMapReady(GoogleMap googleMap) {
-            LatLng sydney = new LatLng(-34, 151);
-            googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+            mMap = googleMap;
+
+            mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+                @Override
+                public void onMapLoaded() {
+                    progressDialog.dismiss();
+
+
+                    if (ActivityCompat.checkSelfPermission(main, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(main, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        // TODO: Consider calling
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+                        return;
+                    }
+                    mMap.setMyLocationEnabled(true);
+                    mMap.setOnMyLocationChangeListener(locationChangeListener);
+//                    LatLng sydney = new LatLng(-34, 151);
+//                    googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+//                    googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+                }
+            });
+
+
         }
     };
 
@@ -55,10 +115,19 @@ public class Map extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         RelativeLayout linearLayout = (RelativeLayout) inflater.inflate(R.layout.fragment_map, container, false);
-        main = (MainActivity)getActivity();
+        main = (MainActivity) getActivity();
+
+
+
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setTitle("Thông báo");
+        progressDialog.setMessage("Đang tải Map, Vui lòng chờ......");
+        progressDialog.show();
 
         btnHideMap = linearLayout.findViewById(R.id.btnHideMap);
         btnSetting = linearLayout.findViewById(R.id.btnSetting);
+
+
         main_menu=linearLayout.findViewById(R.id.main_menu);
         view_mode=linearLayout.findViewById(R.id.view_mode);
 
@@ -69,8 +138,11 @@ public class Map extends Fragment {
             }
         });
 
+        client = LocationServices.getFusedLocationProviderClient(getActivity());
+
         main_menu.animate().alpha(0.0f);
         view_mode.animate().alpha(0.0f);
+
 
         if(show_main_menu) {
             btnSetting.animate().alpha(1f).setDuration(250);
@@ -95,9 +167,9 @@ public class Map extends Fragment {
         }
 
 
+        return linearLayout;
 
-
-        return linearLayout; }
+    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -106,6 +178,9 @@ public class Map extends Fragment {
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         if (mapFragment != null) {
             mapFragment.getMapAsync(callback);
+
         }
+
+
     }
 }
