@@ -33,7 +33,7 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-        bottomNavigationView.setSelectedItemId(R.id.map);
+        bottomNavigationView.setSelectedItemId(R.id.person);
     }
 
 
@@ -58,12 +58,7 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
                 return true;
 
             case R.id.family:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.flFragmentMenu, listFamilys).commit();
-//                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, family_activity).commit();
-//                bottomNavigationView.setVisibility(View.INVISIBLE);
                 chuyenSangListFamilys();
-
-
                 return true;
 
             case R.id.map:

@@ -12,7 +12,7 @@
     android:animateLayoutChanges="true">
 
     <TextView
-        android:id="@+id/favourite"
+        android:id="@+id/favorite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="7dp"
