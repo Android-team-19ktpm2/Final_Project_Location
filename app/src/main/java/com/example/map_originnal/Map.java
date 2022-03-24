@@ -14,6 +14,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -28,6 +30,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.SearchView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -43,16 +46,21 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import java.io.IOException;
+import java.util.List;
+
 public class Map extends Fragment {
 
     Button btnHideMap;
-    ImageButton btnSetting;
+    ImageButton btnSetting,btnSearch;
     MainActivity main;
     View main_menu, view_mode;
     Boolean show_main_menu = false;
     Boolean show_view_mode = false;
     GoogleMap mMap;
     ProgressDialog progressDialog;
+    SupportMapFragment mapFragment;
+    SearchView searchView;
     GoogleMap.OnMyLocationChangeListener locationChangeListener = new GoogleMap.OnMyLocationChangeListener() {
         @Override
         public void onMyLocationChange(@NonNull Location location) {
@@ -120,19 +128,20 @@ public class Map extends Fragment {
         RelativeLayout linearLayout = (RelativeLayout) inflater.inflate(R.layout.fragment_map, container, false);
         main = (MainActivity) getActivity();
 
-
-
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setTitle("Thông báo");
         progressDialog.setMessage("Đang tải Map, Vui lòng chờ......");
         progressDialog.show();
 
+        searchView = linearLayout.findViewById(R.id.searchView);
         btnHideMap = linearLayout.findViewById(R.id.btnHideMap);
         btnSetting = linearLayout.findViewById(R.id.btnSetting);
-
+        btnSearch = linearLayout.findViewById(R.id.btnSearch);
 
         main_menu=linearLayout.findViewById(R.id.main_menu);
         view_mode=linearLayout.findViewById(R.id.view_mode);
+
+        client = LocationServices.getFusedLocationProviderClient(getActivity());
 
         btnHideMap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,7 +150,6 @@ public class Map extends Fragment {
             }
         });
 
-        client = LocationServices.getFusedLocationProviderClient(getActivity());
 
         main_menu.animate().alpha(0.0f);
         view_mode.animate().alpha(0.0f);
@@ -286,6 +294,48 @@ public class Map extends Fragment {
         });
 
 
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (searchView.getVisibility() == View.VISIBLE){
+                    searchView.setVisibility(View.INVISIBLE);
+                }
+                else {
+                    searchView.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                String location = searchView.getQuery().toString();
+                List<Address> addressList = null;
+                if (location!=null || !location.equals("")){
+                    Geocoder geocoder = new Geocoder(main);
+                    try {
+                        addressList = geocoder.getFromLocationName(location,1);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    Address address = addressList.get(0);
+                    LatLng latLng = new LatLng(address.getLatitude(),address.getLongitude());
+                    mMap.addMarker(new MarkerOptions().position(latLng).title(location));
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+
+        });
         return linearLayout;
 
     }
@@ -293,7 +343,7 @@ public class Map extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        SupportMapFragment mapFragment =
+        mapFragment =
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         if (mapFragment != null) {
             mapFragment.getMapAsync(callback);
