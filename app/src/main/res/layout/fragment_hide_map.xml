@@ -1,10 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HideMap">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#E4E3E3"
+    android:layout_height="match_parent">
 
 
 
-</FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Current Location:"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="20dp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/shape_view_mode"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="10.7476876, 106.1287981279"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="15dp"></TextView>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_view_mode"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="81 Nguyễn Xiển, Long Bình, Quận 9, thành phố Hồ Chí Minh"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="15dp"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Accuracy(meters):"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="20dp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/shape_view_mode"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="13.2"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="15dp"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Altitude(meters):"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="20dp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/shape_view_mode"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="17.9"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="15dp"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Speed(kilometers/hour):"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="20dp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/shape_view_mode"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="1"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="15dp"></TextView>
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnShowMap"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="87dp"
+        android:layout_marginEnd="276dp"
+        android:layout_marginBottom="39dp"
+        android:text="Show Map">
+
+    </Button>
+
+</RelativeLayout>

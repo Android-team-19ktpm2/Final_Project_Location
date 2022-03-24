@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +25,8 @@ public class HideMap extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    MainActivity main;
+
 
     public HideMap() {
         // Required empty public constructor
@@ -59,6 +63,17 @@ public class HideMap extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_hide_map, container, false);
+        RelativeLayout layout_hide_map = (RelativeLayout) inflater.inflate(R.layout.fragment_hide_map, container, false);
+        main = (MainActivity) getActivity();
+
+        layout_hide_map.findViewById(R.id.btnShowMap).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                main.onMsgFromFragToMain("Hide-Map", "ShowMap");
+            }
+        });
+
+
+        return layout_hide_map;
     }
 }

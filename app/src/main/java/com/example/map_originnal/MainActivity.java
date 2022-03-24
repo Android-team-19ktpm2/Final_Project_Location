@@ -146,6 +146,9 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         if (sender.equals("List-Family") && strValue.equals("Back")){
             bottomSheetDialogListFamily.hide();
         }
+        if (sender.equals("Hide-Map") && strValue.equals("ShowMap")){
+            getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, map_activity).commit();
+        }
     }
 
     private void chuyenSangProflie() {
