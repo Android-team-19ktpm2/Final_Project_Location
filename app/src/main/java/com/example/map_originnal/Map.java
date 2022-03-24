@@ -300,6 +300,5 @@ public class Map extends Fragment {
 
         }
 
-
     }
 }

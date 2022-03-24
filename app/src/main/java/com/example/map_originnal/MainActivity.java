@@ -33,6 +33,7 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+
         bottomNavigationView.setSelectedItemId(R.id.person);
     }
 
@@ -50,8 +51,22 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.person:
-                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, user_activity).commit();
-                return true;
+                String condition = getIntent().getStringExtra("CONDITION");
+
+                switch (condition){
+                    case "LOGIN":
+                        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, user_activity).commit();
+                        return true;
+
+                    case "SIGNUP_GG":
+                        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, user_activity).commit();
+                        return true;
+
+                    case "SIGNUP_EMAIL":
+                        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, user_activity).commit();
+                        return true;
+
+                }
 
             case R.id.home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, home_activity).commit();

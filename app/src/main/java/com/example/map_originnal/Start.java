@@ -21,6 +21,7 @@ public class Start extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
+        Intent main = new Intent(getApplicationContext(),MainActivity.class);
         txtLogin =findViewById(R.id.txtLogin);
         btnSignUpEmail = findViewById(R.id.btnSignUpEmail);
         btnSignUpGG = findViewById(R.id.btnSignUpGG);
@@ -28,7 +29,23 @@ public class Start extends AppCompatActivity {
         txtLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent main = new Intent(getApplicationContext(),MainActivity.class);
+                main.putExtra("CONDITION","LOGIN");
+                startActivity(main);
+                finish();
+            }
+        });
+        btnSignUpGG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                main.putExtra("CONDITION","SIGNUP_GG");
+                startActivity(main);
+                finish();
+            }
+        });
+        btnSignUpEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                main.putExtra("CONDITION","SIGNUP_EMAIL");
                 startActivity(main);
                 finish();
             }
