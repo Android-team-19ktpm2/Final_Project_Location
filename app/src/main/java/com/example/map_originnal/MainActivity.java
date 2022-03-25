@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class MainActivity extends FragmentActivity implements BottomNavigationView.OnNavigationItemSelectedListener , MainCallbacks{
 
     BottomNavigationView bottomNavigationView;
-    BottomSheetDialog bottomSheetDialogListFamily;
+    BottomSheetDialog bottomSheetDialogListFamily,bottomSheetDialogAddFamily;
     BottomSheetDialog bottomSheetDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +82,7 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         }
         return false;
     }
+
 
     private void chuyenSangListFamilys() {
 
@@ -148,9 +149,24 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         if (sender.equals("List-Family") && strValue.equals("Back")){
             bottomSheetDialogListFamily.hide();
         }
+        if (sender.equals("List-Family") && strValue.equals("Dialog-AddMember")){
+            chuyenSangDialogAddFamily();
+        }
         if (sender.equals("Hide-Map") && strValue.equals("ShowMap")){
             getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, map_activity).commit();
         }
+    }
+
+    private void chuyenSangDialogAddFamily() {
+        bottomSheetDialogAddFamily = new BottomSheetDialog(
+                MainActivity.this,R.style.BottomSheetDialogTheme
+        );
+        View bottomSheetView  = LayoutInflater.from(getApplicationContext()).inflate(
+                R.layout.dialog_signin,
+                (LinearLayout) findViewById(R.id.dialog_addfamily)
+        );
+        bottomSheetDialogAddFamily.setContentView(bottomSheetView);
+        bottomSheetDialogAddFamily.show();
     }
 
     private void chuyenSangProflie() {
