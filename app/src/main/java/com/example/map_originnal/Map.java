@@ -26,7 +26,7 @@ public class Map extends Fragment {
     ImageButton btnSetting,btnSatellite;
     MainActivity main;
     View main_menu,view_mode;
-    Boolean show_view_mode=false;
+/*    Boolean show_view_mode=false;*/
     Boolean show_main_menu=false;
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
@@ -67,8 +67,6 @@ public class Map extends Fragment {
         view_mode=linearLayout.findViewById(R.id.view_mode);
 
         main_menu.animate().alpha(0.0f);
-        /*main_menu.animate().alpha(0.0f);*/
-/*        view_mode.animate().alpha(0.0f);*/
 
         btnHideMap.setOnClickListener(new View.OnClickListener() {
             @Override
