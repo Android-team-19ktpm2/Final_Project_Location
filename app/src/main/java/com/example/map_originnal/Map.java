@@ -23,11 +23,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class Map extends Fragment {
 
     Button btnHideMap;
-    ImageButton btnSetting;
+    ImageButton btnSetting,btnSatellite;
     MainActivity main;
     View main_menu,view_mode;
-    Boolean show_main_menu=false;
     Boolean show_view_mode=false;
+    Boolean show_main_menu=false;
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
@@ -57,10 +57,18 @@ public class Map extends Fragment {
         RelativeLayout linearLayout = (RelativeLayout) inflater.inflate(R.layout.fragment_map, container, false);
         main = (MainActivity)getActivity();
 
+
+        show_main_menu=false;
+
         btnHideMap = linearLayout.findViewById(R.id.btnHideMap);
         btnSetting = linearLayout.findViewById(R.id.btnSetting);
+        btnSatellite=linearLayout.findViewById(R.id.btnSatellite);
         main_menu=linearLayout.findViewById(R.id.main_menu);
         view_mode=linearLayout.findViewById(R.id.view_mode);
+
+        main_menu.animate().alpha(0.0f);
+        /*main_menu.animate().alpha(0.0f);*/
+/*        view_mode.animate().alpha(0.0f);*/
 
         btnHideMap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,30 +77,32 @@ public class Map extends Fragment {
             }
         });
 
-        main_menu.animate().alpha(0.0f);
-        view_mode.animate().alpha(0.0f);
+        btnSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(show_main_menu) {
+                    btnSetting.animate().alpha(1f).setDuration(400);
+                    main_menu.animate().alpha(0.0f).setDuration(400);
+                    show_main_menu=false;
+                }
 
-        if(show_main_menu) {
-            btnSetting.animate().alpha(1f).setDuration(250);
-            main_menu.animate().alpha(0.0f).setDuration(250);
-            show_main_menu=false;
+                else {
+                    main_menu.animate().alpha(0.0f);
+                    main_menu.setVisibility(View.VISIBLE);
+                    btnSetting.animate().alpha(0.3f).setDuration(400);
+                    main_menu.animate().alpha(1f).setDuration(400);
+                    show_main_menu=true;
+                }
 
-            if(show_view_mode) {
-                main_menu.findViewById(R.id.txtMapType).animate().alpha(1f).setDuration(250);
-                view_mode.animate().alpha(0.0f).setDuration(250);
-                show_view_mode=false;
             }
-            else {
-                main_menu.findViewById(R.id.txtMapType).animate().alpha(0.5f).setDuration(250);
-                view_mode.animate().alpha(1.0f).setDuration(250);
-                show_view_mode=true;
+        });
+
+        btnSatellite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //View mode here
             }
-        }
-        else {
-            btnSetting.animate().alpha(0.5f).setDuration(250);
-            main_menu.animate().alpha(1f).setDuration(250);
-            show_main_menu=true;
-        }
+        });
 
 
 

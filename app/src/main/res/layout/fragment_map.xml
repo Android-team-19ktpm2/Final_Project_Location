@@ -13,18 +13,30 @@
         android:layout_height="match_parent"
         tools:context=".Map"></fragment>
 
-    <Button
-        android:id="@+id/btnHideMap"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="37dp"
-        android:layout_alignParentEnd="true"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="87dp"
-        android:layout_marginEnd="276dp"
-        android:layout_marginBottom="39dp"
-        android:text="Hide Map">
+        android:layout_marginBottom="42dp"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal">
 
-    </Button>
+        <ImageButton
+            android:id="@+id/btnSatellite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_satellite_24" />
+
+        <Button
+            android:id="@+id/btnHideMap"
+            android:layout_width="wrap_content"
+            android:layout_height="43dp"
+            android:layout_marginLeft="10dp"
+            android:text="Hide Map">
+        </Button>
+
+    </LinearLayout>
+
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -53,7 +65,7 @@
     </FrameLayout>
 
 
-    <FrameLayout
+<!--    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/btnSetting"
@@ -64,9 +76,9 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <include layout="@layout/view_mode" android:id="@id/view_mode"></include>
+            &lt;!&ndash;<include layout="@layout/view_mode" android:id="@id/view_mode"></include>&ndash;&gt;
         </FrameLayout>
-    </FrameLayout>
+    </FrameLayout>-->
 
     <ImageButton
         android:id="@+id/btnSetting"
@@ -76,7 +88,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="39dp"
-        android:src="@drawable/ic_baseline_settings_24" />
+        android:src="@drawable/ic_baseline_settings_24"/>
 
     <ImageButton
         android:id="@+id/imageButton3"
@@ -97,7 +109,5 @@
         android:layout_marginEnd="114dp"
         android:layout_marginBottom="39dp"
         android:src="@drawable/ic_baseline_search_24" />
-
-
 
 </RelativeLayout>

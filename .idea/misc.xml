@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/pvude/Study/tools/AndroidStudio/map_origin/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.208" />
+        <entry key="..\:/Users/pvude/Study/tools/AndroidStudio/map_origin/app/src/main/res/layout/fragment_map.xml" value="0.333786231884058" />
+        <entry key="..\:/Users/pvude/Study/tools/AndroidStudio/map_origin/app/src/main/res/layout/main_menu.xml" value="0.17831813576494426" />
         <entry key="app/src/main/res/drawable-v24/shape_main_menu.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bottom_sheet_background.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/ic_home_background.xml" value="0.1665" />

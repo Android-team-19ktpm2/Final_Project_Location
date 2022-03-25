@@ -9,6 +9,7 @@
     android:layout_marginBottom="7dp"
     android:background="@drawable/shape_main_menu"
     android:orientation="vertical"
+    android:visibility="invisible"
     android:animateLayoutChanges="true">
 
     <TextView
@@ -80,7 +81,6 @@
             android:layout_marginTop="3dp"
             android:textOff="Off"
             android:textOn="On"></Switch>
-
     </LinearLayout>
 
 </LinearLayout>
