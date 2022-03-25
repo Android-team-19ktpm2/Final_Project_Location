@@ -52,7 +52,7 @@ import java.util.List;
 public class Map extends Fragment {
 
     Button btnHideMap;
-    ImageButton btnSetting,btnSearch;
+    ImageButton btnSetting,btnSearch , btnListFamily;
     MainActivity main;
     View main_menu, view_mode;
     Boolean show_main_menu = false;
@@ -137,6 +137,7 @@ public class Map extends Fragment {
         btnHideMap = linearLayout.findViewById(R.id.btnHideMap);
         btnSetting = linearLayout.findViewById(R.id.btnSetting);
         btnSearch = linearLayout.findViewById(R.id.btnSearch);
+        btnListFamily = linearLayout.findViewById(R.id.btnListFamily);
 
         main_menu=linearLayout.findViewById(R.id.main_menu);
         view_mode=linearLayout.findViewById(R.id.view_mode);
@@ -147,6 +148,13 @@ public class Map extends Fragment {
             @Override
             public void onClick(View v) {
                 main.onMsgFromFragToMain("Map-Frag","ShowMap");
+            }
+        });
+
+        btnListFamily.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                main.onMsgFromFragToMain("Map-Frag","ShowList");
             }
         });
 
@@ -351,4 +359,5 @@ public class Map extends Fragment {
         }
 
     }
+
 }

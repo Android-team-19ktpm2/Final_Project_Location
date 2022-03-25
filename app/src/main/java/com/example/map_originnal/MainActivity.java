@@ -72,9 +72,9 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
                 getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, home_activity).commit();
                 return true;
 
-            case R.id.family:
-                chuyenSangListFamilys();
-                return true;
+//            case R.id.family:
+//                chuyenSangListFamilys();
+//                return true;
 
             case R.id.map:
                 getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, map_activity).commit();
@@ -109,14 +109,13 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         bottomSheetDialogListFamily.setContentView(bottomSheetView);
         bottomSheetDialogListFamily.show();
 
-//        lvFamilys
     }
 
     private ArrayList<MemberFamily> giaLapDuLieu() {
         ArrayList<MemberFamily> a = new ArrayList<>();
 
-        a.add(new MemberFamily("Son","http://anhnendep.net/wp-content/uploads/2016/02/vit-boi-roi-Psyduck.jpg"));
-        a.add(new MemberFamily("Anh","http://anhnendep.net/wp-content/uploads/2016/02/vit-boi-roi-Psyduck.jpg"));
+        a.add(new MemberFamily("Son",""));
+        a.add(new MemberFamily("Anh","https://res.cloudinary.com/imag/image/upload/v1638508152/Shopshoes/show3_f6ckhp.jpg"));
         a.add(new MemberFamily("Vu","http://anhnendep.net/wp-content/uploads/2016/02/vit-boi-roi-Psyduck.jpg"));
         a.add(new MemberFamily("Viet","http://anhnendep.net/wp-content/uploads/2016/02/vit-boi-roi-Psyduck.jpg"));
         a.add(new MemberFamily("Son","http://anhnendep.net/wp-content/uploads/2016/02/vit-boi-roi-Psyduck.jpg"));
@@ -142,6 +141,9 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         }
         if (sender.equals("Map-Frag") && strValue.equals("ShowMap")){
             getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, hideMap).commit();
+        }
+        if (sender.equals("Map-Frag") && strValue.equals("ShowList")){
+            chuyenSangListFamilys();
         }
         if (sender.equals("List-Family") && strValue.equals("Back")){
             bottomSheetDialogListFamily.hide();

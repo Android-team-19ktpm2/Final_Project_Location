@@ -2,6 +2,8 @@ package com.example.map_originnal;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
+import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,14 +49,11 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called");
-        Glide.with(context).load(memberFamily.get(position).getImg()).into(holder.imgAvartar);
 
-//        Picasso.with(context).load("http://via.placeholder.com/300.png").into(holder.imgAvartar);
-//        holder.imgAvartar.(memberFamily.get(position).getImg());
-//        Picasso.
-        System.out.println(memberFamily.get(position).getImg());
+        String urldisplay = memberFamily.get(position).getImg();
+
+        Glide.with(context).load(urldisplay).into(holder.imgAvartar);
         holder.txtTen.setText(memberFamily.get(position).getTen());
-
         holder.ln_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
