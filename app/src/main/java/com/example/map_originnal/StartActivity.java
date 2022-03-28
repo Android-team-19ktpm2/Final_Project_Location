@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -64,12 +65,15 @@ public class StartActivity extends AppCompatActivity {
         FirebaseUser firebaseUser = auth.getCurrentUser();
         if (firebaseUser == null)
         {
-            startActivity(new Intent(StartActivity.this, RegisterActivity.class));
+            startActivity(new Intent(StartActivity.this, LoginActivity.class));
         }
         else
         {
-            startActivity(new Intent(StartActivity.this, RegisterActivity.class));
-            Toast.makeText(this, "Welcome back "+firebaseUser.getEmail(), Toast.LENGTH_SHORT).show();
+            Intent intent= new Intent(StartActivity.this, ChatActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            Toast.makeText(this, firebaseUser.getEmail(), Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 }

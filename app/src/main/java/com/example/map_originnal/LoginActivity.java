@@ -50,7 +50,10 @@ public class LoginActivity extends AppCompatActivity {
         btn_sign_in_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -82,7 +85,10 @@ public class LoginActivity extends AppCompatActivity {
                 {
                     Toast.makeText(LoginActivity.this, "Welcome back "+email, Toast.LENGTH_SHORT).show();
                     //Redirect Main Activity
-                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                    Intent intent= new Intent(LoginActivity.this,ChatActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
                 }
                 else
                 {
