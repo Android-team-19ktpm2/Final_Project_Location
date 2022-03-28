@@ -8,13 +8,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class Start extends AppCompatActivity {
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-
+public class StartActivity extends AppCompatActivity {
     TextView txtLogin;
     Button btnSignUpEmail,btnSignUpGG;
 
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,8 @@ public class Start extends AppCompatActivity {
         txtLogin =findViewById(R.id.txtLogin);
         btnSignUpEmail = findViewById(R.id.btnSignUpEmail);
         btnSignUpGG = findViewById(R.id.btnSignUpGG);
+
+        auth=FirebaseAuth.getInstance();
 
         txtLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,5 +56,20 @@ public class Start extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser firebaseUser = auth.getCurrentUser();
+        if (firebaseUser == null)
+        {
+            startActivity(new Intent(StartActivity.this, RegisterActivity.class));
+        }
+        else
+        {
+            startActivity(new Intent(StartActivity.this, RegisterActivity.class));
+            Toast.makeText(this, "Welcome back "+firebaseUser.getEmail(), Toast.LENGTH_SHORT).show();
+        }
     }
 }
