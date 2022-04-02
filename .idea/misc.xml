@@ -9,7 +9,10 @@
         <entry key="..\:/Users/pvude/Study/tools/AndroidStudio/Final_Project_Location/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/pvude/Study/tools/AndroidStudio/Final_Project_Location/app/src/main/res/layout/activity_start.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pvude/Study/tools/AndroidStudio/Final_Project_Location/app/src/main/res/layout/activity_user.xml" value="0.36666666666666664" />
+        <entry key="app/src/main/res/drawable-v24/btn_radius.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/btn_slide_down.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-v24/shape_main_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/shape_slide_up.xml" value="0.1665" />
         <entry key="app/src/main/res/drawable/bg_round.xml" value="0.1665" />
         <entry key="app/src/main/res/drawable/bottom_sheet_background.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1665" />
@@ -35,6 +38,7 @@
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/layout/fragment_start.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/layout/items_family.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/layout_current_location.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/layout/list_family.xml" value="0.18" />
         <entry key="app/src/main/res/layout/main_menu.xml" value="0.1" />
         <entry key="app/src/main/res/layout/taskbar.xml" value="0.3046875" />

@@ -31,6 +31,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -45,11 +47,12 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.io.IOException;
 import java.util.List;
 
-public class Map extends Fragment {
+public class Map extends Fragment implements GoogleMap.OnMarkerClickListener {
 
     Button btnHideMap;
 //<<<<<<< HEAD
@@ -62,6 +65,8 @@ public class Map extends Fragment {
     ProgressDialog progressDialog;
     SupportMapFragment mapFragment;
     SearchView searchView;
+    LatLng loction_focus = null;
+
     GoogleMap.OnMyLocationChangeListener locationChangeListener = new GoogleMap.OnMyLocationChangeListener() {
         @Override
         public void onMyLocationChange(@NonNull Location location) {
@@ -69,6 +74,7 @@ public class Map extends Fragment {
             LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
             if (mMap != null) {
                 mMap.clear();
+                loction_focus = loc;
                 Marker marker = mMap.addMarker(new MarkerOptions().position(loc));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
             }
@@ -98,7 +104,7 @@ public class Map extends Fragment {
         @Override
         public void onMapReady(GoogleMap googleMap) {
             mMap = googleMap;
-
+            mMap.setOnMarkerClickListener(Map.this);
             mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
                 @Override
                 public void onMapLoaded() {
@@ -372,4 +378,40 @@ public class Map extends Fragment {
 
             }
         }
- }
+
+    @Override
+    public boolean onMarkerClick(@NonNull Marker marker) {
+        loction_focus = marker.getPosition();
+        try {
+            displayLocation(loction_focus);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    private void displayLocation(LatLng loction_focus) throws IOException {
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity(),R.style.BottomSheetDialogTheme);
+        View bottomSheetView = LayoutInflater.from(getActivity().getApplicationContext()).inflate(R.layout.layout_current_location,(LinearLayout) getActivity().findViewById(R.id.current_container));
+        bottomSheetView.findViewById(R.id.btn_favourite).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Đã thêm vào Favourite", Toast.LENGTH_SHORT).show();
+                bottomSheetDialog.dismiss();
+            }
+        });
+
+        Geocoder geocoder = new Geocoder(main);
+        List<Address> a = geocoder.getFromLocation(loction_focus.latitude,loction_focus.longitude,1);
+
+        TextView txtDiaChi = bottomSheetView.findViewById(R.id.txtDiaChi);
+        TextView txtArea = bottomSheetView.findViewById(R.id.txtArea);
+
+        txtArea.setText(a.get(0).getAdminArea());
+        txtDiaChi.setText(a.get(0).getAddressLine(0));
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
+    }
+
+
+}
