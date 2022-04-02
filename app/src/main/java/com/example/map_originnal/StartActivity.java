@@ -62,18 +62,18 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser firebaseUser = auth.getCurrentUser();
-        if (firebaseUser == null)
-        {
-            startActivity(new Intent(StartActivity.this, LoginActivity.class));
-        }
-        else
-        {
-            Intent intent= new Intent(StartActivity.this, ChatActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            Toast.makeText(this, firebaseUser.getEmail(), Toast.LENGTH_SHORT).show();
-            finish();
-        }
+//        FirebaseUser firebaseUser = auth.getCurrentUser();
+//        if (firebaseUser == null)
+//        {
+//            startActivity(new Intent(StartActivity.this, LoginActivity.class));
+//        }
+//        else
+//        {
+//            Intent intent= new Intent(StartActivity.this, ChatActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(intent);
+//            Toast.makeText(this, firebaseUser.getEmail(), Toast.LENGTH_SHORT).show();
+//            finish();
+//        }
     }
 }

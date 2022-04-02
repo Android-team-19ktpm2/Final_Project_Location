@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
@@ -25,6 +27,10 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
     BottomNavigationView bottomNavigationView;
     BottomSheetDialog bottomSheetDialogListFamily,bottomSheetDialogAddFamily;
     BottomSheetDialog bottomSheetDialog;
+
+    FirebaseAuth auth;
+    FirebaseUser firebaseUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,39 +40,55 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
+        auth = FirebaseAuth.getInstance();
+
+        firebaseUser = auth.getCurrentUser();
+
         bottomNavigationView.setSelectedItemId(R.id.person);
     }
 
 
+    LoginFragment loginFragment = new LoginFragment();
+    RegisterFragment registerFragment = new RegisterFragment();
     User user_activity = new User();
     Map map_activity = new Map();
     Home home_activity = new Home();
     Family family_activity = new Family();
-//    Profile profile = new Profile();
     ListFamilys listFamilys = new ListFamilys();
     HideMap hideMap = new HideMap();
+    StartFragment startFragment = new StartFragment();
 
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.person:
-                String condition = getIntent().getStringExtra("CONDITION");
 
-                switch (condition){
-                    case "LOGIN":
-                        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, user_activity).commit();
-                        return true;
-
-                    case "SIGNUP_GG":
-                        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, user_activity).commit();
-                        return true;
-
-                    case "SIGNUP_EMAIL":
-                        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, user_activity).commit();
-                        return true;
+                if (firebaseUser==null){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, startFragment).commit();
 
                 }
+                else {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, user_activity).commit();
+
+                }
+                return true;
+//                String condition = getIntent().getStringExtra("CONDITION");
+//
+//                switch (condition){
+//                    case "LOGIN":
+//                        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, loginFragment).commit();
+//                        return true;
+//
+//                    case "SIGNUP_GG":
+//                        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, user_activity).commit();
+//                        return true;
+//
+//                    case "SIGNUP_EMAIL":
+//                        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, user_activity).commit();
+//                        return true;
+
+//                }
 
             case R.id.home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, home_activity).commit();
@@ -154,6 +176,24 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         }
         if (sender.equals("Hide-Map") && strValue.equals("ShowMap")){
             getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, map_activity).commit();
+        }
+        if (sender.equals("Login-Frag") && strValue.equals("Register-Frag")){
+            getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, registerFragment).commit();
+        }
+        if (sender.equals("Register-Frag") && strValue.equals("Login-Frag")){
+            getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, loginFragment).commit();
+        }
+        if (sender.equals("Start-Frag") && strValue.equals("Profile-Frag")){
+            getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, user_activity).commit();
+        }
+        if (sender.equals("Login-Frag") && strValue.equals("Profile-Frag")){
+            getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, user_activity).commit();
+        }
+        if (sender.equals("Start-Frag") && strValue.equals("Login-Frag")){
+            getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, loginFragment).commit();
+        }
+        if (sender.equals("User-Frag") && strValue.equals("Start-Frag")){
+            getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, startFragment).commit();
         }
     }
 
