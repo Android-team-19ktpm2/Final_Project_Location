@@ -42,15 +42,6 @@
         android:layout_height="2dp"
         android:background="#C91C1C"></View>
 
-    <TextView
-        android:id="@+id/txtMapType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="7dp"
-        android:gravity="center"
-        android:text="Map type"
-        android:textColor="@color/black"
-        android:textSize="24dp"></TextView>
 
     <View
         android:layout_width="match_parent"

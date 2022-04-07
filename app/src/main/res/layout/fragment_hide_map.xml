@@ -31,24 +31,26 @@
             android:textStyle="bold"></TextView>
 
         <TextView
+            android:id="@+id/txtToaDo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/shape_view_mode"
             android:gravity="center"
             android:padding="5dp"
-            android:text="10.7476876, 106.1287981279"
+            android:text="0, 0"
             android:textColor="@color/colorPrimaryText"
             android:textSize="15dp"></TextView>
 
 
         <TextView
+            android:id="@+id/txtDiaChi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_view_mode"
             android:gravity="center"
             android:padding="5dp"
-            android:text="81 Nguyễn Xiển, Long Bình, Quận 9, thành phố Hồ Chí Minh"
+            android:text="Not Address"
             android:textColor="@color/colorPrimaryText"
             android:textSize="15dp"></TextView>
 
@@ -62,13 +64,14 @@
             android:textStyle="bold"></TextView>
 
         <TextView
+            android:id="@+id/txtAccuracy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/shape_view_mode"
             android:gravity="center"
             android:padding="5dp"
-            android:text="13.2"
+            android:text="0"
             android:textColor="@color/colorPrimaryText"
             android:textSize="15dp"></TextView>
 
@@ -82,13 +85,14 @@
             android:textStyle="bold"></TextView>
 
         <TextView
+            android:id="@+id/txtAttitude"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/shape_view_mode"
             android:gravity="center"
             android:padding="5dp"
-            android:text="17.9"
+            android:text="0"
             android:textColor="@color/colorPrimaryText"
             android:textSize="15dp"></TextView>
 
@@ -102,13 +106,14 @@
             android:textStyle="bold"></TextView>
 
         <TextView
+            android:id="@+id/txtSpeed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/shape_view_mode"
             android:gravity="center"
             android:padding="5dp"
-            android:text="1"
+            android:text="0"
             android:textColor="@color/colorPrimaryText"
             android:textSize="15dp"></TextView>
 

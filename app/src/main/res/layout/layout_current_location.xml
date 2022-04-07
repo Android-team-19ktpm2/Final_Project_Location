@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Vị trí Đang Marker"
+        android:text="Vị trí Marker"
         android:textSize="24dp"
         android:textStyle="bold"
         android:textColor="@color/black">
@@ -29,8 +29,8 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/gtvt"
+        android:layout_height="180dp"
+        android:src="@drawable/default_img"
         android:layout_marginTop="10dp"
         ></ImageView>
 
@@ -59,8 +59,8 @@
             android:id="@+id/txtArea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Trường Đại học giao thông vận tải"
-            android:textSize="16dp"
+            android:text="Không có vị trí cụ thể"
+            android:textSize="22dp"
             android:textStyle="bold"
             android:textColor="@color/black"></TextView>
 
@@ -68,9 +68,9 @@
             android:id="@+id/txtDiaChi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="10dp"
+            android:textSize="20dp"
             android:textColor="@color/black"
-            android:text="02 Võ Oanh, phường 25, Bình Thạnh, Thành phố Hồ Chí Minh, Việt Nam"></TextView>
+            android:text="Biển"></TextView>
 
     </LinearLayout>
 

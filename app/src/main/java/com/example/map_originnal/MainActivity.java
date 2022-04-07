@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,6 +32,8 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
     FirebaseAuth auth;
     FirebaseUser firebaseUser;
 
+    LatLng locationCurrent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +47,7 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
 
         firebaseUser = auth.getCurrentUser();
 
-        bottomNavigationView.setSelectedItemId(R.id.person);
+        bottomNavigationView.setSelectedItemId(R.id.map);
     }
 
 
@@ -73,30 +76,10 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
 
                 }
                 return true;
-//                String condition = getIntent().getStringExtra("CONDITION");
-//
-//                switch (condition){
-//                    case "LOGIN":
-//                        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, loginFragment).commit();
-//                        return true;
-//
-//                    case "SIGNUP_GG":
-//                        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, user_activity).commit();
-//                        return true;
-//
-//                    case "SIGNUP_EMAIL":
-//                        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, user_activity).commit();
-//                        return true;
-
-//                }
 
             case R.id.home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, home_activity).commit();
                 return true;
-
-//            case R.id.family:
-//                chuyenSangListFamilys();
-//                return true;
 
             case R.id.map:
                 getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, map_activity).commit();
@@ -137,19 +120,8 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
     private ArrayList<MemberFamily> giaLapDuLieu() {
         ArrayList<MemberFamily> a = new ArrayList<>();
 
-        a.add(new MemberFamily("Son",""));
         a.add(new MemberFamily("Anh","https://res.cloudinary.com/imag/image/upload/v1638508152/Shopshoes/show3_f6ckhp.jpg"));
         a.add(new MemberFamily("Vu","http://anhnendep.net/wp-content/uploads/2016/02/vit-boi-roi-Psyduck.jpg"));
-        a.add(new MemberFamily("Viet","http://anhnendep.net/wp-content/uploads/2016/02/vit-boi-roi-Psyduck.jpg"));
-        a.add(new MemberFamily("Son","http://anhnendep.net/wp-content/uploads/2016/02/vit-boi-roi-Psyduck.jpg"));
-        a.add(new MemberFamily("Anh","http://anhnendep.net/wp-content/uploads/2016/02/vit-boi-roi-Psyduck.jpg"));
-        a.add(new MemberFamily("Vu","http://anhnendep.net/wp-content/uploads/2016/02/vit-boi-roi-Psyduck.jpg"));
-        a.add(new MemberFamily("Viet","http://anhnendep.net/wp-content/uploads/2016/02/vit-boi-roi-Psyduck.jpg"));
-        a.add(new MemberFamily("Son","http://anhnendep.net/wp-content/uploads/2016/02/vit-boi-roi-Psyduck.jpg"));
-        a.add(new MemberFamily("Anh","http://anhnendep.net/wp-content/uploads/2016/02/vit-boi-roi-Psyduck.jpg"));
-        a.add(new MemberFamily("Vu","http://anhnendep.net/wp-content/uploads/2016/02/vit-boi-roi-Psyduck.jpg"));
-        a.add(new MemberFamily("Viet","http://anhnendep.net/wp-content/uploads/2016/02/vit-boi-roi-Psyduck.jpg"));
-
         return a;
     }
 
@@ -160,10 +132,6 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         }
         if (sender.equals("User-Frag") && strValue.equals("Profile")){
             chuyenSangProflie();
-//            getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, profile).commit();
-        }
-        if (sender.equals("Map-Frag") && strValue.equals("ShowMap")){
-            getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, hideMap).commit();
         }
         if (sender.equals("Map-Frag") && strValue.equals("ShowList")){
             chuyenSangListFamilys();
@@ -197,6 +165,13 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         }
     }
 
+    @Override
+    public void onLocationFromFragToMain(String sender, LatLng Value) {
+        locationCurrent = Value;
+        hideMap.onLocationFromMainToFrag("main",locationCurrent);
+        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, hideMap).commit();
+    }
+
     private void chuyenSangDialogAddFamily() {
         bottomSheetDialogAddFamily = new BottomSheetDialog(
                 MainActivity.this,R.style.BottomSheetDialogTheme
@@ -226,5 +201,11 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         });
         bottomSheetDialog.setContentView(bottomSheetView);
         bottomSheetDialog.show();
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        FirebaseAuth.getInstance().signOut();
     }
 }

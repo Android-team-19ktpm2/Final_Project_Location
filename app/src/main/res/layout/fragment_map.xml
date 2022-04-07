@@ -18,19 +18,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginBottom="42dp"
+        android:layout_marginBottom="39dp"
         android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/btnSatellite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_satellite_24" />
+
 
         <Button
             android:id="@+id/btnHideMap"
             android:layout_width="wrap_content"
-            android:layout_height="43dp"
+            android:layout_height="39dp"
             android:layout_marginLeft="10dp"
             android:text="Hide Map"></Button>
 
@@ -43,6 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/btnSetting"
+        android:layout_marginBottom="9dp"
         android:layout_alignRight="@id/btnSetting">
 
         <FrameLayout
@@ -56,18 +53,18 @@
     </FrameLayout>
 
 
-<!--    <FrameLayout
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/btnSetting"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="55dp"
         android:layout_marginBottom="9dp"
         android:layout_alignRight="@id/btnSetting">
 
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            &lt;!&ndash;<include layout="@layout/view_mode" android:id="@id/view_mode"></include>&ndash;&gt;
+            <include layout="@layout/view_mode" android:id="@id/view_mode"></include>
         </FrameLayout>
     </FrameLayout>-->
 
@@ -82,14 +79,15 @@
         android:src="@drawable/ic_baseline_settings_24"/>
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/btnSatellite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="58dp"
         android:layout_marginBottom="39dp"
-        android:src="@drawable/ic_baseline_room_24" />
+        android:src="@drawable/ic_baseline_satellite_24" />
+
 
     <ImageButton
         android:id="@+id/btnSearch"
@@ -115,7 +113,7 @@
 
     <SearchView
         android:id="@+id/searchView"
-        android:layout_width="340dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"

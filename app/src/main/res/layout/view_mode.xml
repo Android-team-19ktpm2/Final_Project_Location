@@ -1,40 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:id="@+id/view_mode"
+    android:background="@drawable/shape_view_mode"
     android:animateLayoutChanges="true">
-
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/shape_view_mode">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <RadioGroup
+                android:id="@+id/rdMaptype"
                 android:layout_gravity="right"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Default"
-                    android:layout_marginRight="10dp"
-                    android:textSize="24dp"
-                    android:textColor="@color/black"></TextView>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
                 <RadioButton
+                    android:padding="20dp"
+                    android:textSize="24dp"
                     android:id="@+id/default_mode"
+                    android:checked="true"
+                    android:text="Default"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"></RadioButton>
-
-            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -42,29 +26,14 @@
                 android:background="#C91C1C"
                 ></View>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Satellite"
-                    android:layout_marginRight="10dp"
-                    android:textSize="24dp"
-                    android:textColor="@color/black"></TextView>
 
                 <RadioButton
+                    android:padding="20dp"
+                    android:textSize="24dp"
                     android:id="@+id/satellite_mode"
+                    android:text="Satellite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"></RadioButton>
 
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </RadioGroup>
-
+            </RadioGroup>
 </LinearLayout>

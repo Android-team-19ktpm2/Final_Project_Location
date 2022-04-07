@@ -37,6 +37,32 @@
                 app:civ_border_width="2dp"
                 ></de.hdodenhof.circleimageview.CircleImageView>
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_height="15dp"
+                android:layout_width="15dp"
+                app:civ_border_width="10dp"
+                app:civ_border_color="#05df29"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginLeft="13dp"
+                android:layout_marginTop="-21dp"
+                >
+
+
+            </de.hdodenhof.circleimageview.CircleImageView>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_height="15dp"
+                android:layout_width="15dp"
+                app:civ_border_width="10dp"
+                app:civ_border_color="#F44336"
+                android:visibility="gone"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginLeft="13dp"
+                android:layout_marginTop="-21dp"
+                >
+
+            </de.hdodenhof.circleimageview.CircleImageView>
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

@@ -25,10 +25,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.PermissionRequest;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -50,13 +52,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.io.IOException;
+import java.security.Permission;
 import java.util.List;
 
-public class Map extends Fragment implements GoogleMap.OnMarkerClickListener {
+public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, FrangmentCallbacks {
+
+
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 
     Button btnHideMap;
-//<<<<<<< HEAD
-    ImageButton btnSetting,btnSearch , btnListFamily,btnSatellite;
+    RadioButton rd;
+    ImageButton btnSetting, btnSearch, btnListFamily, btnSatellite;
     MainActivity main;
     View main_menu, view_mode;
     Boolean show_main_menu = false;
@@ -73,22 +79,17 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener {
 
             LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
             if (mMap != null) {
-                mMap.clear();
                 loction_focus = loc;
-                Marker marker = mMap.addMarker(new MarkerOptions().position(loc));
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.position(loc);
+                mMap.addMarker(markerOptions);
+//                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
             }
         }
     };
 
     FusedLocationProviderClient client;
-//=======
-//    ImageButton btnSetting,btnSatellite;
-//    MainActivity main;
-//    View main_menu,view_mode;
-///*    Boolean show_view_mode=false;*/
-//    Boolean show_main_menu=false;
-//>>>>>>> c5b93d92a3c620c7fe6da80bdff5e380e0d77d37
+
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
@@ -104,12 +105,28 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener {
         @Override
         public void onMapReady(GoogleMap googleMap) {
             mMap = googleMap;
+            mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+                @Override
+                public void onMapClick(@NonNull LatLng latLng) {
+                    MarkerOptions markerOptions = new MarkerOptions();
+                    markerOptions.position(latLng);
+                    mMap.clear();
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
+                    mMap.addMarker(markerOptions);
+
+                    if (rd.isChecked()) {
+                        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                    } else {
+                        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                    }
+                }
+            });
+
             mMap.setOnMarkerClickListener(Map.this);
             mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
                 @Override
                 public void onMapLoaded() {
                     progressDialog.dismiss();
-
 
                     if (ActivityCompat.checkSelfPermission(main, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(main, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                         // TODO: Consider calling
@@ -120,14 +137,13 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener {
                         // to handle the case where the user grants the permission. See the documentation
                         // for ActivityCompat#requestPermissions for more details.
                         return;
+
                     }
                     mMap.setMyLocationEnabled(true);
                     mMap.setOnMyLocationChangeListener(locationChangeListener);
-//                    LatLng sydney = new LatLng(-34, 151);
-//                    googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-//                    googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
                 }
             });
+
 
 
         }
@@ -153,20 +169,27 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener {
         btnSetting = linearLayout.findViewById(R.id.btnSetting);
         btnSearch = linearLayout.findViewById(R.id.btnSearch);
         btnSatellite = linearLayout.findViewById(R.id.btnSatellite);
-
         btnListFamily = linearLayout.findViewById(R.id.btnListFamily);
 
         main_menu = linearLayout.findViewById(R.id.main_menu);
         view_mode = linearLayout.findViewById(R.id.view_mode);
 
+        rd = view_mode.findViewById(R.id.satellite_mode);
+
+
         client = LocationServices.getFusedLocationProviderClient(getActivity());
 
         show_main_menu = false;
+        show_view_mode = false;
+
 
         btnHideMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 main.onMsgFromFragToMain("Map-Frag", "ShowMap");
+                main.onLocationFromFragToMain("Map-Frag", loction_focus);
+
             }
         });
 
@@ -180,6 +203,7 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener {
 
 
         main_menu.animate().alpha(0.0f);
+        view_mode.animate().alpha(0.0f);
 
 
         btnSetting.setOnClickListener(new View.OnClickListener() {
@@ -192,6 +216,10 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener {
                 }
 
                 else {
+                    view_mode.animate().alpha(0.0f);
+                    view_mode.setVisibility(View.INVISIBLE);
+                    btnSatellite.animate().alpha(1f).setDuration(400);
+
                     main_menu.animate().alpha(0.0f);
                     main_menu.setVisibility(View.VISIBLE);
                     btnSetting.animate().alpha(0.3f).setDuration(400);
@@ -205,9 +233,27 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener {
             btnSatellite.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //View mode here
+                    if(show_view_mode) {
+                        btnSatellite.animate().alpha(1f).setDuration(400);
+                        view_mode.animate().alpha(0.0f).setDuration(400);
+                        show_view_mode=false;
+                    }
+                    else {
+                        main_menu.animate().alpha(0.0f);
+                        main_menu.setVisibility(View.INVISIBLE);
+                        btnSetting.animate().alpha(1f).setDuration(400);
+
+                        view_mode.animate().alpha(0.0f);
+                        view_mode.setVisibility(View.VISIBLE);
+                        btnSatellite.animate().alpha(0.3f).setDuration(400);
+                        view_mode.animate().alpha(1f).setDuration(400);
+                        show_view_mode=true;
+                    }
                 }
             });
+
+
+
 
             main_menu.findViewById(R.id.history).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -225,21 +271,6 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener {
                     arrayAdapter.add("2 Nguyễn Bỉnh Khiêm, Quận 1, TP HCM");
                     arrayAdapter.add("TL15, Phú Hiệp, Củ Chi, TP HCM");
                     arrayAdapter.add("Đường Nguyễn Huệ, quận 1, TP HCM");
-                    arrayAdapter.add("03 Nguyễn Bỉnh Khiêm, Bến Nghé, Quận 1, TP HCM");
-                    arrayAdapter.add("02 Khu Him Lam, quận 7, TP HCM");
-                    arrayAdapter.add("19-25 Nguyễn Huệ, Phường Bến Nghé, Quận 1, TP HCM");
-                    arrayAdapter.add("3 Hòa Bình, phường 3, quận 11, TP HCM");
-                    arrayAdapter.add("Số 125 Công xã Paris, Bến Nghé, Quận 1, TPHCM");
-                    arrayAdapter.add("720A Điện Biên Phủ, Quận Bình Thạnh, TP HCM");
-                    arrayAdapter.add("Số 7 đường Công Trường Lam Sơn, phường Bến Nghé, Quận 1, TP HCM");
-                    arrayAdapter.add("Số 202 đường Võ Thị Sáu, phường 7, Quận 3, thành phố Hồ Chí Minh");
-                    arrayAdapter.add("Số 1 Nguyễn Tất Thành, Phường 12, Quận 4, Thành phố Hồ Chí Minh");
-                    arrayAdapter.add("120 Xa lộ Hà Nội, phường Tân Phú, Quận 9, thành phố Hồ Chí Minh");
-                    arrayAdapter.add("Số 02 – 04 đường số 9, KDC Him Lam, phường Tân Hưng, Quận 7, thành phố Hồ Chí Minh");
-                    arrayAdapter.add("1147 Bình Quới, phường 28, Quận Bình Thạnh, thành phố Hồ Chí Minh");
-                    arrayAdapter.add("Khu du lịch 30/4, đường Thạnh Thới, Long Hà, Cần Giờ, thành phố Hồ Chí Minh");
-                    arrayAdapter.add("81 Nguyễn Xiển, Long Bình, Quận 9, thành phố Hồ Chí Minh");
-                    arrayAdapter.add("Bùi Viện – Phạm Ngũ Lão – Đề Thám, Quận 1, thành phố Hồ chí Minh");
 
 
                     builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
@@ -280,23 +311,6 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener {
                     arrayAdapter.add("135 Nam Kỳ Khởi Nghĩa, Bến Nghé, Quận 1, TP HCM");
                     arrayAdapter.add("01 Công Xã Paris, Bến Nghé, Quận 1, TP HCM");
                     arrayAdapter.add("2 Nguyễn Bỉnh Khiêm, Quận 1, TP HCM");
-                    arrayAdapter.add("TL15, Phú Hiệp, Củ Chi, TP HCM");
-                    arrayAdapter.add("Đường Nguyễn Huệ, quận 1, TP HCM");
-                    arrayAdapter.add("03 Nguyễn Bỉnh Khiêm, Bến Nghé, Quận 1, TP HCM");
-                    arrayAdapter.add("02 Khu Him Lam, quận 7, TP HCM");
-                    arrayAdapter.add("19-25 Nguyễn Huệ, Phường Bến Nghé, Quận 1, TP HCM");
-                    arrayAdapter.add("3 Hòa Bình, phường 3, quận 11, TP HCM");
-                    arrayAdapter.add("Số 125 Công xã Paris, Bến Nghé, Quận 1, TPHCM");
-                    arrayAdapter.add("720A Điện Biên Phủ, Quận Bình Thạnh, TP HCM");
-                    arrayAdapter.add("Số 7 đường Công Trường Lam Sơn, phường Bến Nghé, Quận 1, TP HCM");
-                    arrayAdapter.add("Số 202 đường Võ Thị Sáu, phường 7, Quận 3, thành phố Hồ Chí Minh");
-                    arrayAdapter.add("Số 1 Nguyễn Tất Thành, Phường 12, Quận 4, Thành phố Hồ Chí Minh");
-                    arrayAdapter.add("120 Xa lộ Hà Nội, phường Tân Phú, Quận 9, thành phố Hồ Chí Minh");
-                    arrayAdapter.add("Số 02 – 04 đường số 9, KDC Him Lam, phường Tân Hưng, Quận 7, thành phố Hồ Chí Minh");
-                    arrayAdapter.add("1147 Bình Quới, phường 28, Quận Bình Thạnh, thành phố Hồ Chí Minh");
-                    arrayAdapter.add("Khu du lịch 30/4, đường Thạnh Thới, Long Hà, Cần Giờ, thành phố Hồ Chí Minh");
-                    arrayAdapter.add("81 Nguyễn Xiển, Long Bình, Quận 9, thành phố Hồ Chí Minh");
-                    arrayAdapter.add("Bùi Viện – Phạm Ngũ Lão – Đề Thám, Quận 1, thành phố Hồ chí Minh");
 
 
                     builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
@@ -313,7 +327,6 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener {
                             AlertDialog.Builder builderInner = new AlertDialog.Builder(main);
                             builderInner.setMessage(strName);
                             builderInner.setTitle("Your Selected Item is");
-
                             builderInner.show();
                         }
                     });
@@ -353,7 +366,7 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener {
                         Address address = addressList.get(0);
                         LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
                         mMap.addMarker(new MarkerOptions().position(latLng).title(location));
-                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
                     }
                     return false;
                 }
@@ -364,8 +377,53 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener {
                 }
 
             });
-            return linearLayout;
 
+        return linearLayout;
+
+    }
+
+
+        @Override
+        public boolean onMarkerClick(@NonNull Marker marker) {
+            loction_focus = marker.getPosition();
+            if(loction_focus != null){
+                try {
+                    displayLocation(loction_focus);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            return false;
+        }
+
+        private void displayLocation(LatLng loction_focus) throws IOException {
+            final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity(),R.style.BottomSheetDialogTheme);
+            View bottomSheetView = LayoutInflater.from(getActivity().getApplicationContext()).inflate(R.layout.layout_current_location,(LinearLayout) getActivity().findViewById(R.id.current_container));
+            bottomSheetView.findViewById(R.id.btn_favourite).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(getActivity(), "Đã thêm vào Favourite", Toast.LENGTH_SHORT).show();
+                    bottomSheetDialog.dismiss();
+                }
+            });
+
+            Geocoder geocoder = new Geocoder(main);
+            List<Address> a = geocoder.getFromLocation(loction_focus.latitude,loction_focus.longitude,1);
+
+            TextView txtDiaChi = bottomSheetView.findViewById(R.id.txtDiaChi);
+            TextView txtArea = bottomSheetView.findViewById(R.id.txtArea);
+
+
+            if (a.isEmpty()){
+
+            }
+            else{
+                txtArea.setText(a.get(0).getAdminArea());
+                txtDiaChi.setText(a.get(0).getAddressLine(0));
+            }
+            bottomSheetDialog.setContentView(bottomSheetView);
+            bottomSheetDialog.show();
         }
 
         @Override
@@ -375,43 +433,10 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener {
                     (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
             if (mapFragment != null) {
                 mapFragment.getMapAsync(callback);
-
             }
         }
 
     @Override
-    public boolean onMarkerClick(@NonNull Marker marker) {
-        loction_focus = marker.getPosition();
-        try {
-            displayLocation(loction_focus);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false;
+    public void onLocationFromMainToFrag(String sender, LatLng Value) {
     }
-
-    private void displayLocation(LatLng loction_focus) throws IOException {
-        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity(),R.style.BottomSheetDialogTheme);
-        View bottomSheetView = LayoutInflater.from(getActivity().getApplicationContext()).inflate(R.layout.layout_current_location,(LinearLayout) getActivity().findViewById(R.id.current_container));
-        bottomSheetView.findViewById(R.id.btn_favourite).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Đã thêm vào Favourite", Toast.LENGTH_SHORT).show();
-                bottomSheetDialog.dismiss();
-            }
-        });
-
-        Geocoder geocoder = new Geocoder(main);
-        List<Address> a = geocoder.getFromLocation(loction_focus.latitude,loction_focus.longitude,1);
-
-        TextView txtDiaChi = bottomSheetView.findViewById(R.id.txtDiaChi);
-        TextView txtArea = bottomSheetView.findViewById(R.id.txtArea);
-
-        txtArea.setText(a.get(0).getAdminArea());
-        txtDiaChi.setText(a.get(0).getAddressLine(0));
-        bottomSheetDialog.setContentView(bottomSheetView);
-        bottomSheetDialog.show();
-    }
-
-
 }

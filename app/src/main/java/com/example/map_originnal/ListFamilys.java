@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -27,7 +28,7 @@ public class ListFamilys extends Fragment {
     private ArrayList<MemberFamily> objects;
     RecyclerView lvFamilys;
     MainActivity main;
-    LinearLayout circleImageView;
+    ImageButton circleImageView;
     public ListFamilys(){
         // require a empty public constructor
     }
