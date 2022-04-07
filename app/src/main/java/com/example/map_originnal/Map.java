@@ -18,6 +18,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
 import android.provider.Settings;
@@ -33,11 +34,13 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -57,20 +60,22 @@ import java.util.List;
 
 public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, FrangmentCallbacks {
 
+    private static final int PERMISSION_FINE_LOCATION = 99;
 
-    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 
     Button btnHideMap;
     RadioButton rd;
     ImageButton btnSetting, btnSearch, btnListFamily, btnSatellite;
     MainActivity main;
     View main_menu, view_mode;
+    ProgressDialog progressDialog;
+    SearchView searchView;
+    SupportMapFragment mapFragment;
+    Switch sw_gps;
+
     Boolean show_main_menu = false;
     Boolean show_view_mode = false;
     GoogleMap mMap;
-    ProgressDialog progressDialog;
-    SupportMapFragment mapFragment;
-    SearchView searchView;
     LatLng loction_focus = null;
 
     GoogleMap.OnMyLocationChangeListener locationChangeListener = new GoogleMap.OnMyLocationChangeListener() {
@@ -82,8 +87,8 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, Fr
                 loction_focus = loc;
                 MarkerOptions markerOptions = new MarkerOptions();
                 markerOptions.position(loc);
+                mMap.clear();
                 mMap.addMarker(markerOptions);
-//                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
             }
         }
     };
@@ -128,19 +133,23 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, Fr
                 public void onMapLoaded() {
                     progressDialog.dismiss();
 
-                    if (ActivityCompat.checkSelfPermission(main, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(main, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                        // TODO: Consider calling
-                        //    ActivityCompat#requestPermissions
-                        // here to request the missing permissions, and then overriding
-                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                        //                                          int[] grantResults)
-                        // to handle the case where the user grants the permission. See the documentation
-                        // for ActivityCompat#requestPermissions for more details.
-                        return;
 
-                    }
-                    mMap.setMyLocationEnabled(true);
-                    mMap.setOnMyLocationChangeListener(locationChangeListener);
+                    sw_gps.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (sw_gps.isChecked()) {
+                                if ( ActivityCompat.checkSelfPermission(main, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                                }
+                                mMap.setMyLocationEnabled(true);
+                                mMap.setOnMyLocationChangeListener(locationChangeListener);
+                                Toast.makeText(main,"Using GPS sensors",Toast.LENGTH_SHORT).show();
+                            } else {
+                                mMap.setMyLocationEnabled(false);
+                                Toast.makeText(main,"Using Towner + Wifi",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
                 }
             });
 
@@ -163,7 +172,6 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, Fr
         progressDialog.setMessage("Đang tải Map, Vui lòng chờ......");
         progressDialog.show();
 
-//<<<<<<< HEAD
         searchView = linearLayout.findViewById(R.id.searchView);
         btnHideMap = linearLayout.findViewById(R.id.btnHideMap);
         btnSetting = linearLayout.findViewById(R.id.btnSetting);
@@ -173,14 +181,16 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, Fr
 
         main_menu = linearLayout.findViewById(R.id.main_menu);
         view_mode = linearLayout.findViewById(R.id.view_mode);
+        sw_gps = main_menu.findViewById(R.id.gps_mode);
 
         rd = view_mode.findViewById(R.id.satellite_mode);
-
 
         client = LocationServices.getFusedLocationProviderClient(getActivity());
 
         show_main_menu = false;
         show_view_mode = false;
+
+
 
 
         btnHideMap.setOnClickListener(new View.OnClickListener() {

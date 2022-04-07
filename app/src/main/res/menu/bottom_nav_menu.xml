@@ -6,11 +6,6 @@
         android:title="Map"
         android:icon="@drawable/ic_map_foreground"/>
 
-<!--    <item-->
-<!--        android:id="@+id/family"-->
-<!--        android:title="Family"-->
-<!--        android:icon="@drawable/ic_family_foreground"/>-->
-
     <item
         android:id="@+id/home"
         android:title="Home"
