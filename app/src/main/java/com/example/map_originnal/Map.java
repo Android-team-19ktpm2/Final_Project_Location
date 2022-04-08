@@ -139,7 +139,10 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, Fr
                         public void onClick(View v) {
                             if (sw_gps.isChecked()) {
                                 if ( ActivityCompat.checkSelfPermission(main, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
                                 }
+
+
                                 mMap.setMyLocationEnabled(true);
                                 mMap.setOnMyLocationChangeListener(locationChangeListener);
                                 Toast.makeText(main,"Using GPS sensors",Toast.LENGTH_SHORT).show();
