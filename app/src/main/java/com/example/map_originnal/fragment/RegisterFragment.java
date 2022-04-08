@@ -1,6 +1,5 @@
-package com.example.map_originnal;
+package com.example.map_originnal.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +14,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.map_originnal.R;
+import com.example.map_originnal.activity.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,21 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link RegisterFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class RegisterFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     EditText edt_email,edt_pwd, edt_re_pwd;
     Button btn_create;
@@ -47,61 +34,31 @@ public class RegisterFragment extends Fragment {
 
     FirebaseAuth auth;
     DatabaseReference reference;
-    private MainActivity main;
+    MainActivity main;
 
     public RegisterFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RegisterFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static RegisterFragment newInstance(String param1, String param2) {
-        RegisterFragment fragment = new RegisterFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
-        main = (MainActivity)getActivity();
-
 
         View v = inflater.inflate(R.layout.fragment_register, container, false);
 
+        addControls(v);
+        addEvents();
 
+        return v;
+    }
 
-        edt_email=v.findViewById(R.id.edt_sign_up_email);
-        edt_pwd=v.findViewById(R.id.edt_sign_up_pwd);
-        edt_re_pwd =v.findViewById(R.id.edt_sign_up_re_pwd);
-
-        btn_create=v.findViewById(R.id.btn_sign_up_create);
-
-        btn_login=v.findViewById(R.id.btn_sign_up_login);
-
-        auth=FirebaseAuth.getInstance();
-
+    private void addEvents() {
         btn_create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,15 +69,22 @@ public class RegisterFragment extends Fragment {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
-
                 main.onMsgFromFragToMain("Register-Frag","Login-Frag");
-                //Redirect Login Activity
                 return;
             }
         });
+    }
 
-        return v;
+    private void addControls(View v) {
+        auth=FirebaseAuth.getInstance();
+        main = (MainActivity)getActivity();
+
+        edt_email=v.findViewById(R.id.edt_sign_up_email);
+        edt_pwd=v.findViewById(R.id.edt_sign_up_pwd);
+        edt_re_pwd =v.findViewById(R.id.edt_sign_up_re_pwd);
+        btn_create=v.findViewById(R.id.btn_sign_up_create);
+        btn_login=v.findViewById(R.id.btn_sign_up_login);
+
     }
 
 
@@ -197,8 +161,5 @@ public class RegisterFragment extends Fragment {
             }
         });
     }
-
-
-
 
 }

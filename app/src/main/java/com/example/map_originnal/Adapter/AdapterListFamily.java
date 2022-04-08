@@ -1,31 +1,23 @@
-package com.example.map_originnal;
+package com.example.map_originnal.Adapter;
 
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.squareup.picasso.Picasso;
+import com.example.map_originnal.R;
+import com.example.map_originnal.activity.MainActivity;
+import com.example.map_originnal.model.MemberFamily;
 
-import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 //
 public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.ViewHolder>  {
@@ -51,7 +43,6 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
         Log.d(TAG, "onBindViewHolder: called");
 
         String urldisplay = memberFamily.get(position).getImg();
-
         Glide.with(context).load(urldisplay).into(holder.imgAvartar);
         holder.txtTen.setText(memberFamily.get(position).getTen());
         holder.ln_button.setOnClickListener(new View.OnClickListener() {
@@ -62,11 +53,6 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
             }
         });
 
-    }
-
-    @Override
-    public int getItemCount() {
-        return memberFamily.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -83,14 +69,12 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
             ln_button = itemView.findViewById(R.id.ln_button);
         }
     }
-//        View row;
-//
-//        LayoutInflater layoutInflater = context.getLayoutInflater();
-//        row = layoutInflater.inflate(resource,null);
-//
-//
-//        imgAvartar.setImageResource(objects.get(position).getImg());
-//        txtTen.setText(objects.get(position).getTen());
-//        return row;
+
+
+    @Override
+    public int getItemCount() {
+        return memberFamily.size();
+    }
+
 
 }

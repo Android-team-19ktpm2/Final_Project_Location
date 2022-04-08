@@ -1,32 +1,22 @@
-package com.example.map_originnal;
+package com.example.map_originnal.fragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Looper;
-import android.provider.Settings;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.PermissionRequest;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -38,10 +28,10 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.map_originnal.ke_thua.FrangmentCallbacks;
+import com.example.map_originnal.R;
+import com.example.map_originnal.activity.MainActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -50,21 +40,18 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.io.IOException;
-import java.security.Permission;
 import java.util.List;
 
-public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, FrangmentCallbacks {
+public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickListener, FrangmentCallbacks {
 
     private static final int PERMISSION_FINE_LOCATION = 99;
 
 
     Button btnHideMap;
-    RadioButton rd;
+    RadioButton rdDefualt,rdHybrid;
     ImageButton btnSetting, btnSearch, btnListFamily, btnSatellite;
     MainActivity main;
     View main_menu, view_mode;
@@ -85,10 +72,10 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, Fr
             LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
             if (mMap != null) {
                 loction_focus = loc;
-                MarkerOptions markerOptions = new MarkerOptions();
-                markerOptions.position(loc);
-                mMap.clear();
-                mMap.addMarker(markerOptions);
+//                MarkerOptions markerOptions = new MarkerOptions();
+//                markerOptions.position(loc);
+//                mMap.clear();
+//                mMap.addMarker(markerOptions);
             }
         }
     };
@@ -98,18 +85,11 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, Fr
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
         @Override
         public void onMapReady(GoogleMap googleMap) {
             mMap = googleMap;
+
+
             mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
                 @Override
                 public void onMapClick(@NonNull LatLng latLng) {
@@ -119,26 +99,26 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, Fr
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
                     mMap.addMarker(markerOptions);
 
-                    if (rd.isChecked()) {
-                        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-                    } else {
-                        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                    }
                 }
             });
 
-            mMap.setOnMarkerClickListener(Map.this);
+
+
+            mMap.setOnMarkerClickListener(MapFragment.this);
             mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
                 @Override
                 public void onMapLoaded() {
                     progressDialog.dismiss();
 
-
                     sw_gps.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             if (sw_gps.isChecked()) {
-                                if ( ActivityCompat.checkSelfPermission(main, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                                if ( ActivityCompat.checkSelfPermission(main, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                                    return;
+                                }else{
+                                    requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION},PERMISSION_FINE_LOCATION);
+
                                 }
                                 mMap.setMyLocationEnabled(true);
                                 mMap.setOnMyLocationChangeListener(locationChangeListener);
@@ -154,9 +134,32 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, Fr
             });
 
 
+            rdDefualt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (rdDefualt.isChecked()){
+                        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+                    }
+                }
+            });
+
+            rdHybrid.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (rdHybrid.isChecked()){
+                        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
+                    }
+                }
+            });
+
+
+
 
         }
     };
+
 
     @Nullable
     @Override
@@ -164,12 +167,13 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, Fr
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        RelativeLayout linearLayout = (RelativeLayout) inflater.inflate(R.layout.fragment_map, container, false);
         main = (MainActivity) getActivity();
 
-        progressDialog = new ProgressDialog(getActivity());
+        RelativeLayout linearLayout = (RelativeLayout) inflater.inflate(R.layout.fragment_map, container, false);
+
+        progressDialog = new ProgressDialog(main);
         progressDialog.setTitle("Thông báo");
-        progressDialog.setMessage("Đang tải Map, Vui lòng chờ......");
+        progressDialog.setMessage("Đang tải MapFragment, Vui lòng chờ......");
         progressDialog.show();
 
         searchView = linearLayout.findViewById(R.id.searchView);
@@ -183,9 +187,13 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, Fr
         view_mode = linearLayout.findViewById(R.id.view_mode);
         sw_gps = main_menu.findViewById(R.id.gps_mode);
 
-        rd = view_mode.findViewById(R.id.satellite_mode);
+        rdHybrid = view_mode.findViewById(R.id.hybrid_mode);
+        rdDefualt = view_mode.findViewById(R.id.default_mode);
 
-        client = LocationServices.getFusedLocationProviderClient(getActivity());
+
+
+
+        client = LocationServices.getFusedLocationProviderClient(main);
 
         show_main_menu = false;
         show_view_mode = false;
@@ -197,8 +205,8 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, Fr
             @Override
             public void onClick(View v) {
 
-                main.onMsgFromFragToMain("Map-Frag", "ShowMap");
-                main.onLocationFromFragToMain("Map-Frag", loction_focus);
+                main.onMsgFromFragToMain("MapFragment-Frag", "ShowMap");
+                main.onLocationFromFragToMain("MapFragment-Frag", loction_focus);
 
             }
         });
@@ -207,7 +215,7 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, Fr
         btnListFamily.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                main.onMsgFromFragToMain("Map-Frag", "ShowList");
+                main.onMsgFromFragToMain("MapFragment-Frag", "ShowList");
             }
         });
 
@@ -276,12 +284,6 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, Fr
                     arrayAdapter.add("Đường chùa Tịnh Quang Tổ 10, ấp Ngô Quyền, Thị trấn Bầu Hàm 2, Thống Nhất, Đồng Nai, Việt Nam");
                     arrayAdapter.add("Quốc lộ 1A, xã Bàu Hàm 2, huyện Thống Nhất, Đồng Nai, Việt Nam");
                     arrayAdapter.add("Đường Lê Lợi, phường Bến Thành, quận 1, TP HCM");
-                    arrayAdapter.add("135 Nam Kỳ Khởi Nghĩa, Bến Nghé, Quận 1, TP HCM");
-                    arrayAdapter.add("01 Công Xã Paris, Bến Nghé, Quận 1, TP HCM");
-                    arrayAdapter.add("2 Nguyễn Bỉnh Khiêm, Quận 1, TP HCM");
-                    arrayAdapter.add("TL15, Phú Hiệp, Củ Chi, TP HCM");
-                    arrayAdapter.add("Đường Nguyễn Huệ, quận 1, TP HCM");
-
 
                     builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
                         @Override
@@ -317,10 +319,6 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, Fr
                     arrayAdapter.add("Đường chưa đặt tên, Xuân Thạnh, Thống Nhất, Đồng Nai, Việt Nam");
                     arrayAdapter.add("Đường chùa Tịnh Quang Tổ 10, ấp Ngô Quyền, Thị trấn Bầu Hàm 2, Thống Nhất, Đồng Nai, Việt Nam");
                     arrayAdapter.add("Quốc lộ 1A, xã Bàu Hàm 2, huyện Thống Nhất, Đồng Nai, Việt Nam");
-                    arrayAdapter.add("Đường Lê Lợi, phường Bến Thành, quận 1, TP HCM");
-                    arrayAdapter.add("135 Nam Kỳ Khởi Nghĩa, Bến Nghé, Quận 1, TP HCM");
-                    arrayAdapter.add("01 Công Xã Paris, Bến Nghé, Quận 1, TP HCM");
-                    arrayAdapter.add("2 Nguyễn Bỉnh Khiêm, Quận 1, TP HCM");
 
 
                     builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
@@ -408,12 +406,12 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, Fr
         }
 
         private void displayLocation(LatLng loction_focus) throws IOException {
-            final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity(),R.style.BottomSheetDialogTheme);
-            View bottomSheetView = LayoutInflater.from(getActivity().getApplicationContext()).inflate(R.layout.layout_current_location,(LinearLayout) getActivity().findViewById(R.id.current_container));
+            final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(main,R.style.BottomSheetDialogTheme);
+            View bottomSheetView = LayoutInflater.from(main.getApplicationContext()).inflate(R.layout.dialog_current_location,(LinearLayout) main.findViewById(R.id.current_container));
             bottomSheetView.findViewById(R.id.btn_favourite).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getActivity(), "Đã thêm vào Favourite", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(main, "Đã thêm vào Favourite", Toast.LENGTH_SHORT).show();
                     bottomSheetDialog.dismiss();
                 }
             });
@@ -440,7 +438,7 @@ public class Map extends Fragment implements GoogleMap.OnMarkerClickListener, Fr
         public void onViewCreated (@NonNull View view, @Nullable Bundle savedInstanceState){
             super.onViewCreated(view, savedInstanceState);
             mapFragment =
-                    (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+                    (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapgg);
             if (mapFragment != null) {
                 mapFragment.getMapAsync(callback);
             }

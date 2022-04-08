@@ -1,4 +1,4 @@
-package com.example.map_originnal;
+package com.example.map_originnal.ke_thua;
 
 import com.google.android.gms.maps.model.LatLng;
 

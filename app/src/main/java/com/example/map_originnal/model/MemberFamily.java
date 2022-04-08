@@ -1,4 +1,4 @@
-package com.example.map_originnal;
+package com.example.map_originnal.model;
 
 public class MemberFamily {
 

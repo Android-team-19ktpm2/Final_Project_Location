@@ -7,11 +7,11 @@
     android:layout_height="match_parent">
 
     <fragment
-        android:id="@+id/map"
+        android:id="@+id/mapgg"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Map"></fragment>
+        tools:context=".fragment.MapFragment"></fragment>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
 
             <include
                 android:id="@id/main_menu"
-                layout="@layout/main_menu"></include>
+                layout="@layout/fragment_setting_menu"></include>
         </FrameLayout>
     </FrameLayout>
 
@@ -64,7 +64,7 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <include layout="@layout/view_mode" android:id="@id/view_mode"></include>
+            <include layout="@layout/fragment_map_type_mode" android:id="@id/view_mode"></include>
         </FrameLayout>
     </FrameLayout>-->
 
