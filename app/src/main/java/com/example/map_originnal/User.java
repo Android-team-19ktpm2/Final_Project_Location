@@ -3,6 +3,7 @@ package com.example.map_originnal;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +23,7 @@ public class User extends Fragment {
     ImageButton profile_image_edit,profile_image_favour,profile_image_list,profile_image_logout;
     MainActivity main;
     TextView txtEmail;
-
+    ImageView searchImg;
 
     FirebaseUser firebaseUser;
     FirebaseAuth auth;
@@ -51,8 +52,14 @@ public class User extends Fragment {
         profile_image_list.setImageResource(R.drawable.list);
 
         txtEmail = layout_user.findViewById(R.id.profile_tv_mail);
-
-
+        searchImg = layout_user.findViewById(R.id.findFriendProfile);
+        searchImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),FindFriend.class);
+                startActivity(intent);
+            }
+        });
         profile_image_logout=layout_user.findViewById(R.id.profile_image_logout);
         profile_image_logout.setImageResource(R.drawable.logout);
 

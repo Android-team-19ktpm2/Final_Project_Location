@@ -3,6 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/Final_Project_Location/app/src/main/res/layout/activity_chat.xml" value="0.13385416666666666" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/Final_Project_Location/app/src/main/res/layout/activity_find_friend.xml" value="0.264" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/Final_Project_Location/app/src/main/res/layout/activity_home.xml" value="0.13385416666666666" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/Final_Project_Location/app/src/main/res/layout/activity_list_friend.xml" value="0.13385416666666666" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/Final_Project_Location/app/src/main/res/layout/activity_main.xml" value="0.13385416666666666" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/Final_Project_Location/app/src/main/res/layout/activity_start.xml" value="0.13385416666666666" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/Final_Project_Location/app/src/main/res/layout/activity_user.xml" value="0.13385416666666666" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/Final_Project_Location/app/src/main/res/layout/activity_view_friend.xml" value="0.13385416666666666" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/Final_Project_Location/app/src/main/res/layout/fragment_profile.xml" value="0.13385416666666666" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/Final_Project_Location/app/src/main/res/layout/items.xml" value="0.13385416666666666" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/Final_Project_Location/app/src/main/res/layout/items_family.xml" value="0.1" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/Final_Project_Location/app/src/main/res/layout/list_family.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/Final_Project_Location/app/src/main/res/layout/main_menu.xml" value="0.13385416666666666" />
         <entry key="..\:/Users/pvude/Study/tools/AndroidStudio/Final_Project_Location/app/src/main/res/layout/activity_chat.xml" value="0.24003623188405798" />
         <entry key="..\:/Users/pvude/Study/tools/AndroidStudio/Final_Project_Location/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pvude/Study/tools/AndroidStudio/Final_Project_Location/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />

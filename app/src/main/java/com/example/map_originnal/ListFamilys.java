@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,12 +24,15 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ListFamilys extends Fragment {
 
     private ArrayList<MemberFamily> objects;
     RecyclerView lvFamilys;
     MainActivity main;
     LinearLayout circleImageView;
+    CircleImageView addMember ;
     public ListFamilys(){
         // require a empty public constructor
     }
@@ -37,7 +42,7 @@ public class ListFamilys extends Fragment {
         // Inflate the layout for this fragment
         LinearLayout layout_list_family = (LinearLayout)  inflater.inflate(R.layout.list_family, container, false);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity() , LinearLayoutManager.HORIZONTAL, false);
-
+        addMember = layout_list_family.findViewById(R.id.btnAddMember);
         main = (MainActivity) getActivity();
         objects = giaLapDuLieu();
         lvFamilys = layout_list_family.findViewById(R.id.lvFamily);
@@ -45,7 +50,14 @@ public class ListFamilys extends Fragment {
         lvFamilys.setLayoutManager(layoutManager);
         AdapterListFamily adapterListFamily = new AdapterListFamily(getActivity(), objects);
         lvFamilys.setAdapter(adapterListFamily);
+        addMember.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                main.onMsgFromFragToMain("List-Family","START_FIND_FRIEND");
 
+
+            }
+        });
 
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override

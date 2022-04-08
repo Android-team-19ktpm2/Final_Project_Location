@@ -40,9 +40,10 @@
                             android:orientation="vertical">
 
                                 <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/btnAddMember"
                                     android:layout_width="match_parent"
-                                    android:layout_height="70dp"
-                                    android:src="@drawable/ic_baseline_add_24"></de.hdodenhof.circleimageview.CircleImageView>
+                                    android:layout_height="55dp"
+                                    android:src="@drawable/ic_baseline_add_24"/>
                         </LinearLayout>
 
 
