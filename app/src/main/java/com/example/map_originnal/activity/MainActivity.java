@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -62,7 +63,9 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
     FirebaseAuth auth;
     FirebaseUser current_user;
     DatabaseReference userReference;
+    DatabaseReference onlineRef;
     ValueEventListener userListener;
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -86,6 +89,7 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onStart() {
         super.onStart();
@@ -94,6 +98,11 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
+        }
+        else {
+            onlineRef = FirebaseDatabase.getInstance().getReference("Users/"+current_user.getUid()+"/online");
+            String offlineAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+            onlineRef.onDisconnect().setValue("False////" + offlineAt);
         }
     }
 
@@ -214,7 +223,6 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
 
 
         // setup Recyclerview same list view
-
         lvFamilys = bottomSheetView.findViewById(R.id.lvFamily);
         lvFamilys.setLayoutManager(layoutManager);
 
@@ -226,12 +234,6 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
 
     }
 
-/*    private ArrayList<User> giaLapDuLieu() {
-        ArrayList<User> a = new ArrayList<>();
-        a.add(new User("Anh","https://res.cloudinary.com/imag/image/upload/v1638508152/Shopshoes/show3_f6ckhp.jpg"));
-        a.add(new User("Vu","http://anhnendep.net/wp-content/uploads/2016/02/vit-boi-roi-Psyduck.jpg"));
-        return a;
-    }*/
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void loadUsers() {
@@ -243,7 +245,6 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 users.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    System.out.println(snapshot);
                     User a = snapshot.getValue(User.class);
                     if (a != null && current_user != null) {
                         if (!current_user.getUid().equals(a.getId())) {
@@ -256,22 +257,13 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
                     }
 
                 }
-                System.out.println(users.size());
 
-/*                ContactAdapter adapter = new ContactAdapter(ContactActivity.this,R.layout.adapter_custom_contact,users);
-                contacts.setAdapter(adapter);*/
             }
-
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-        String offlineAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
-
-        DatabaseReference onlineRef = FirebaseDatabase.getInstance().getReference("Users/" + current_user.getUid() + "/online");
-
 
     }
 }
