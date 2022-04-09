@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/background_login_screen.xml" value="0.117" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/chat_btn_back.xml" value="0.117" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/container_btn_gradient.xml" value="0.117" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/container_input.xml" value="0.117" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/login_box.xml" value="0.117" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/logo.xml" value="0.117" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/activity_reset_password.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/activity_sign_in.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/activity_sign_up.xml" value="0.1" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/activity_start.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/fragment_profile.xml" value="0.3020833333333333" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/fragment_start.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pvude/Study/tools/AndroidStudio/Final_Project_Location/app/src/main/res/layout/activity_chat.xml" value="0.24003623188405798" />
         <entry key="..\:/Users/pvude/Study/tools/AndroidStudio/Final_Project_Location/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pvude/Study/tools/AndroidStudio/Final_Project_Location/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />

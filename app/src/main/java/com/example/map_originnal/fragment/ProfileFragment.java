@@ -2,6 +2,7 @@ package com.example.map_originnal.fragment;
 
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.map_originnal.R;
 import com.example.map_originnal.activity.MainActivity;
+import com.example.map_originnal.activity.StartActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -20,7 +22,7 @@ public class ProfileFragment extends Fragment {
     ImageView profile_image_avatar;
     ImageButton profile_image_edit,profile_image_favour,profile_image_list,profile_image_logout;
     MainActivity main;
-    TextView txtEmail;
+    TextView txtEmail,btn_logout;
 
 
     FirebaseUser firebaseUser;
@@ -35,34 +37,9 @@ public class ProfileFragment extends Fragment {
         LinearLayout layout_user = (LinearLayout) inflater.inflate(R.layout.fragment_profile, container, false);
 
         addControls(layout_user);
-        addEvents();
 
         return layout_user;
 
-    }
-
-    private void addEvents() {
-        profile_image_logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // định danh user
-                FirebaseAuth.getInstance().signOut();
-                main.onMsgFromFragToMain("ProfileFragment-Frag","Start-Frag");
-            }
-        });
-
-
-        // định danh user
-        if (firebaseUser != null){
-            txtEmail.setText(firebaseUser.getEmail());
-        }
-
-        profile_image_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                main.onMsgFromFragToMain("ProfileFragment-Frag","Profile");
-            }
-        });
     }
 
     private void addControls(LinearLayout layout_user) {
@@ -86,6 +63,17 @@ public class ProfileFragment extends Fragment {
         profile_image_logout.setImageResource(R.drawable.logout);
         profile_image_avatar=layout_user.findViewById(R.id.profile_image_avatar);
         profile_image_avatar.setImageResource(R.drawable.avatar);
+
+        btn_logout = layout_user.findViewById(R.id.profile_btn_logout);
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                auth.signOut();
+                Intent intent = new Intent(getContext(), StartActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
     }
 
 }

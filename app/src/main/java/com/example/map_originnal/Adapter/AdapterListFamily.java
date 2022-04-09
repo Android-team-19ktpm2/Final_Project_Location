@@ -1,7 +1,7 @@
 package com.example.map_originnal.Adapter;
 
 import android.app.Activity;
-import android.util.Log;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +10,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.map_originnal.R;
 import com.example.map_originnal.activity.MainActivity;
-import com.example.map_originnal.model.MemberFamily;
+import com.example.map_originnal.model.User;
 
 import java.util.ArrayList;
 
@@ -23,11 +24,11 @@ import java.util.ArrayList;
 public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.ViewHolder>  {
 
     private static final String TAG = "AdapterListFamily";
-    private ArrayList<MemberFamily> memberFamily;
+    private ArrayList<User> users;
     private Activity context;
 
-    public AdapterListFamily( Activity context, ArrayList<MemberFamily> memberFamily) {
-        this.memberFamily = memberFamily;
+    public AdapterListFamily( Activity context, ArrayList<User> users) {
+        this.users = users;
         this.context = context;
     }
 
@@ -40,12 +41,11 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Log.d(TAG, "onBindViewHolder: called");
-
-        String urldisplay = memberFamily.get(position).getImg();
-        Glide.with(context).load(urldisplay).into(holder.imgAvartar);
-        holder.txtTen.setText(memberFamily.get(position).getTen());
+        String urlDisplay = users.get(position).getAvatar();
+        Glide.with(context).load(urlDisplay).into(holder.imgAvartar);
+        holder.txtTen.setText(users.get(position).getFirst_name() + users.get(position).getLast_name());
         holder.ln_button.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 System.out.println(holder.txtTen.getText());
@@ -73,7 +73,7 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
 
     @Override
     public int getItemCount() {
-        return memberFamily.size();
+        return users.size();
     }
 
 
