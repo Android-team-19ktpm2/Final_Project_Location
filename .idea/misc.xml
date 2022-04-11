@@ -3,6 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/projects/Final_Project_Location/app/src/main/res/drawable-v24/ic_search_light_foreground.xml" value="0.121" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/projects/Final_Project_Location/app/src/main/res/layout/activity_chat.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/projects/Final_Project_Location/app/src/main/res/layout/activity_find_friend.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/projects/Final_Project_Location/app/src/main/res/layout/activity_main.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/projects/Final_Project_Location/app/src/main/res/layout/activity_reset_password.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/projects/Final_Project_Location/app/src/main/res/layout/activity_sign_in.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/projects/Final_Project_Location/app/src/main/res/layout/activity_sign_up.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/projects/Final_Project_Location/app/src/main/res/layout/activity_start.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/projects/Final_Project_Location/app/src/main/res/layout/activity_view_friend.xml" value="0.1" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/projects/Final_Project_Location/app/src/main/res/layout/activity_view_list_friend.xml" value="0.25" />
+        <entry key="..\:/Users/phamt/OneDrive/Desktop/Android/projects/Final_Project_Location/app/src/main/res/layout/fragment_profile.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable-v24/chat_btn_send.xml" value="0.2215" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable-v24/chat_btn_share_location.xml" value="0.2215" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable-v24/container_input_message.xml" value="0.2215" />
