@@ -79,7 +79,7 @@
         <entry key="app/src/main/res/layout/dialog_list_family.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/layout/dialog_signin.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/layout/fragment_hide_map.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.15729166666666666" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.31979166666666664" />
         <entry key="app/src/main/res/layout/fragment_map.xml" value="0.15" />
         <entry key="app/src/main/res/layout/fragment_map_type_mode.xml" value="0.15729166666666666" />
