@@ -116,7 +116,7 @@ public class ViewFriend extends AppCompatActivity {
             });
         }
     }
-
+// van de nam day
     private void CheckUserExistance(String userID) {
         System.out.println(userID);
         friendRef.child(mUser.getUid()).child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -127,24 +127,24 @@ public class ViewFriend extends AppCompatActivity {
                     btnRequest.setText("Friend");
                     btnDecline.setText("Unfriend");
                     btnDecline.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
-                    friendRef.child(userID).child(mUser.getUid()).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.exists()){
-                                currentState="friend";
-                                btnRequest.setText("Friend");
-                                btnDecline.setText("Unfriend");
-                                btnDecline.setVisibility(View.VISIBLE);
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
+        friendRef.child(userID).child(mUser.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    currentState="friend";
+                    btnRequest.setText("Friend");
+                    btnDecline.setText("Unfriend");
+                    btnDecline.setVisibility(View.VISIBLE);
                 }
             }
 

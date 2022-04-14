@@ -5,74 +5,37 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
     android:background="@drawable/bottom_sheet_background">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="15dp"
         android:text="Edit Profile"
-        android:textColor="@color/colorPrimaryText"
-        android:textSize="18sp"
-        android:textStyle="bold"/>
+        android:textSize="26dp"
+        android:textStyle="bold"
+        android:textColor="@color/primary_color_blue"></TextView>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/colorDivider"
         android:layout_marginBottom="10dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="5dp">
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="10dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/avatar"
-            app:riv_corner_radius="10dp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="10dp"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Avicii"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="17sp"
-                android:textStyle="bold"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="What's up"
-                android:textColor="@color/colorSecondaryText"
-                android:textSize="15sp"/>
-
-
-
-
-        </LinearLayout>
-    </LinearLayout>
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/imgAvaterChangeProfile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/avatar"
+        app:riv_corner_radius="10dp"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:background="@color/colorDivider"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
-        android:focusable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="12dp">
 
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -85,40 +48,45 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center">
+            android:paddingBottom="30dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:gravity="center_horizontal">
 
-            <EditText
-                android:id="@+id/txtName"
-                android:layout_width="225dp"
-                android:layout_height="wrap_content"
-                android:hint="Nhập tên">
 
-            </EditText>
 
-            <EditText
-                android:id="@+id/txtphoneNumber"
-                android:layout_width="225dp"
-                android:layout_height="wrap_content"
-                android:hint="Số điện thoại">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
 
-            </EditText>
-            <EditText
-                android:id="@+id/txtMail"
-                android:layout_width="225dp"
-                android:layout_height="wrap_content"
-                android:hint="Email ..."
-                >
+                android:layout_height="wrap_content">
 
-            </EditText>
-            <EditText
-                android:id="@+id/txtJob"
-                android:layout_width="225dp"
-                android:layout_height="wrap_content"
-                android:hint="Công việc ..."
+                <EditText
+                    android:id="@+id/txtFirstNameChangeProfile"
+                    android:layout_width="140dp"
+                    android:layout_height="46dp"
+                    android:background="@drawable/container_input"
+                    android:padding="8dp"
+                    android:textColorHint="#AFAFAF"
+                    android:textColor="#AFAFAF"
+                    android:textSize="16dp"
+                    android:hint="First name"></EditText>
 
-                >
+                <EditText
+                    android:id="@+id/txtLastNameChangeProfile"
+                    android:layout_width="140dp"
+                    android:layout_height="46dp"
+                    android:background="@drawable/container_input"
+                    android:layout_marginLeft="30dp"
+                    android:padding="8dp"
+                    android:textColorHint="#AFAFAF"
+                    android:textColor="#AFAFAF"
+                    android:textSize="16dp"
+                    android:hint="Last name"></EditText>
 
-            </EditText>
+            </LinearLayout>
+
+
 
 
         </LinearLayout>
@@ -132,13 +100,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
             android:layout_marginTop="10dp">
             <Button
                 android:id="@+id/btnBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:color="#D3D3D3"
+                android:background="@drawable/container_btn_gradient"
                 android:text="Quay lại"
                 android:layout_marginRight="20dp"
                 >
@@ -148,10 +116,8 @@
                 android:id="@+id/btnConfirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:color="#D3D3D3"
-                android:text="Lưu"
-                >
+                android:background="@drawable/container_btn_gradient"
+                android:text="Lưu">
 
             </Button>
 

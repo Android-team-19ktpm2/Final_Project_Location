@@ -29,7 +29,7 @@ public class ViewListFriend extends AppCompatActivity {
         setContentView(R.layout.activity_view_list_friend);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
-        //
+
         friends = FirebaseDatabase.getInstance().getReference().child("Friends").child(mUser.getUid());
         lv = findViewById(R.id.lvFriends);
         ValueEventListener event = new ValueEventListener() {
@@ -44,7 +44,6 @@ public class ViewListFriend extends AppCompatActivity {
             }
         };
         friends.addValueEventListener(event);
-      //  ;
     }
 
     private void LoadFriends(DataSnapshot snapshot) {

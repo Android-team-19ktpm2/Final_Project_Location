@@ -71,6 +71,7 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("11111111111");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -81,12 +82,21 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         bottomNavigationView.setSelectedItemId(R.id.map);
 
 
-        // Định danh user 
+        // Định danh user
         auth = FirebaseAuth.getInstance();
         current_user = auth.getCurrentUser();
 
-        //Load User
-        loadUsers();
+
+        // load user
+        if (current_user != null){
+            loadUsers();
+        }else{
+            Intent intent = new Intent(MainActivity.this, StartActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        }
+
 
     }
 
@@ -95,10 +105,7 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
     protected void onStart() {
         super.onStart();
         if (current_user == null) {
-            Intent intent = new Intent(MainActivity.this, StartActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
+
         }
         else {
             onlineRef = FirebaseDatabase.getInstance().getReference("Users/"+current_user.getUid()+"/online");

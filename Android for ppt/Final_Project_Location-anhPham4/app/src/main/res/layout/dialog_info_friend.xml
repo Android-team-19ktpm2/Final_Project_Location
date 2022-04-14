@@ -41,9 +41,9 @@
                 android:layout_height="wrap_content">
                 <ImageView
                     android:id="@+id/imgAvatarDetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/mother_avatar"></ImageView>
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/mother_avatar"></ImageView>dp
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_gravity="center_vertical">
                 <TextView
-                    android:id="@+id/txtTen"
+                    android:id="@+id/txtTenDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Mẹ"
@@ -68,7 +68,7 @@
                     android:textColor="@color/black"></TextView>
 
                 <TextView
-                    android:id="@+id/txtActive"
+                    android:id="@+id/txtActiveDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Hoạt động 3 phút trước"
@@ -81,10 +81,10 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="60dp">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/icon_calendar"></ImageView>
+<!--                <ImageView-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:src="@drawable/icon_calendar"></ImageView>-->
 
                 <ImageButton
                     android:background="@color/white"
