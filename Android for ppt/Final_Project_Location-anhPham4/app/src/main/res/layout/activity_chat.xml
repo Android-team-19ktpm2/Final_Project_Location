@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:background="#E0E9FC"
+    tools:context=".activity.ChatActivity"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout_avatar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <ImageButton
+            android:id="@+id/chat_btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chat_btn_back"
+            tools:ignore="MissingConstraints"></ImageButton>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/chat_circle_main_avatar"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+        </de.hdodenhof.circleimageview.CircleImageView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/chat_tv_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_below="@+id/constraint_layout_avatar"
+        android:textSize="20dp"
+        android:textColor="#f594b7"
+        android:gravity="center_horizontal"
+        tools:ignore="MissingConstraints"></TextView>
+
+    <TextView
+        android:id="@+id/chat_tv_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_below="@+id/chat_tv_username"
+        android:gravity="center_horizontal"
+        android:textSize="12dp"
+        android:textColor="@color/black"
+        tools:ignore="MissingConstraints"></TextView>
+
+    <ListView
+        android:id="@+id/chat_listview_chat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_layout"
+        android:layout_below="@+id/chat_tv_username"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="14dp"
+        android:scrollbars="none"></ListView>
+
+
+    <LinearLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/container_input_message">
+
+            <EditText
+                android:id="@+id/chat_edt_input"
+                android:layout_width="260dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="#f594b7"
+                android:hint="Typing here..."></EditText>
+
+            <ImageButton
+                android:id="@+id/chat_btn_share_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/chat_btn_share_location"
+                android:layout_marginRight="10dp"
+                android:layout_toRightOf="@+id/chat_edt_input"></ImageButton>
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/chat_btn_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="-40dp"
+            android:background="@drawable/chat_btn_send"></ImageButton>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/left_chat_circle_img_avatar"
+        android:layout_width="42dp"
+        android:layout_height="42dp">
+    </de.hdodenhof.circleimageview.CircleImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/left_chat_circle_img_avatar"
+        android:orientation="vertical"
+        android:paddingRight="140dp">
+
+        <TextView
+            android:id="@+id/left_chat_tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/container_left_message"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textSize="16dp"
+            android:textColor="@color/white"></TextView>
+
+        <TextView
+            android:id="@+id/left_chat_tv_send_at"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="15/10/2001"
+            android:textSize="12dp"
+            android:textStyle="italic"
+            android:textColor="#f594b7"></TextView>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

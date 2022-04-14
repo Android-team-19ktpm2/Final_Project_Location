@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/mapgg"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.MapFragment"></fragment>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="39dp"
+        android:orientation="horizontal">
+
+
+
+        <Button
+            android:id="@+id/btnHideMap"
+            android:layout_width="wrap_content"
+            android:layout_height="39dp"
+            android:layout_marginLeft="10dp"
+            android:text="Hide Map"></Button>
+
+    </LinearLayout>
+
+
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnSetting"
+        android:layout_marginBottom="9dp"
+        android:layout_alignRight="@id/btnSetting">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <include
+                android:id="@id/main_menu"
+                layout="@layout/fragment_setting_menu"></include>
+        </FrameLayout>
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnSetting"
+        android:layout_marginRight="55dp"
+        android:layout_marginBottom="9dp"
+        android:layout_alignRight="@id/btnSetting">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <include layout="@layout/fragment_map_type_mode" android:id="@id/view_mode"></include>
+        </FrameLayout>
+    </FrameLayout>-->
+
+    <ImageButton
+        android:id="@+id/btnSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="39dp"
+        android:src="@drawable/ic_baseline_settings_24"/>
+
+    <ImageButton
+        android:id="@+id/btnSatellite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="39dp"
+        android:src="@drawable/ic_baseline_satellite_24" />
+
+
+    <ImageButton
+        android:id="@+id/btnSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="114dp"
+        android:layout_marginBottom="39dp"
+        android:src="@drawable/ic_baseline_search_24" />
+
+<!--<<<<<<< HEAD-->
+
+    <ImageButton
+        android:id="@+id/btnListFamily"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="169dp"
+        android:layout_marginBottom="39dp"
+        android:src="@drawable/ic_baseline_family_restroom_24" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bg_round"
+        android:elevation="5dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search...."
+        android:visibility="invisible">
+
+
+    </SearchView>
+
+
+<!--=======-->
+<!--&gt;>>>>>> c5b93d92a3c620c7fe6da80bdff5e380e0d77d37-->
+</RelativeLayout>
