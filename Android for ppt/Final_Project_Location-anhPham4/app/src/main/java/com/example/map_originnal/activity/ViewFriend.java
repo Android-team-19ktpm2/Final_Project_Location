@@ -241,6 +241,7 @@ public class ViewFriend extends AppCompatActivity {
             });
 
         }
+        // van den accecpt friends
         else  if (currentState.equals("he_sent_pending")) {
             requestRef.child(mUser.getUid()).child(userID).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
