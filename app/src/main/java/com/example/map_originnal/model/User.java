@@ -79,6 +79,16 @@ public class User implements Serializable {
         System.out.println(id+" "+ email +" "+avatar);
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", email='" + email + '\'' +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", online='" + online + '\'' +
+                '}';
+    }
 }
 

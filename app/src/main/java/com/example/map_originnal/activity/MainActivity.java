@@ -62,14 +62,16 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
     //Firebase
     FirebaseAuth auth;
     FirebaseUser current_user;
+    DatabaseReference friendsReference;
     DatabaseReference userReference;
     DatabaseReference onlineRef;
-    ValueEventListener userListener;
+    ValueEventListener friendsListener;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("11111111111");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -80,12 +82,21 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         bottomNavigationView.setSelectedItemId(R.id.map);
 
 
-        // Định danh user 
+        // Định danh user
         auth = FirebaseAuth.getInstance();
         current_user = auth.getCurrentUser();
 
-        //Load User
-        loadUsers();
+
+        // load user
+        if (current_user != null){
+            loadUsers();
+        }else{
+            Intent intent = new Intent(MainActivity.this, StartActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        }
+
 
     }
 
@@ -94,10 +105,7 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
     protected void onStart() {
         super.onStart();
         if (current_user == null) {
-            Intent intent = new Intent(MainActivity.this, StartActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
+
         }
         else {
             onlineRef = FirebaseDatabase.getInstance().getReference("Users/"+current_user.getUid()+"/online");
@@ -148,17 +156,6 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         if (sender.equals("Hide-MapFragment") && strValue.equals("ShowMap")) {
             getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, map_Fragment_activity).commit();
         }
-
-/*        if (sender.equals("Start-Frag") && strValue.equals("Profile-Frag")){
-            getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, profileFragment_activity).commit();
-        }
-        if (sender.equals("Login-Frag") && strValue.equals("Profile-Frag")){
-            getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, profileFragment_activity).commit();
-        }
-
-        if (sender.equals("ProfileFragment-Frag") && strValue.equals("Start-Frag")){
-            getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, startFragment).commit();
-        }*/
     }
 
     @Override
@@ -238,24 +235,38 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void loadUsers() {
         users = new ArrayList<User>();
+        friendsReference = FirebaseDatabase.getInstance().getReference("Friends").child(current_user.getUid());
         userReference = FirebaseDatabase.getInstance().getReference("Users");
-        userListener = userReference.addValueEventListener(new ValueEventListener() {
+        friendsListener = friendsReference.addValueEventListener(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 users.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    User a = snapshot.getValue(User.class);
-                    if (a != null && current_user != null) {
-                        if (!current_user.getUid().equals(a.getId())) {
-                            /*                            if (a.getOnline().indexOf("False")==-1)*/
-                            users.add(a);
-                        } else {
-                            String onlineAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
-                            snapshot.getRef().child("online").setValue("True////" + onlineAt);
-                        }
-                    }
 
+
+                    System.out.println(snapshot);
+                    String friendID = snapshot.getKey();
+                    userReference.child(friendID).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            User a = snapshot.getValue(User.class);
+                            // điểu kiện để load user
+                            if (a != null && current_user != null) {
+                                if (!current_user.getUid().equals(a.getId())) {
+                                       users.add(a);
+                                } else {
+                                    String onlineAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+                                    snapshot.getRef().child("online").setValue("True////" + onlineAt);
+                                }
+                          }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                 }
 
             }
@@ -264,6 +275,7 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
 
             }
         });
+
 
     }
 }

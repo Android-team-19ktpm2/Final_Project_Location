@@ -23,7 +23,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#C91C1C"
+                android:background="@color/light_pink_blue"
                 ></View>
 
 

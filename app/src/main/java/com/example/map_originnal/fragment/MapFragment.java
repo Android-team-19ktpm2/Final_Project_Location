@@ -2,6 +2,7 @@ package com.example.map_originnal.fragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -13,6 +14,7 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,9 +42,16 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickListener, FrangmentCallbacks {
@@ -65,6 +74,11 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
     GoogleMap mMap;
     LatLng loction_focus = null;
 
+    int count_location_favorite = 0;
+
+
+    DatabaseReference FavoriteRef;
+
     GoogleMap.OnMyLocationChangeListener locationChangeListener = new GoogleMap.OnMyLocationChangeListener() {
         @Override
         public void onMyLocationChange(@NonNull Location location) {
@@ -72,10 +86,6 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
             LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
             if (mMap != null) {
                 loction_focus = loc;
-//                MarkerOptions markerOptions = new MarkerOptions();
-//                markerOptions.position(loc);
-//                mMap.clear();
-//                mMap.addMarker(markerOptions);
             }
         }
     };
@@ -149,7 +159,6 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
                 public void onClick(View v) {
                     if (rdHybrid.isChecked()){
                         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-
                     }
                 }
             });
@@ -166,6 +175,13 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
+        FavoriteRef = FirebaseDatabase.getInstance().getReference("Favorites");
+
+
+//        count_location_favorite =
+//                System.out.println(Integer.parseInt(FavoriteRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).getKey()));
+
 
         main = (MainActivity) getActivity();
 
@@ -202,6 +218,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
 
 
         btnHideMap.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
 
@@ -213,6 +230,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
 
 
         btnListFamily.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 main.onMsgFromFragToMain("MapFragment-Frag", "ShowList");
@@ -411,8 +429,24 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
             bottomSheetView.findViewById(R.id.btn_favourite).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(main, "Đã thêm vào Favourite", Toast.LENGTH_SHORT).show();
-                    bottomSheetDialog.dismiss();
+
+                    HashMap hashMap = new HashMap();
+                    hashMap.put("latitude",String.valueOf(loction_focus.latitude));
+                    hashMap.put("longitude",String.valueOf(loction_focus.longitude));
+
+
+                    FavoriteRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(String.valueOf(count_location_favorite)).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+                        @Override
+                        public void onComplete(@NonNull Task task) {
+                            if (task.isSuccessful()){
+                                count_location_favorite++;
+                                Toast.makeText(main, "Đã thêm vào Favourite", Toast.LENGTH_SHORT).show();
+                                bottomSheetDialog.dismiss();
+                            }
+                        }
+                    });
+
+
                 }
             });
 

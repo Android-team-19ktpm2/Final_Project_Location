@@ -40,7 +40,7 @@
         android:layout_height="38dp"
         android:layout_gravity="right"
         android:layout_marginTop="15dp"
-        android:background="@drawable/btn_radius"
+        android:background="@drawable/container_btn_gradient"
         android:text="Yêu thích"
         android:textSize="12dp"></Button>
 
