@@ -116,9 +116,12 @@ public class ViewFriend extends AppCompatActivity {
             });
         }
     }
+
+
+
+
 // van de nam day
     private void CheckUserExistance(String userID) {
-        System.out.println(userID);
         friendRef.child(mUser.getUid()).child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -249,10 +252,8 @@ public class ViewFriend extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         HashMap hashMap = new HashMap();
                         hashMap.put("status", "friend");
-
-                        hashMap.put("email",username);
-                        requestRef.child(userID).child(mUser.getUid()).updateChildren(hashMap);
-                        requestRef.child(mUser.getUid()).child(userID).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+                        requestRef.child(userID).child(mUser.getUid()).removeValue();
+                        requestRef.child(mUser.getUid()).child(userID).removeValue().addOnCompleteListener(new OnCompleteListener() {
                             @Override
                             public void onComplete(@NonNull Task task) {
                                 if (task.isSuccessful()) {
@@ -266,6 +267,9 @@ public class ViewFriend extends AppCompatActivity {
                                             btnRequest.setEnabled(false);
                                         }
                                     });
+
+                                    friendRef.child(userID).child(mUser.getUid()).updateChildren(hashMap);
+
                                 }
                             }
                         });
