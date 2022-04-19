@@ -3,6 +3,8 @@ package com.example.map_originnal.Adapter;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,6 +62,18 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Glide.with(context).load(urlDisplay).into(holder.imgAvartar);
         holder.txtTen.setText(users.get(position).getFirst_name() + users.get(position).getLast_name());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if (getStatusUser(users.get(position).getOnline()).equals("Online")){
+//                holder.isActive.(Color.GREEN);
+                GradientDrawable gd = (GradientDrawable) holder.isActive.getBackground();
+                if (gd != null) {
+                    gd.mutate();
+                    gd.setColor(Color.GREEN);
+                }
+            }else {
+                holder.isActive.setBackgroundColor(Color.RED);
+            }
+        }
         holder.ln_button.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -77,6 +91,7 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
 
 
                 txtTenDetail.setText(users.get(position).getFirst_name() + " "+ users.get(position).getLast_name());
+
                 txtActiveDetail.setText(getStatusUser(users.get(position).getOnline()));
                 Glide.with(context).load(users.get(position).getAvatar()).into(imgAvatarDetail);
                 imgChat.setOnClickListener(new View.OnClickListener() {
@@ -97,7 +112,7 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         //Circle
-        ImageView imgAvartar;
+        ImageView imgAvartar, isActive;
         TextView txtTen;
         LinearLayout ln_button;
 
@@ -105,6 +120,7 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
             super(itemView);
 
             imgAvartar = itemView.findViewById(R.id.imgAvatar);
+            isActive = itemView.findViewById(R.id.isActive);
             txtTen = itemView.findViewById(R.id.txtTen);
             ln_button = itemView.findViewById(R.id.ln_button);
         }

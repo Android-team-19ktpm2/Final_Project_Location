@@ -71,7 +71,6 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("11111111111");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -244,8 +243,6 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
                 users.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
-
-                    System.out.println(snapshot);
                     String friendID = snapshot.getKey();
                     userReference.child(friendID).addValueEventListener(new ValueEventListener() {
                         @Override
