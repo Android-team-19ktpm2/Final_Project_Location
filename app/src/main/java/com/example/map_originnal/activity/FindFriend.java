@@ -101,7 +101,10 @@ public class FindFriend extends AppCompatActivity {
                                 String.valueOf(ds.child("avatar").getValue()),
                                 String.valueOf(ds.child("first_name").getValue()),
                                 String.valueOf(ds.child("last_name").getValue()),
-                                String.valueOf(ds.child("online").getValue()));
+                                String.valueOf(ds.child("online").getValue()),
+                                String.valueOf(ds.child("lat_X").getValue()),
+                                String.valueOf(ds.child("long_Y").getValue())
+                                );
                         listUser.add(user.getEmail());
                         listUserID.add(ds.getKey());
                     }

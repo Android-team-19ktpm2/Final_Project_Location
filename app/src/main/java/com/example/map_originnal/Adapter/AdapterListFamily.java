@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,12 +26,14 @@ import com.example.map_originnal.activity.ChatActivity;
 import com.example.map_originnal.model.User;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 //
@@ -40,7 +44,7 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
     private Activity context;
 
 
-    TextView txtTenDetail,txtActiveDetail;
+    TextView txtTenDetail,txtActiveDetail,txtDiaChiDetail;
     ImageButton imgChat;
     ImageView imgAvatarDetail;
 
@@ -64,12 +68,7 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
         holder.txtTen.setText(users.get(position).getFirst_name() + users.get(position).getLast_name());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             if (getStatusUser(users.get(position).getOnline()).equals("Online")){
-//                holder.isActive.(Color.GREEN);
-                GradientDrawable gd = (GradientDrawable) holder.isActive.getBackground();
-                if (gd != null) {
-                    gd.mutate();
-                    gd.setColor(Color.GREEN);
-                }
+                holder.isActive.setBackgroundColor(Color.GREEN);
             }else {
                 holder.isActive.setBackgroundColor(Color.RED);
             }
@@ -80,10 +79,13 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
             public void onClick(View v) {
 
                 final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context,R.style.BottomSheetDialogTheme);
-                View bottomSheetView = LayoutInflater.from(context.getApplicationContext()).inflate(R.layout.dialog_info_friend,(LinearLayout) context.findViewById(R.id.info_container));
+                View bottomSheetView = LayoutInflater.from(context.getApplicationContext()).inflate(R.layout.dialog_info_friend,
+                        (LinearLayout) context.findViewById(R.id.info_container));
+
                 bottomSheetDialog.setContentView(bottomSheetView);
                 bottomSheetDialog.show();
 
+                txtDiaChiDetail = bottomSheetView.findViewById(R.id.txtDiaChiDetail);
                 txtTenDetail = bottomSheetView.findViewById(R.id.txtTenDetail);
                 txtActiveDetail = bottomSheetView.findViewById(R.id.txtActiveDetail);
                 imgChat = bottomSheetView.findViewById(R.id.imgChat);
@@ -91,6 +93,7 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
 
 
                 txtTenDetail.setText(users.get(position).getFirst_name() + " "+ users.get(position).getLast_name());
+                txtDiaChiDetail.setText(getAddressUser(users.get(position).getLat_X(),users.get(position).getLong_Y()));
 
                 txtActiveDetail.setText(getStatusUser(users.get(position).getOnline()));
                 Glide.with(context).load(users.get(position).getAvatar()).into(imgAvatarDetail);
@@ -108,6 +111,27 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
             }
         });
 
+    }
+
+    private String getAddressUser(String lat_x, String long_y) {
+        String Address="";
+
+        if (lat_x.isEmpty() || long_y.isEmpty()){
+            Address = "Not Address";
+        }else {
+            Geocoder geocoder = new Geocoder(context);
+            try {
+                List<android.location.Address> a = geocoder.getFromLocation(Double.valueOf(lat_x),Double.valueOf(long_y),1);
+                if (!a.isEmpty()){
+                    Address = a.get(0).getAddressLine(0);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        return Address;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

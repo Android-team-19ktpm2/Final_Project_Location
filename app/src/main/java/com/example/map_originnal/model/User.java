@@ -10,6 +10,8 @@ public class User implements Serializable {
     private String first_name;
     private String last_name;
     private String online;
+    private String lat_X;
+    private String long_Y;
 
     public User()
     {
@@ -40,14 +42,15 @@ public class User implements Serializable {
         this.last_name = last_name;
     }
 
-    public User(String id, String email, String avatar, String first_name, String last_name, String online)
-    {
+    public User(String id, String email, String avatar, String first_name, String last_name, String online, String lat_X, String long_Y) {
         this.id = id;
+        this.avatar = avatar;
         this.email = email;
-        this.avatar=avatar;
         this.first_name = first_name;
         this.last_name = last_name;
         this.online = online;
+        this.lat_X = lat_X;
+        this.long_Y = long_Y;
     }
 
     public String getId() {
@@ -79,16 +82,20 @@ public class User implements Serializable {
         System.out.println(id+" "+ email +" "+avatar);
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", avatar='" + avatar + '\'' +
-                ", email='" + email + '\'' +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", online='" + online + '\'' +
-                '}';
+    public String getLat_X() {
+        return lat_X;
+    }
+
+    public void setLat_X(String lat_X) {
+        this.lat_X = lat_X;
+    }
+
+    public String getLong_Y() {
+        return long_Y;
+    }
+
+    public void setLong_Y(String long_Y) {
+        this.long_Y = long_Y;
     }
 }
 

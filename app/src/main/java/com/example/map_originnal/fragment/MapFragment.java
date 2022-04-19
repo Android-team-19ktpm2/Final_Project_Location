@@ -47,8 +47,12 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -73,19 +77,26 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
     Boolean show_view_mode = false;
     GoogleMap mMap;
     LatLng loction_focus = null;
+    LatLng my_loction = null;
+
 
     int count_location_favorite = 0;
 
 
     DatabaseReference FavoriteRef;
+    DatabaseReference UserRef;
+    FirebaseUser firebaseUser;
 
     GoogleMap.OnMyLocationChangeListener locationChangeListener = new GoogleMap.OnMyLocationChangeListener() {
         @Override
         public void onMyLocationChange(@NonNull Location location) {
-
+            HashMap hashMap = new HashMap();
             LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
             if (mMap != null) {
                 loction_focus = loc;
+                hashMap.put("lat_X", String.valueOf(loc.latitude));
+                hashMap.put("long_Y", String.valueOf(loc.longitude));
+                UserRef.updateChildren(hashMap);
             }
         }
     };
@@ -176,6 +187,8 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        UserRef = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
         FavoriteRef = FirebaseDatabase.getInstance().getReference("Favorites");
 
 

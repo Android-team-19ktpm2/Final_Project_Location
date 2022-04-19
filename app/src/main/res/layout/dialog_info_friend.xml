@@ -142,10 +142,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Đến tiệm giày cũ Sài Gòn"
+                        android:text="Điạ chỉ hiện tại"
                         android:textSize="12dp"></TextView>
 
                     <TextView
+                        android:id="@+id/txtDiaChiDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
