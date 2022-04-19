@@ -80,7 +80,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
     LatLng my_loction = null;
 
 
-    int count_location_favorite = 0;
+    int count_location_favorite;
 
 
     DatabaseReference FavoriteRef;
@@ -192,8 +192,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
         FavoriteRef = FirebaseDatabase.getInstance().getReference("Favorites");
 
 
-//        count_location_favorite =
-//                System.out.println(Integer.parseInt(FavoriteRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).getKey()));
+
 
 
         main = (MainActivity) getActivity();
@@ -447,12 +446,22 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
                     hashMap.put("latitude",String.valueOf(loction_focus.latitude));
                     hashMap.put("longitude",String.valueOf(loction_focus.longitude));
 
+                    FavoriteRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            count_location_favorite = (int) snapshot.getChildrenCount();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
 
                     FavoriteRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(String.valueOf(count_location_favorite)).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
                         @Override
                         public void onComplete(@NonNull Task task) {
                             if (task.isSuccessful()){
-                                count_location_favorite++;
                                 Toast.makeText(main, "Đã thêm vào Favourite", Toast.LENGTH_SHORT).show();
                                 bottomSheetDialog.dismiss();
                             }
