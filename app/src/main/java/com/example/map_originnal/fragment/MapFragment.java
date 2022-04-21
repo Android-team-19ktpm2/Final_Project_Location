@@ -39,6 +39,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -77,7 +78,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
     Boolean show_view_mode = false;
     GoogleMap mMap;
     LatLng loction_focus = null;
-    LatLng my_loction = null;
+    LatLng locationFriend;
 
 
     int count_location_favorite;
@@ -502,5 +503,17 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
 
     @Override
     public void onLocationFromMainToFrag(String sender, LatLng Value) {
+        locationFriend = Value;
+        MarkerVitriCuaFriend();
+    }
+
+    private void MarkerVitriCuaFriend() {
+
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(locationFriend).icon(BitmapDescriptorFactory.fromResource(R.drawable.icon_friend));
+        mMap.clear();
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(locationFriend, 16.0f));
+        mMap.addMarker(markerOptions);
+
     }
 }

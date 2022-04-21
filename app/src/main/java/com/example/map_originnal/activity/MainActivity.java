@@ -47,7 +47,7 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
     BottomSheetDialog bottomSheetDialog;
 
     //Map API
-    LatLng locationCurrent;
+    LatLng locationCurrent, locationFriend;
 
     // Create Fragment
     ProfileFragment profileFragment_activity = new ProfileFragment();
@@ -162,6 +162,12 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         locationCurrent = Value;
         hideMap.onLocationFromMainToFrag("main", locationCurrent);
         getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, hideMap).commit();
+    }
+
+    @Override
+    public void onLocationFromAdapToMain(String sender, LatLng Value) {
+        locationFriend = Value;
+        map_Fragment_activity.onLocationFromMainToFrag("main",locationFriend);
     }
 
     @Override

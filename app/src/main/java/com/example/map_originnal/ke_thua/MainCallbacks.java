@@ -8,5 +8,6 @@ public interface MainCallbacks {
 
     public void onMsgFromFragToMain (String sender, String strValue);
     public void onLocationFromFragToMain (String sender, LatLng Value);
+    public void onLocationFromAdapToMain (String sender, LatLng Value);
 
 }
