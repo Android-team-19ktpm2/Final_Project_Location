@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activity.UpdateProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary_color_blue"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+
+        <ImageButton
+            android:id="@+id/update_btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:background="@drawable/chat_btn_back"
+            tools:ignore="MissingConstraints"></ImageButton>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image_avatar"
+                android:layout_width="72dp"
+                android:layout_height="72dp">
+            </de.hdodenhof.circleimageview.CircleImageView>
+
+
+            <LinearLayout
+                android:id="@+id/profile_form_full_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp">
+
+                <TextView
+                    android:id="@+id/profile_tv_full_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Nguyen Phan Vu"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/roboto"
+                    android:textSize="22dp"
+                    android:textStyle="bold"></TextView>
+
+
+                <TextView
+                    android:id="@+id/profile_tv_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="npv1510"
+                    android:textColor="@color/pink"
+                    android:fontFamily="@font/roboto"
+                    android:textSize="14dp"></TextView>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Update"
+        android:fontFamily="@font/roboto"
+        android:textSize="22dp"
+        android:textColor="@color/primary_color_blue"
+        android:layout_marginTop="20dp">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp">
+
+                <EditText
+                    android:id="@+id/update_edt_first_name"
+                    android:layout_width="140dp"
+                    android:layout_height="40dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/input_update_effect"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="90px"
+                    android:paddingRight="40px"
+                    tools:ignore="MissingConstraints">
+                </EditText>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/update_edt_first_name"
+                    android:background="@drawable/icon_person"
+                    app:layout_constraintTop_toTopOf="@+id/update_edt_first_name"
+                    app:layout_constraintBottom_toBottomOf="@+id/update_edt_first_name"
+                    android:layout_marginLeft="3dp"
+                    tools:ignore="MissingConstraints"></ImageView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="50dp">
+
+                <EditText
+                    android:id="@+id/update_edt_last_name"
+                    android:layout_width="140dp"
+                    android:layout_height="40dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/input_update_effect"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="90px"
+                    android:paddingRight="40px"
+                    tools:ignore="MissingConstraints">
+                </EditText>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/update_edt_last_name"
+                    android:background="@drawable/icon_person"
+                    app:layout_constraintTop_toTopOf="@+id/update_edt_last_name"
+                    app:layout_constraintBottom_toBottomOf="@+id/update_edt_last_name"
+                    android:layout_marginLeft="3dp"
+                    tools:ignore="MissingConstraints"></ImageView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp">
+
+            <EditText
+                android:id="@+id/update_edt_dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:background="@drawable/input_update_effect"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="60dp"
+                tools:ignore="MissingConstraints">
+            </EditText>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/update_edt_dob"
+                android:background="@drawable/icon_cake"
+                app:layout_constraintTop_toTopOf="@+id/update_edt_dob"
+                app:layout_constraintBottom_toBottomOf="@+id/update_edt_dob"
+                android:layout_marginLeft="3dp"
+                tools:ignore="MissingConstraints"></ImageView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp">
+
+            <EditText
+                android:id="@+id/update_edt_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_update_effect"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="60dp"
+                android:textColor="@color/black"
+                tools:ignore="MissingConstraints">
+            </EditText>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/update_edt_phone"
+                android:background="@drawable/icon_mobile_phone"
+                app:layout_constraintTop_toTopOf="@+id/update_edt_phone"
+                app:layout_constraintBottom_toBottomOf="@+id/update_edt_phone"
+                android:layout_marginLeft="3dp"
+                tools:ignore="MissingConstraints"></ImageView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp">
+
+            <EditText
+                android:id="@+id/update_edt_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:background="@drawable/input_update_effect"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="60dp"
+                tools:ignore="MissingConstraints">
+            </EditText>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/update_edt_mail"
+                app:layout_constraintTop_toTopOf="@+id/update_edt_mail"
+                app:layout_constraintBottom_toBottomOf="@+id/update_edt_mail"
+                android:background="@drawable/ic_mail"
+                android:layout_marginLeft="3dp"
+                tools:ignore="MissingConstraints"></ImageView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <RadioGroup
+            android:id="@+id/update_radio_group_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+            <RadioButton
+                android:id="@+id/radio_male"
+                android:text="Male"
+                android:textColor="@color/primary_color_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/primary_color_blue"/>
+
+            <RadioButton
+                android:id="@+id/female"
+                android:text="Female"
+                android:textColor="@color/primary_color_blue"
+                android:layout_marginLeft="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/primary_color_blue"/>
+        </RadioGroup>
+
+
+        <Button
+            android:id="@+id/update_btn_apply"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_pink_gradient"
+            android:text="Apply"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/profile_btn_update"></Button>
+
+    </LinearLayout>
+
+</LinearLayout>

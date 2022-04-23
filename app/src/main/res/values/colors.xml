@@ -19,13 +19,13 @@
     <color name="colorDivider">#ECECEC</color>
 
     <color name="colorRed">#ff0000</color>
-    <color name="colorGreen">#36F44F</color>
+    <color name="colorGreen">#0E4270</color>
 
 
     <!--new layout-->
     <color name="light_pink_blue">#E0E9FC</color>
     <color name="pink">#f594b7</color>
-    <color name="primary_color_blue">#476FAD</color>
+    <color name="primary_color_blue">#0C4A81</color>
     <color name="primary_color_light_blue">#19c0ff</color>
     <color name="container_color_gray">#F4F4F4</color>
 

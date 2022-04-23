@@ -16,6 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light">
         <activity
+            android:name=".activity.UpdateProfileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
             android:name=".activity.ViewListFriend"
             android:exported="false" />
         <activity
@@ -58,6 +62,9 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCt2VDIjxTuTqxTcWLI1urFca4HYquXXVk" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name=".fragment.ProfileFragment"

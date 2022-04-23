@@ -108,8 +108,7 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         }
         else {
             onlineRef = FirebaseDatabase.getInstance().getReference("Users/"+current_user.getUid()+"/online");
-            String offlineAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
-            onlineRef.onDisconnect().setValue("False////" + offlineAt);
+            onlineRef.onDisconnect().setValue("False////" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")));
         }
     }
 
