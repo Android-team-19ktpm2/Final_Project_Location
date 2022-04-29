@@ -138,19 +138,19 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
     public void onMsgFromFragToMain(String sender, String strValue) {
         if (sender.equals("Profile-Frag") && strValue.equals("Back")) {
             getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, profileFragment_activity).commit();
-        }
+        }else
         if (sender.equals("ProfileFragment-Frag") && strValue.equals("Profile")) {
             chuyenSangProflie();
-        }
+        }else
         if (sender.equals("MapFragment-Frag") && strValue.equals("ShowList")) {
             chuyenSangListFamilys();
-        }
+        }else
         if (sender.equals("List-Family") && strValue.equals("Back")) {
             bottom_Dialog_List_Family.hide();
-        }
+        }else
         if (sender.equals("List-Family") && strValue.equals("Dialog-AddMember")) {
             chuyenSangDialogAddFamily();
-        }
+        }else
         if (sender.equals("Hide-MapFragment") && strValue.equals("ShowMap")) {
             getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, map_Fragment_activity).commit();
         }
