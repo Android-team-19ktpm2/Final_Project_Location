@@ -99,8 +99,10 @@ public class FindFriend extends AppCompatActivity {
                         User user = new User(String.valueOf(ds.child("id").getValue()),
                                 String.valueOf(ds.child("email").getValue()),
                                 String.valueOf(ds.child("avatar").getValue()),
-                                String.valueOf(ds.child("first_name").getValue()),
-                                String.valueOf(ds.child("last_name").getValue()),
+                                String.valueOf(ds.child("full_name").getValue()),
+                                String.valueOf(ds.child("phone").getValue()),
+                                String.valueOf(ds.child("dob").getValue()),
+                                String.valueOf(ds.child("ocp").getValue()),
                                 String.valueOf(ds.child("online").getValue()),
                                 String.valueOf(ds.child("lat_X").getValue()),
                                 String.valueOf(ds.child("long_Y").getValue())

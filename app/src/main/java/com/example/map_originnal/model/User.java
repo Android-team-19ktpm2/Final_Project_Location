@@ -6,12 +6,11 @@ public class User implements Serializable {
 
     private String id;
     private String avatar;
-    private String first_name;
-    private String last_name;
+    private String full_name;
     private String dob;
     private String email;
     private String phone;
-    private String gender;
+    private String ocp;
     private String online;
     private String lat_X;
     private String long_Y;
@@ -21,18 +20,26 @@ public class User implements Serializable {
 
     }
 
-    public User(String id, String email, String avatar, String first_name, String last_name, String online, String lat_X, String long_Y) {
+    public User(String id, String email, String avatar, String full_name, String phone, String dob, String ocp, String online, String lat_X, String long_Y) {
         this.id = id;
         this.avatar = avatar;
-        this.first_name = first_name;
-        this.last_name = last_name;
-/*        this.dob = dob;
-        this.gender = gender;*/
+        this.full_name = full_name;
+        this.phone = phone;
+        this.dob = dob;
         this.email = email;
+        this.ocp = ocp;
         this.online = online;
         this.lat_X = lat_X;
         this.long_Y = long_Y;
 
+    }
+
+    public String getOcp() {
+        return ocp;
+    }
+
+    public void setOcp(String ocp) {
+        this.ocp = ocp;
     }
 
     public String getPhone() {
@@ -51,37 +58,24 @@ public class User implements Serializable {
         this.online = online;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFull_name() {
+        return full_name;
     }
 
-    public String getLast_name() {
-        return last_name;
-    }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setFull_name(String full_name) {
+        this.full_name = full_name;
     }
 
     public String getDob() {
         return dob;
     }
 
-    public String getGender() {
-        return gender;
-    }
 
     public void setDob(String dob) {
         this.dob = dob;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
 
     public String getId() {
         return id;
@@ -111,8 +105,9 @@ public class User implements Serializable {
     {
         System.out.println("ID" + id);
         System.out.println("Avatar" + avatar);
-        System.out.println("First" + first_name);
-        System.out.println("Last" + last_name);
+        System.out.println("Full name" + full_name);
+        System.out.println("Phone" + phone);
+        System.out.println("DOB" + dob);
         System.out.println("Email" + email);
     }
 

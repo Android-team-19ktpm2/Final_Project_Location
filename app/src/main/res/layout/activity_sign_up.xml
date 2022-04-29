@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@drawable/background"
     tools:context=".activity.SignUpActivity">
 
     <ImageButton
@@ -33,62 +33,58 @@
             android:text="Sign Up"
             android:textSize="26dp"
             android:textStyle="bold"
-            android:textColor="@color/primary_color_blue"></TextView>
+            android:textColor="@color/primary_text_1"></TextView>
+        
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/signup_edt_full_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="42dp"
+            android:background="@drawable/input_update_effect"
+            android:layout_marginTop="35dp"
+            android:padding="8dp"
+            android:textColorHint="@color/primary_text_2"
+            android:textColor="@color/primary_text_2"
+            android:textSize="16dp"
+            android:hint="Full name"></EditText>
 
-            <EditText
-                android:id="@+id/signup_edt_first_name"
-                android:layout_width="140dp"
-                android:layout_height="46dp"
-                android:background="@drawable/container_input"
-                android:layout_marginTop="35dp"
-                android:padding="8dp"
-                android:textColorHint="#AFAFAF"
-                android:textColor="#AFAFAF"
-                android:textSize="16dp"
-                android:hint="First name"></EditText>
 
-            <EditText
-                android:id="@+id/signup_edt_last_name"
-                android:layout_width="140dp"
-                android:layout_height="46dp"
-                android:background="@drawable/container_input"
-                android:layout_marginTop="35dp"
-                android:layout_marginLeft="30dp"
-                android:padding="8dp"
-                android:textColorHint="#AFAFAF"
-                android:textColor="#AFAFAF"
-                android:textSize="16dp"
-                android:hint="Last name"></EditText>
-
-        </LinearLayout>
+        <EditText
+            android:id="@+id/signup_edt_phone"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:background="@drawable/input_update_effect"
+            android:layout_marginTop="20dp"
+            android:padding="8dp"
+            android:textColorHint="@color/primary_text_2"
+            android:textColor="@color/primary_text_2"
+            android:textSize="16dp"
+            android:hint="Phone"></EditText>
 
 
         <EditText
             android:id="@+id/signup_edt_email"
             android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:background="@drawable/container_input"
+            android:layout_height="42dp"
+            android:background="@drawable/input_update_effect"
             android:layout_marginTop="20dp"
             android:padding="8dp"
-            android:textColorHint="#AFAFAF"
-            android:textColor="#AFAFAF"
+            android:textColorHint="@color/primary_text_2"
+            android:textColor="@color/primary_text_2"
             android:hint="Email"
             android:textSize="16dp"
             android:inputType="textEmailAddress"></EditText>
 
+
         <EditText
             android:id="@+id/signup_edt_password"
             android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:background="@drawable/container_input"
+            android:layout_height="42dp"
+            android:background="@drawable/input_update_effect"
             android:layout_marginTop="20dp"
             android:padding="8dp"
-            android:textColorHint="#AFAFAF"
-            android:textColor="#AFAFAF"
+            android:textColorHint="@color/primary_text_2"
+            android:textColor="@color/primary_text_2"
             android:hint="Password"
             android:textSize="16dp"
             android:inputType="textPassword"></EditText>
@@ -98,9 +94,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
+            android:layout_marginTop="10dp"
             android:text="I accept all terms and conditions"
-            android:buttonTint="@color/pink"
-            android:textColor="@color/pink"></CheckBox>
+            android:buttonTint="@color/primary_widget_dark"
+            android:textColor="@color/primary_text_1"></CheckBox>
 
         <Button
             android:id="@+id/signup_btn_signup"
@@ -108,7 +105,8 @@
             android:layout_height="46dp"
             android:layout_marginTop="40dp"
             android:text="Apply"
-            android:background="@drawable/container_btn_gradient"></Button>
+            android:textColor="@color/primary_text_2"
+            android:background="@drawable/btn_primary_2"></Button>
 
 
     </LinearLayout>

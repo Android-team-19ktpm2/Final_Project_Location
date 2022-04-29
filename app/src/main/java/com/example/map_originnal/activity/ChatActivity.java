@@ -131,7 +131,7 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
-                tv_username.setText(user.getFirst_name()+" "+user.getLast_name());
+                tv_username.setText(user.getFull_name());
 
                 if (user.getAvatar().equals("default"))
                 {

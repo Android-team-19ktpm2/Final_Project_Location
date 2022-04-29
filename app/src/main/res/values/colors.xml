@@ -25,8 +25,19 @@
     <!--new layout-->
     <color name="light_pink_blue">#E0E9FC</color>
     <color name="pink">#f594b7</color>
-    <color name="primary_color_blue">#0C4A81</color>
-    <color name="primary_color_light_blue">#19c0ff</color>
-    <color name="container_color_gray">#F4F4F4</color>
+
+    <color name="primary_color_1">#B4D8E3</color>
+    <color name="primary_color_2">#FBECD9</color>
+
+    <color name="primary_color_light">#DBEAF0</color>
+    <color name="primary_color_dark">#7ABACC</color>
+
+    <color name="primary_text_1">#6897A9</color>
+    <color name="primary_text_2">#B1A088</color>
+
+    <color name="primary_widget_light">#ACC7D0</color>
+    <color name="primary_widget_dark">#92B0BA</color>
+
+    <color name="primary_border">#D4B89B</color>
 
 </resources>

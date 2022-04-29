@@ -1,3 +1,4 @@
+/*
 package com.example.map_originnal.activity;
 
 import androidx.annotation.NonNull;
@@ -14,7 +15,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.map_originnal.R;
-import com.example.map_originnal.fragment.ProfileFragment;
 import com.example.map_originnal.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -22,10 +22,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
 
 public class UpdateProfileActivity extends AppCompatActivity {
 
@@ -66,21 +62,24 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 User user = snapshot.getValue(User.class);
                 user.display();
 
-                edt_first_name.setText(user.getFirst_name());
-                edt_last_name.setText(user.getLast_name());
+                edt_first_name.setText(user.getFull_name());
 
+*/
 /*                if (user.getDob().equals(".unknown."))
                     edt_dob.setText("");
                 else
-                    edt_dob.setText(user.getDob());*/
+                    edt_dob.setText(user.getDob());*//*
+
 
                 edt_email.setText(user.getEmail());
                 edt_phone.setText(user.getPhone());
 
+*/
 /*                if (user.getPhone().equals(".unknown."))
                     edt_phone.setText("");
                 else
-                    edt_phone.setText(user.getDob());*/
+                    edt_phone.setText(user.getDob());*//*
+
             }
 
             @Override
@@ -145,6 +144,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
     void update(String first_name , String last_name, String dob, String email, String phone)
     {
+*/
 /*        if(TextUtils.isEmpty(dob))
             dob = ".unknown.";
         if(TextUtils.isEmpty(phone))
@@ -152,7 +152,8 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
         data.put("dob", dob);
         data.put("phone", phone);
-        data.put("online", "True");*/
+        data.put("online", "True");*//*
+
 
         reference = FirebaseDatabase.getInstance().getReference("Users").child(auth.getUid()).child("email");
         reference.setValue(email);
@@ -164,4 +165,4 @@ public class UpdateProfileActivity extends AppCompatActivity {
         reference.setValue(last_name);
 
     }
-}
+}*/

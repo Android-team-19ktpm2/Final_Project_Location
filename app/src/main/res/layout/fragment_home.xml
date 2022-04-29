@@ -27,7 +27,7 @@
             android:text="Hi, Nguyen Son!"
             android:textSize="20dp"
             android:textStyle="italic|bold"
-            android:textColor="@color/primary_color_blue"
+            android:textColor="@color/primary_color_1"
             ></TextView>
 
         <TextView

@@ -29,7 +29,7 @@ public class SignUpActivity extends Activity {
     Button btn_signup;
     ImageButton btn_back;
 
-    EditText edt_first_name,edt_last_name,edt_email, edt_pwd;
+    EditText edt_full_name,edt_email, edt_pwd, edt_phone;
     CheckBox cb_term;
 
     FirebaseAuth auth;
@@ -40,8 +40,8 @@ public class SignUpActivity extends Activity {
 
         auth=FirebaseAuth.getInstance();
 
-        edt_first_name=findViewById(R.id.signup_edt_first_name);
-        edt_last_name=findViewById(R.id.signup_edt_last_name);
+        edt_full_name=findViewById(R.id.signup_edt_full_name);
+        edt_phone=findViewById(R.id.signup_edt_phone);
         edt_email=findViewById(R.id.signup_edt_email);
         edt_pwd=findViewById(R.id.signup_edt_password);
 
@@ -52,22 +52,22 @@ public class SignUpActivity extends Activity {
             @Override
             public void onClick(View view) {
 
-                String first_name=edt_first_name.getText().toString();
-                String last_name=edt_last_name.getText().toString();
+                String full_name=edt_full_name.getText().toString();
+                String phone=edt_phone.getText().toString();
                 String email=edt_email.getText().toString();
                 String pwd=edt_pwd.getText().toString();
 
-                if(TextUtils.isEmpty(first_name))
+                if(TextUtils.isEmpty(full_name))
                 {
-                    edt_first_name.setError("First name is required");
-                    edt_first_name.requestFocus();
+                    edt_full_name.setError("First name is required");
+                    edt_full_name.requestFocus();
                     return;
                 }
 
-                if(TextUtils.isEmpty(email))
+                if(TextUtils.isEmpty(phone))
                 {
-                    edt_last_name.setError("Last name is required");
-                    edt_last_name.requestFocus();
+                    edt_phone.setError("Phone is required");
+                    edt_phone.requestFocus();
                     return;
                 }
 
@@ -103,8 +103,9 @@ public class SignUpActivity extends Activity {
                             HashMap<String,String> data= new HashMap<>();
                             data.put("id",user.getUid());
                             data.put("avatar","default");
-                            data.put("first_name",edt_first_name.getText().toString());
-                            data.put("last_name",edt_last_name.getText().toString());
+                            data.put("full_name",edt_full_name.getText().toString());
+                            data.put("phone",edt_phone.getText().toString());
+                            data.put("dob","...");
                             data.put("email",edt_email.getText().toString());
                             data.put("online","False////Undefine");
 

@@ -15,7 +15,7 @@
         android:text="Edit Profile"
         android:textSize="26dp"
         android:textStyle="bold"
-        android:textColor="@color/primary_color_blue"></TextView>
+        android:textColor="@color/primary_color_1"></TextView>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -27,7 +27,6 @@
         android:layout_height="100dp"
         android:layout_margin="10dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/avatar"
         app:riv_corner_radius="10dp"/>
     <View
         android:layout_width="match_parent"

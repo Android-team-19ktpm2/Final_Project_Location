@@ -4,10 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.location.Address;
 import android.location.Geocoder;
-import android.location.Location;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,13 +24,7 @@ import com.example.map_originnal.activity.ChatActivity;
 import com.example.map_originnal.activity.MainActivity;
 import com.example.map_originnal.model.User;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -75,7 +66,7 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Glide.with(context).load(urlDisplay).into(holder.imgAvartar);
-        holder.txtTen.setText(users.get(position).getFirst_name() + users.get(position).getLast_name());
+        holder.txtTen.setText(users.get(position).getFull_name());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             if (getStatusUser(users.get(position).getOnline()).equals("Online")){
                 holder.isActive.setBackgroundColor(Color.GREEN);
@@ -103,7 +94,7 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
                 imgAvatarDetail = bottomSheetView.findViewById(R.id.imgAvatarDetail);
 
 
-                txtTenDetail.setText(users.get(position).getFirst_name() + " "+ users.get(position).getLast_name());
+                txtTenDetail.setText(users.get(position).getFull_name());
                 txtDiaChiDetail.setText(getAddressUser(users.get(position).getLat_X(),users.get(position).getLong_Y()));
 
                 txtActiveDetail.setText(getStatusUser(users.get(position).getOnline()));

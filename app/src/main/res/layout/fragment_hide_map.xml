@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="Current Location:"
-            android:textColor="@color/primary_color_blue"
+            android:textColor="@color/primary_color_1"
             android:textSize="20dp"
             android:textStyle="bold"></TextView>
 
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="Accuracy(meters):"
-            android:textColor="@color/primary_color_blue"
+            android:textColor="@color/primary_color_1"
             android:textSize="20dp"
             android:textStyle="bold"></TextView>
 
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="Altitude(meters):"
-            android:textColor="@color/primary_color_blue"
+            android:textColor="@color/primary_color_1"
             android:textSize="20dp"
             android:textStyle="bold"></TextView>
 
@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="Speed(kilometers/hour):"
-            android:textColor="@color/primary_color_blue"
+            android:textColor="@color/primary_color_1"
             android:textSize="20dp"
             android:textStyle="bold"></TextView>
 

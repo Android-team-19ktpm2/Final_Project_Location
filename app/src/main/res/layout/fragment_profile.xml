@@ -11,30 +11,31 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary_color_blue"
         android:orientation="vertical"
-        android:padding="15dp">
+        android:padding="30dp"
+        android:background="@color/primary_color_2">
 
 
-        <Button
+        <ImageButton
             android:id="@+id/profile_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             android:background="@drawable/chat_btn_back"
-            tools:ignore="MissingConstraints"></Button>
+            tools:ignore="MissingConstraints"></ImageButton>
 
 
-        <LinearLayout
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image_avatar"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center">
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+        <!--<LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_image_avatar"
-                android:layout_width="72dp"
-                android:layout_height="72dp">
-            </de.hdodenhof.circleimageview.CircleImageView>
 
 
                 <LinearLayout
@@ -49,10 +50,9 @@
                             android:id="@+id/profile_tv_full_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="8dp"
                             android:text="Nguyen Phan Vu"
-                            android:textColor="@color/white"
-                            android:fontFamily="@font/roboto"
+                            android:textColor="@color/primary_text_2"
                             android:textSize="22dp"
                             android:textStyle="bold"></TextView>
 
@@ -62,20 +62,19 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="npv1510"
-                            android:textColor="@color/pink"
+                            android:textColor="@color/primary_text_1"
                             android:fontFamily="@font/roboto"
                             android:textSize="14dp"></TextView>
 
                 </LinearLayout>
 
-
-        </LinearLayout>
+        </LinearLayout>-->
 
     </LinearLayout>
 
 
 
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="15dp"
@@ -134,166 +133,345 @@
                 android:textSize="14dp"></TextView>
         </LinearLayout>
 
-    </LinearLayout>
+    </LinearLayout>-->
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="15dp">
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full name"
+            android:textSize="14dp"
+            android:textColor="#A8A7A7">
+        </TextView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/profile_tv_full_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black">
+                </TextView>
+
+                <EditText
+                    android:id="@+id/profile_edt_full_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"></EditText>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true">
+
+                <ImageButton
+                    android:id="@+id/profile_btn_pencil_full_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_edit">
+
+                </ImageButton>
+
+                <ImageButton
+                    android:id="@+id/profile_btn_check_full_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_check"
+                    android:visibility="invisible"></ImageButton>
+
+            </FrameLayout>
+
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/primary_border"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"></View>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="General"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="16dp"></TextView>
+            android:text="Date of birth"
+            android:textSize="14dp"
+            android:textColor="#A8A7A7">
+        </TextView>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_height="match_parent">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <ImageButton
-                    android:id="@+id/profile_icon_cake"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/icon_cake">
-                </ImageButton>
-
 
                 <TextView
                     android:id="@+id/profile_tv_dob"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/profile_icon_cake"
-                    android:layout_marginLeft="10dp"
-                    android:text="15/10/2001"
-                    android:textColor="@color/black"
-                    android:textStyle="italic"
-                    android:textSize="16dp"></TextView>
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black">
+                </TextView>
 
-            </RelativeLayout>
+                <EditText
+                    android:id="@+id/profile_edt_dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"></EditText>
 
-            <RelativeLayout
+            </FrameLayout>
+
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp">
+                android:layout_alignParentRight="true">
 
                 <ImageButton
-                    android:id="@+id/profile_icon_male"
+                    android:id="@+id/profile_btn_pencil_dob"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/icon_person">
+                    android:background="@drawable/icon_edit">
                 </ImageButton>
 
-
-                <TextView
-                    android:id="@+id/asd"
+                <ImageButton
+                    android:id="@+id/profile_btn_check_dob"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/profile_icon_male"
-                    android:text="Male"
-                    android:textColor="@color/black"
-                    android:textSize="16dp"
-                    android:textStyle="italic"></TextView>
+                    android:background="@drawable/icon_check"
+                    android:visibility="invisible"></ImageButton>
 
-            </RelativeLayout>
+            </FrameLayout>
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/primary_border"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"></View>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Occupation"
+            android:textSize="14dp"
+            android:textColor="#A8A7A7"
+            android:inputType="date">
+
+        </TextView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/profile_tv_ocp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black">
+                </TextView>
+
+                <EditText
+                    android:id="@+id/profile_edt_ocp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"></EditText>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true">
+
+                <ImageButton
+                    android:id="@+id/profile_btn_pencil_ocp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_edit">
+                </ImageButton>
+
+                <ImageButton
+                    android:id="@+id/profile_btn_check_ocp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_check"
+                    android:visibility="invisible"></ImageButton>
+
+            </FrameLayout>
+
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/primary_border"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"></View>
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Email"-->
+<!--            android:textSize="14dp"-->
+<!--            android:textColor="#A8A7A7"-->
+<!--            android:inputType="date">-->
+
+<!--        </TextView>-->
+
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+<!--            <FrameLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/profile_tv_email"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textSize="18dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textColor="@color/black">-->
+<!--                </TextView>-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/profile_edt_email"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:visibility="invisible"></EditText>-->
+
+<!--            </FrameLayout>-->
+
+<!--            <FrameLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentRight="true">-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/profile_btn_pencil_email"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/icon_edit">-->
+<!--                </ImageButton>-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/profile_btn_check_email"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/icon_check"-->
+<!--                    android:visibility="invisible"></ImageButton>-->
+
+<!--            </FrameLayout>-->
+
+<!--        </RelativeLayout>-->
+
+
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="2dp"-->
+<!--            android:background="@color/primary_border"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:layout_marginBottom="16dp"></View>-->
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:text="Phone"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="16dp"></TextView>
+            android:textSize="14dp"
+            android:textColor="#A8A7A7"
+            android:inputType="date">
 
+        </TextView>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_height="match_parent">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <ImageButton
-                    android:id="@+id/profile_icon_mobile_phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/icon_mobile_phone">
-                </ImageButton>
-
 
                 <TextView
                     android:id="@+id/profile_tv_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/profile_icon_mobile_phone"
-                    android:text="0587756618"
-                    android:textColor="@color/black"
-                    android:textStyle="italic"
-                    android:textSize="16dp"></TextView>
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black">
+                </TextView>
 
-            </RelativeLayout>
+                <EditText
+                    android:id="@+id/profile_edt_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"></EditText>
 
-            <RelativeLayout
+            </FrameLayout>
+
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp">
+                android:layout_alignParentRight="true">
 
                 <ImageButton
-                    android:id="@+id/profile_icon_email"
+                    android:id="@+id/profile_btn_pencil_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_mail">
+                    android:background="@drawable/icon_edit">
                 </ImageButton>
 
-
-                <TextView
-                    android:id="@+id/profile_tv_email"
+                <ImageButton
+                    android:id="@+id/profile_btn_check_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/profile_icon_email"
-                    android:text="19127633@outlook.com"
-                    android:textColor="@color/black"
-                    android:textSize="16dp"
-                    android:textStyle="italic"
-                    tools:ignore="MissingConstraints"></TextView>
+                    android:background="@drawable/icon_check"
+                    android:visibility="invisible"></ImageButton>
 
-            </RelativeLayout>
+            </FrameLayout>
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </LinearLayout>
-
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom|center_horizontal"
-        android:layout_marginBottom="15dp">
+        android:layout_marginBottom="50dp">
 
         <Button
             android:id="@+id/profile_btn_update"
