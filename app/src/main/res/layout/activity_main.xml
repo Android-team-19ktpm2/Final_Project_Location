@@ -30,14 +30,15 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
-            app:menu="@menu/bottom_nav_menu"  android:layout_height="75dp"
+            app:menu="@menu/bottom_nav_menu"  android:layout_height="55dp"
             android:layout_gravity="bottom"
             android:layout_width="match_parent"
 
-            app:itemBackground="@color/colorPrimaryDark"
-            app:itemIconTint="@android:color/black"
-            app:itemTextColor="@android:color/black"
-            />
+            android:background="@drawable/btn_primary"
+            app:labelVisibilityMode="unlabeled"
+
+            app:itemIconTint="@color/primary_text_1"
+            app:itemIconSize="32dp"/>
     </FrameLayout>
 
 

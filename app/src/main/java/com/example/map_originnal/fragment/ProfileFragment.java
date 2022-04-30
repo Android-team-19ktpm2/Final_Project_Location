@@ -199,14 +199,14 @@ public class ProfileFragment extends Fragment {
     }
 
     private void btnInit() {
-        btn_back.setOnClickListener(new View.OnClickListener() {
+/*        btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), StartActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
-        });
+        });*/
 
         edt_dob.setInputType(InputType.TYPE_NULL);
         edt_dob.setOnClickListener(new View.OnClickListener() {
