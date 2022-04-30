@@ -173,7 +173,8 @@
                     android:id="@+id/profile_edt_full_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="invisible"></EditText>
+                    android:visibility="invisible"
+                    android:textColor="@color/black"></EditText>
 
             </FrameLayout>
 
@@ -186,8 +187,7 @@
                     android:id="@+id/profile_btn_pencil_full_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/icon_edit"
-                    >
+                    android:background="@drawable/icon_edit">
 
                 </ImageButton>
 
@@ -195,8 +195,7 @@
                     android:id="@+id/profile_btn_check_full_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/icon_check"
-                    android:visibility="invisible"></ImageButton>
+                    android:background="@drawable/icon_check"></ImageButton>
 
             </FrameLayout>
 
@@ -239,7 +238,8 @@
                     android:id="@+id/profile_edt_dob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="invisible"></EditText>
+                    android:visibility="invisible"
+                    android:textColor="@color/black"></EditText>
 
             </FrameLayout>
 
@@ -306,7 +306,8 @@
                     android:id="@+id/profile_edt_ocp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="invisible"></EditText>
+                    android:visibility="invisible"
+                    android:textColor="@color/black"></EditText>
 
             </FrameLayout>
 
@@ -440,7 +441,8 @@
                     android:id="@+id/profile_edt_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="invisible"></EditText>
+                    android:visibility="invisible"
+                    android:textColor="@color/black"></EditText>
 
             </FrameLayout>
 

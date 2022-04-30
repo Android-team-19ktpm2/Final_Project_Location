@@ -64,7 +64,6 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
     FirebaseUser current_user;
     DatabaseReference friendsReference;
     DatabaseReference userReference;
-    DatabaseReference onlineRef;
     ValueEventListener friendsListener;
 
 
@@ -85,32 +84,10 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         auth = FirebaseAuth.getInstance();
         current_user = auth.getCurrentUser();
 
-
-        // load user
-        if (current_user != null){
-            loadUsers();
-        }else{
-            Intent intent = new Intent(MainActivity.this, StartActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
-        }
-
-
+        //load friends
+        loadUsers();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (current_user == null) {
-
-        }
-        else {
-            onlineRef = FirebaseDatabase.getInstance().getReference("Users/"+current_user.getUid()+"/online");
-            onlineRef.onDisconnect().setValue("False////" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")));
-        }
-    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -242,6 +219,7 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         friendsReference = FirebaseDatabase.getInstance().getReference("Friends").child(current_user.getUid());
         userReference = FirebaseDatabase.getInstance().getReference("Users");
         friendsListener = friendsReference.addValueEventListener(new ValueEventListener() {
+
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -257,9 +235,6 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
                             if (a != null && current_user != null) {
                                 if (!current_user.getUid().equals(a.getId())) {
                                        users.add(a);
-                                } else {
-                                    String onlineAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
-                                    snapshot.getRef().child("online").setValue("True////" + onlineAt);
                                 }
                           }
                         }

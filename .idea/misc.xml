@@ -26,6 +26,7 @@
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/ic_home_foreground.xml" value="0.116" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/ic_mail.xml" value="0.2695" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icon_cake.xml" value="0.2695" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icon_check.xml" value="0.1685" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icon_edit.xml" value="0.2055" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icon_home_fill.xml" value="0.147" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icon_home_stroke.xml" value="0.147" />
@@ -52,6 +53,7 @@
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/adapter_custom_right_chat.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/dialog_change_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/dialog_current_location.xml" value="0.2671875" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/fragment_map.xml" value="0.2671875" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/fragment_setting_menu.xml" value="0.2671875" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/fragment_start.xml" value="0.36666666666666664" />

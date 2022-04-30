@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -103,13 +104,10 @@ public class ProfileFragment extends Fragment {
         //basic widgets
         widgetInit(layout_user);
 
-        //amimations
-        animationInit();
-
         //buttons
         btnInit();
 
-
+        btn_check_full_name.setVisibility(View.INVISIBLE);
         return layout_user;
     }
 
@@ -151,10 +149,6 @@ public class ProfileFragment extends Fragment {
 
     private void AuthorizedCheck()
     {
-        progressDialog = new ProgressDialog(main);
-        progressDialog.setTitle("Loading...");
-        progressDialog.show();
-
         // firebase
         auth = FirebaseAuth.getInstance();
         firebaseUser = auth.getCurrentUser();
@@ -168,6 +162,10 @@ public class ProfileFragment extends Fragment {
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    progressDialog = new ProgressDialog(main);
+                    progressDialog.setTitle("Loading...");
+                    progressDialog.show();
+
                     current_user = snapshot.getValue(User.class);
                     tv_full_name.setText(current_user.getFull_name());
                     tv_phone.setText(current_user.getPhone());
@@ -231,12 +229,12 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //invisible
-                tv_full_name.startAnimation(disappearAnimation);
-                btn_pencil_full_name.startAnimation(disappearAnimation);
+                tv_full_name.setVisibility(View.INVISIBLE);;
+                btn_pencil_full_name.setVisibility(View.INVISIBLE);;
 
                 //visible
-                edt_full_name.startAnimation(appearAnimation);
-                btn_check_full_name.startAnimation(appearAnimation);
+                edt_full_name.setVisibility(View.VISIBLE);
+                btn_check_full_name.setVisibility(View.VISIBLE);
 
 
                 //set current value
@@ -257,12 +255,12 @@ public class ProfileFragment extends Fragment {
                 }
 
                 //invisible
-                edt_full_name.startAnimation(disappearAnimation);
-                btn_check_full_name.startAnimation(disappearAnimation);
+                edt_full_name.setVisibility(View.INVISIBLE);;
+                btn_check_full_name.setVisibility(View.INVISIBLE);;
 
                 //visible
-                tv_full_name.startAnimation(appearAnimation);
-                btn_pencil_full_name.startAnimation(appearAnimation);
+                tv_full_name.setVisibility(View.VISIBLE);
+                btn_pencil_full_name.setVisibility(View.VISIBLE);
 
                 //update
                 update("full_name", new_val);
@@ -274,12 +272,12 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //invisible
-                tv_dob.startAnimation(disappearAnimation);
-                btn_pencil_dob.startAnimation(disappearAnimation);
+                tv_dob.setVisibility(View.INVISIBLE);;
+                btn_pencil_dob.setVisibility(View.INVISIBLE);;
 
                 //visible
-                edt_dob.startAnimation(appearAnimation);
-                btn_check_dob.startAnimation(appearAnimation);
+                edt_dob.setVisibility(View.VISIBLE);
+                btn_check_dob.setVisibility(View.VISIBLE);
 
                 //set current value
                 edt_dob.setText(tv_dob.getText().toString());
@@ -292,12 +290,12 @@ public class ProfileFragment extends Fragment {
                 String new_val = edt_dob.getText().toString();
 
                 //invisible
-                edt_dob.startAnimation(disappearAnimation);
-                btn_check_dob.startAnimation(disappearAnimation);
+                edt_dob.setVisibility(View.INVISIBLE);;
+                btn_check_dob.setVisibility(View.INVISIBLE);;
 
                 //visible
-                tv_dob.startAnimation(appearAnimation);
-                btn_pencil_dob.startAnimation(appearAnimation);
+                tv_dob.setVisibility(View.VISIBLE);
+                btn_pencil_dob.setVisibility(View.VISIBLE);
 
                 //update
                 if (!TextUtils.isEmpty(new_val))
@@ -310,12 +308,12 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //invisible
-                tv_ocp.startAnimation(disappearAnimation);
-                btn_pencil_ocp.startAnimation(disappearAnimation);
+                tv_ocp.setVisibility(View.INVISIBLE);;
+                btn_pencil_ocp.setVisibility(View.INVISIBLE);;
 
                 //visible
-                edt_ocp.startAnimation(appearAnimation);
-                btn_check_ocp.startAnimation(appearAnimation);
+                edt_ocp.setVisibility(View.VISIBLE);
+                btn_check_ocp.setVisibility(View.VISIBLE);
 
                 //set current value
                 edt_ocp.setText(tv_ocp.getText().toString());
@@ -328,12 +326,12 @@ public class ProfileFragment extends Fragment {
                 String new_val = edt_ocp.getText().toString();
 
                 //invisible
-                edt_ocp.startAnimation(disappearAnimation);
-                btn_check_ocp.startAnimation(disappearAnimation);
+                edt_ocp.setVisibility(View.INVISIBLE);;
+                btn_check_ocp.setVisibility(View.INVISIBLE);;
 
                 //visible
-                tv_ocp.startAnimation(appearAnimation);
-                btn_pencil_ocp.startAnimation(appearAnimation);
+                tv_ocp.setVisibility(View.VISIBLE);
+                btn_pencil_ocp.setVisibility(View.VISIBLE);
 
                 //update
                 if (!TextUtils.isEmpty(new_val))
@@ -347,12 +345,12 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //invisible
-                tv_phone.startAnimation(disappearAnimation);
-                btn_pencil_phone.startAnimation(disappearAnimation);
+                tv_phone.setVisibility(View.INVISIBLE);;
+                btn_pencil_phone.setVisibility(View.INVISIBLE);;
 
                 //visible
-                edt_phone.startAnimation(appearAnimation);
-                btn_check_phone.startAnimation(appearAnimation);
+                edt_phone.setVisibility(View.VISIBLE);
+                btn_check_phone.setVisibility(View.VISIBLE);
 
                 //set current value
                 edt_phone.setText(tv_phone.getText().toString());
@@ -372,12 +370,12 @@ public class ProfileFragment extends Fragment {
                 }
 
                 //invisible
-                edt_phone.startAnimation(disappearAnimation);
-                btn_check_phone.startAnimation(disappearAnimation);
+                edt_phone.setVisibility(View.INVISIBLE);;
+                btn_check_phone.setVisibility(View.INVISIBLE);;
 
                 //visible
-                tv_phone.startAnimation(appearAnimation);
-                btn_pencil_phone.startAnimation(appearAnimation);
+                tv_phone.setVisibility(View.VISIBLE);
+                btn_pencil_phone.setVisibility(View.VISIBLE);
 
                 //update
                 update("phone", new_val);
@@ -396,19 +394,6 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    private void animationInit()
-    {
-        appearAnimation = new AlphaAnimation(0f, 1.0f);
-        appearAnimation.setDuration(150);
-        appearAnimation.setStartOffset(300);
-        appearAnimation.setFillAfter(true);
-
-        disappearAnimation = new AlphaAnimation(1f, 0f);
-        disappearAnimation.setDuration(150);
-        disappearAnimation.setStartOffset(0);
-        disappearAnimation.setFillAfter(true);
-
-    }
 
     void chooseImage()
     {
