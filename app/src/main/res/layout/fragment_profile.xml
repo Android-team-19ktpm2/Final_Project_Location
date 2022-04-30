@@ -186,7 +186,8 @@
                     android:id="@+id/profile_btn_pencil_full_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/icon_edit">
+                    android:background="@drawable/icon_edit"
+                    android:alpha="0.2">
 
                 </ImageButton>
 
@@ -251,7 +252,8 @@
                     android:id="@+id/profile_btn_pencil_dob"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/icon_edit">
+                    android:background="@drawable/icon_edit"
+                    android:alpha="0.2">
                 </ImageButton>
 
                 <ImageButton
@@ -317,7 +319,8 @@
                     android:id="@+id/profile_btn_pencil_ocp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/icon_edit">
+                    android:background="@drawable/icon_edit"
+                    android:alpha="0.2">
                 </ImageButton>
 
                 <ImageButton
@@ -450,7 +453,8 @@
                     android:id="@+id/profile_btn_pencil_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/icon_edit">
+                    android:background="@drawable/icon_edit"
+                    android:alpha="0.2">
                 </ImageButton>
 
                 <ImageButton
@@ -467,29 +471,14 @@
     </LinearLayout>
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom|center_horizontal"
-        android:layout_marginBottom="50dp">
-
-        <Button
-            android:id="@+id/profile_btn_update"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:text="Update"
-            android:background="@drawable/latest_button"></Button>
-
-        <Button
-            android:id="@+id/profile_btn_log_out"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_toRightOf="@+id/profile_btn_update"
-            android:background="@drawable/btn_pink_gradient"
-            android:text="Log out"></Button>
-
-    </RelativeLayout>
+    <Button
+        android:id="@+id/profile_btn_log_out"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_toRightOf="@+id/profile_btn_update"
+        android:background="@drawable/btn_primary_2"
+        android:layout_gravity="bottom|center_horizontal"
+        android:text="Log out"></Button>
 
 
 
