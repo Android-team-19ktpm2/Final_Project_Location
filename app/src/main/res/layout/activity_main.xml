@@ -21,7 +21,7 @@
     <FrameLayout
         android:id="@+id/flFragmentMenu"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -30,7 +30,8 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
-            app:menu="@menu/bottom_nav_menu"  android:layout_height="55dp"
+            app:menu="@menu/bottom_nav_menu"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_width="match_parent"
 

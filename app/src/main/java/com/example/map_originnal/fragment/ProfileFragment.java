@@ -93,6 +93,8 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+
         // Inflate the layout for this fragment
         LinearLayout layout_user = (LinearLayout) inflater.inflate(R.layout.fragment_profile, container, false);
 
@@ -108,6 +110,7 @@ public class ProfileFragment extends Fragment {
         btnInit();
 
         btn_check_full_name.setVisibility(View.INVISIBLE);
+
         return layout_user;
     }
 
@@ -119,7 +122,6 @@ public class ProfileFragment extends Fragment {
         tv_dob = layout_user.findViewById(R.id.profile_tv_dob);
         tv_ocp = layout_user.findViewById(R.id.profile_tv_ocp);
 
-        btn_back = layout_user.findViewById(R.id.profile_btn_back);
         btn_logout = layout_user.findViewById(R.id.profile_btn_log_out);
         btn_update = layout_user.findViewById(R.id.profile_btn_update);
 
@@ -162,10 +164,6 @@ public class ProfileFragment extends Fragment {
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    progressDialog = new ProgressDialog(main);
-                    progressDialog.setTitle("Loading...");
-                    progressDialog.show();
-
                     current_user = snapshot.getValue(User.class);
                     tv_full_name.setText(current_user.getFull_name());
                     tv_phone.setText(current_user.getPhone());
@@ -173,14 +171,13 @@ public class ProfileFragment extends Fragment {
 
                     if (!current_user.getDob().equals("..."))
                         tv_dob.setText(current_user.getDob());
+                    else
+                        tv_dob.setText("");
 
                     if (current_user.getAvatar().equals("default"))
                         Glide.with(getActivity()).load(default_avatar).into(avatar);
                     else
                         Glide.with(getActivity()).load(snapshot.child("avatar").getValue().toString()).into(avatar);
-
-                    if(progressDialog.isShowing())
-                        progressDialog.dismiss();
                 }
 
                 @Override
@@ -197,15 +194,6 @@ public class ProfileFragment extends Fragment {
     }
 
     private void btnInit() {
-/*        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), StartActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });*/
-
         edt_dob.setInputType(InputType.TYPE_NULL);
         edt_dob.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -417,7 +405,7 @@ public class ProfileFragment extends Fragment {
     void uploadImage()
     {
         progressDialog = new ProgressDialog(main);
-        progressDialog.setTitle("Changing...");
+        progressDialog.setTitle("Loading new avatar...");
         progressDialog.show();
 
         storageReference.putFile(mUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -427,9 +415,9 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onSuccess(Uri uri) {
                         reference.child("avatar").setValue(uri.toString());
+                        Toast.makeText(main, "Successful", Toast.LENGTH_SHORT).show();
                         if (progressDialog.isShowing())
                             progressDialog.dismiss();
-                        Toast.makeText(main, "Successful", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -468,9 +456,8 @@ public class ProfileFragment extends Fragment {
 
     void update(String field, String value)
     {
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(auth.getUid()).child(field);
 
-        reference.setValue(value).addOnCompleteListener(new OnCompleteListener<Void>() {
+        reference.child(field).setValue(value).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful())
