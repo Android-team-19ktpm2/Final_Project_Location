@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -25,6 +25,7 @@ import com.example.map_originnal.model.User;
 import com.example.map_originnal.fragment.ProfileFragment;
 import com.example.map_originnal.R;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,8 +36,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class MainActivity extends FragmentActivity implements BottomNavigationView.OnNavigationItemSelectedListener , MainCallbacks {
@@ -80,12 +79,16 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         bottomNavigationView.setSelectedItemId(R.id.map);
 
 
+
         // Định danh user
         auth = FirebaseAuth.getInstance();
         current_user = auth.getCurrentUser();
 
+
         //load friends
         loadUsers();
+
+
     }
 
 
@@ -97,8 +100,12 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
                 return true;
 
 
-            case R.id.home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, home_Fragment_activity).commit();
+            case R.id.explore:
+                startActivity(new Intent(this, FindFriend.class));
+                return true;
+
+            case R.id.request:
+                startActivity(new Intent(this, FriendRequest.class));
                 return true;
 
             case R.id.map:
@@ -252,7 +259,6 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
 
             }
         });
-
-
     }
+
 }

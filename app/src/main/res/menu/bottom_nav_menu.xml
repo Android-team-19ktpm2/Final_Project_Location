@@ -7,9 +7,15 @@
         android:icon="@drawable/bottom_nav_map_selector"/>
 
     <item
-        android:id="@+id/home"
-        android:title="Home"
-        android:icon="@drawable/bottom_nav_home_selector"/>
+        android:id="@+id/explore"
+        android:title="explore"
+        android:icon="@drawable/bottom_nav_explore_selector"/>
+
+    <item
+        android:id="@+id/request"
+        android:title="request"
+        android:icon="@drawable/bottom_nav_request_selector"/>
+
     <item
         android:id="@+id/person"
         android:title="Profile"

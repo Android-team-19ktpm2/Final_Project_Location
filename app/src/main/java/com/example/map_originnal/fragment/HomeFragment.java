@@ -12,7 +12,7 @@ import android.widget.ImageView;
 
 import com.example.map_originnal.R;
 import com.example.map_originnal.activity.FindFriend;
-import com.example.map_originnal.activity.ViewListFriend;
+import com.example.map_originnal.activity.FriendRequest;
 
 public class HomeFragment extends Fragment {
 
@@ -34,7 +34,7 @@ public class HomeFragment extends Fragment {
         viewAllFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ViewListFriend.class);
+                Intent intent = new Intent(getContext(), FriendRequest.class);
                 startActivity(intent);
             }
         });

@@ -92,7 +92,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
-                    android:textStyle="bold"
                     android:textColor="@color/black">
                 </TextView>
 
@@ -115,7 +114,8 @@
                     android:id="@+id/profile_btn_pencil_full_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/icon_edit">
+                    android:background="@drawable/icon_edit"
+                    android:alpha="0.4">
 
                 </ImageButton>
 
@@ -160,7 +160,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
-                    android:textStyle="bold"
                     android:textColor="@color/black">
                 </TextView>
 
@@ -184,7 +183,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/icon_edit"
-                    >
+                    android:alpha="0.4">
                 </ImageButton>
 
                 <ImageButton
@@ -230,7 +229,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
-                    android:textStyle="bold"
                     android:textColor="@color/black">
                 </TextView>
 
@@ -254,7 +252,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/icon_edit"
-                    >
+                    android:alpha="0.4">
                 </ImageButton>
 
                 <ImageButton
@@ -300,7 +298,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
-                    android:textStyle="bold"
                     android:textColor="@color/black">
                 </TextView>
 
@@ -324,7 +321,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/icon_edit"
-                    >
+                    android:alpha="0.4">
                 </ImageButton>
 
                 <ImageButton
