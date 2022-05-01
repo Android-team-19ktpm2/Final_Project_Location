@@ -23,18 +23,25 @@
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/chat_btn_back.xml" value="0.117" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/container_btn_gradient.xml" value="0.117" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/container_input.xml" value="0.117" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/fab_text_bg.xml" value="0.1715" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/ic_baseline_family_restroom_24.xml" value="0.1715" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/ic_home_foreground.xml" value="0.116" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/ic_mail.xml" value="0.2695" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icon_cake.xml" value="0.2695" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icon_check.xml" value="0.1685" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icon_edit.xml" value="0.2055" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icon_gps_off.xml" value="0.121" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icon_gps_on.xml" value="0.121" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icon_home_fill.xml" value="0.147" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icon_home_stroke.xml" value="0.147" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icon_marker_stroke.xml" value="0.1665" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icon_mobile_phone.xml" value="0.2695" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icon_person.xml" value="0.2695" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icon_person_stroke.xml" value="0.1665" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icon_plus.xml" value="0.234" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icon_search.xml" value="0.1715" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icon_setting.xml" value="0.2055" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/icoon_search.xml" value="0.1715" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/input_update_effect.xml" value="0.1535" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/latest_button.xml" value="0.2055" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/drawable/login_box.xml" value="0.117" />
@@ -47,13 +54,14 @@
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/activity_sign_in.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/activity_start.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/activity_test.xml" value="0.253125" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/activity_update_profile.xml" value="0.27708333333333335" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/activity_view_friend.xml" value="0.22708333333333333" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/adapter_custom_left_chat.xml" value="0.1" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/adapter_custom_right_chat.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/dialog_change_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/dialog_current_location.xml" value="0.2671875" />
-        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/fragment_map.xml" value="0.2671875" />
+        <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/fragment_map.xml" value="0.25" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/fragment_setting_menu.xml" value="0.2671875" />
         <entry key="..\:/Users/pvude/AndroidStudioProjects/Final_Project_Location/app/src/main/res/layout/fragment_start.xml" value="0.36666666666666664" />

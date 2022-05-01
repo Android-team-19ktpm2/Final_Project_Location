@@ -19,7 +19,7 @@
     <color name="colorDivider">#ECECEC</color>
 
     <color name="colorRed">#ff0000</color>
-    <color name="colorGreen">#0E4270</color>
+    <color name="colorGreen">#00FF00</color>
 
 
     <!--new layout-->
@@ -39,5 +39,7 @@
     <color name="primary_widget_dark">#92B0BA</color>
 
     <color name="primary_border">#D4B89B</color>
+
+    <color name="light_gray">#ededed</color>
 
 </resources>

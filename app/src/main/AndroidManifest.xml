@@ -16,9 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light">
         <activity
-            android:name=".activity.UpdateProfileActivity"
+            android:name=".activity.test"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
             android:name=".activity.ViewListFriend"
             android:exported="false" />

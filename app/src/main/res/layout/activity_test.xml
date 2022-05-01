@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent">
+    android:id="@+id/floating_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.test">
 
-    <fragment
-        android:id="@+id/mapgg"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".fragment.MapFragment"></fragment>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fl_menu_btn_view_mode"
@@ -21,7 +16,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="104dp"
         android:clickable="true"
-        android:src="@drawable/icon_map_view"
+        android:src="@drawable/ic_baseline_family_restroom_24"
         android:visibility="invisible"
         app:backgroundTint="@color/primary_color_2"
         app:layout_constraintBottom_toTopOf="@+id/fl_menu_btn_search"
@@ -41,7 +36,6 @@
         android:paddingEnd="16dp"
         android:paddingBottom="8dp"
         android:text="View"
-        android:textColor="@color/primary_text_2"
         android:textStyle="bold"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/fl_menu_btn_view_mode"
@@ -60,7 +54,6 @@
         android:paddingEnd="16dp"
         android:paddingBottom="8dp"
         android:text="Family"
-        android:textColor="@color/primary_text_2"
         android:textStyle="bold"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/fl_menu_btn_family"
@@ -108,60 +101,12 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fl_menu_btn_extend2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginRight="32dp"
-            android:layout_marginBottom="32dp"
-            android:clickable="true"
-            android:src="@drawable/icon_plus"
-            app:backgroundTint="@color/primary_color_2">
-
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_marginLeft="32dp"
-            android:layout_marginBottom="32dp"
-            android:layout_gravity="bottom|start">
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fl_menu_btn_hide_map"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:src="@drawable/icon_open_eyes"
-                app:backgroundTint="@color/primary_color_2"
-                app:fabSize="mini">
-            </com.google.android.material.floatingactionbutton.FloatingActionButton>
-
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fl_menu_btn_gps"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:clickable="true"
-                android:src="@drawable/icon_gps_off"
-                app:backgroundTint="@color/primary_color_2"
-                app:fabSize="mini"
-                tools:layout_editor_absoluteX="43dp"
-                tools:layout_editor_absoluteY="532dp"></com.google.android.material.floatingactionbutton.FloatingActionButton>
-
-        </LinearLayout>
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fl_menu_btn_extend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_marginRight="32dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="96dp"
             android:clickable="true"
             android:src="@drawable/icon_plus"
             app:backgroundTint="@color/primary_color_2">
@@ -183,28 +128,10 @@
         android:paddingEnd="16dp"
         android:paddingBottom="8dp"
         android:text="Search"
-        android:textColor="@color/primary_text_2"
         android:textStyle="bold"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/fl_menu_btn_search"
         app:layout_constraintEnd_toStartOf="@+id/fl_menu_btn_search"
         app:layout_constraintTop_toTopOf="@+id/fl_menu_btn_search" />
-
-
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/bg_round"
-        android:elevation="5dp"
-        android:iconifiedByDefault="false"
-        android:queryHint="Search...."
-        android:visibility="invisible">
-    </SearchView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
