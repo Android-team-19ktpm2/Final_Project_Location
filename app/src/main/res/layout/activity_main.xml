@@ -36,9 +36,8 @@
 
             android:background="@drawable/btn_primary"
             app:labelVisibilityMode="unlabeled"
-
-            app:itemIconTint="@color/primary_text_1"
-            app:itemIconSize="32dp"/>
+            
+            app:itemIconSize="34dp"/>
     </FrameLayout>
 
 

@@ -45,6 +45,7 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
     BottomSheetDialog bottom_Dialog_List_Family, bottomSheetDialogAddFamily;
     BottomSheetDialog bottomSheetDialog;
 
+
     //Map API
     LatLng locationCurrent, locationFriend;
 

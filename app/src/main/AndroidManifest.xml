@@ -16,10 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light">
         <activity
-            android:name=".activity.test"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity
             android:name=".activity.FriendRequest"
             android:exported="false" />
         <activity

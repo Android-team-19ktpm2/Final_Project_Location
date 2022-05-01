@@ -7,60 +7,79 @@
     android:layout_height="wrap_content">
 
 
-
         <Button
             android:id="@+id/btn_current_location_slide_down"
             android:layout_width="60dp"
-            android:layout_height="4dp"
+            android:layout_height="2dp"
             android:layout_gravity="center"
+            android:layout_marginTop="8dp"
             android:background="@drawable/btn_slide_down"></Button>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
             android:gravity="center"
-            android:padding="15dp"
-            android:text="List Familys"
-            android:textColor="@color/colorPrimaryText"
-            android:textSize="24dp"
-            android:textStyle="bold"/>
+            android:padding="5dp"
+            android:text="Contact"
+            android:textColor="@color/primary_text_1"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/colorDivider"
-            />
+            android:background="@color/colorDivider" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:orientation="horizontal"
-            android:layout_height="wrap_content">
-                <androidx.cardview.widget.CardView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_margin="5dp"
-                    app:cardCornerRadius="50dp"
-                    app:cardElevation="10dp">
+            android:layout_height="wrap_content"
+            android:paddingTop="25dp"
+            android:paddingBottom="25dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/imgAddFamily"
+                            android:layout_gravity="center"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@color/light_gray">
+                        </de.hdodenhof.circleimageview.CircleImageView>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_baseline_add_24"
+                            app:layout_constraintStart_toStartOf="@+id/imgAddFamily"
+                            app:layout_constraintEnd_toEndOf="@+id/imgAddFamily"
+                            app:layout_constraintTop_toTopOf="@+id/imgAddFamily"
+                            app:layout_constraintBottom_toBottomOf="@+id/imgAddFamily">
+
+                        </ImageView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                                <ImageButton
-                                    android:id="@+id/imgAddFamily"
-                                    android:layout_gravity="center"
-                                    android:layout_width="70dp"
-                                    android:layout_height="70dp"
-                                    android:src="@drawable/ic_baseline_add_24"></ImageButton>
-
-
-                </androidx.cardview.widget.CardView>
-
-
-                <Button
-                    android:layout_width="5dp"
+                <View
+                    android:layout_width="2dp"
                     android:layout_height="match_parent"
-                    android:background="@drawable/btn_slide_down"></Button>
+                    android:background="@drawable/btn_slide_down"
+                    android:layout_marginRight="20dp"></View>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/lvFamily"
                     android:layout_width="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+                    android:layout_height="wrap_content">
+                </androidx.recyclerview.widget.RecyclerView>
+
         </LinearLayout>
+
 </LinearLayout>

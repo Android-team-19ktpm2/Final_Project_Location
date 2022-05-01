@@ -75,7 +75,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
         android:clickable="true"
-        android:src="@drawable/ic_baseline_family_restroom_24"
+        android:src="@drawable/icon_family"
         android:visibility="invisible"
         app:backgroundTint="@color/primary_color_2"
         app:layout_constraintBottom_toTopOf="@+id/fl_menu_btn_search"
@@ -135,9 +135,8 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:src="@drawable/icon_open_eyes"
-                app:backgroundTint="@color/primary_color_2"
-                app:fabSize="mini">
-            </com.google.android.material.floatingactionbutton.FloatingActionButton>
+                app:backgroundTint="@color/primary_color_light"
+                app:fabSize="mini"></com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -147,7 +146,7 @@
                 android:layout_marginLeft="16dp"
                 android:clickable="true"
                 android:src="@drawable/icon_gps_off"
-                app:backgroundTint="@color/primary_color_2"
+                app:backgroundTint="@color/primary_color_light"
                 app:fabSize="mini"
                 tools:layout_editor_absoluteX="43dp"
                 tools:layout_editor_absoluteY="532dp"></com.google.android.material.floatingactionbutton.FloatingActionButton>
@@ -164,7 +163,7 @@
             android:layout_marginBottom="32dp"
             android:clickable="true"
             android:src="@drawable/icon_plus"
-            app:backgroundTint="@color/primary_color_2">
+            app:backgroundTint="@color/primary_color_light">
 
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
