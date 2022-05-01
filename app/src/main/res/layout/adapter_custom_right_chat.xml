@@ -19,9 +19,8 @@
                     android:paddingTop="10dp"
                     android:paddingRight="16dp"
                     android:paddingBottom="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/primary_text_2"
                     android:textSize="16dp"
-                    android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     app:layout_constraintRight_toRightOf="parent"
                     tools:ignore="MissingConstraints"></TextView>
 
@@ -37,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:layout_marginRight="10dp"
-                    android:textColor="#19c0ff"
+                    android:textColor="@color/light_gray"
                     android:textSize="12dp"
                     android:textStyle="italic"
                     app:layout_constraintRight_toRightOf="parent"

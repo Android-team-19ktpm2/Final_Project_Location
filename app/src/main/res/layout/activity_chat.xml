@@ -8,7 +8,7 @@
     android:paddingBottom="20dp"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
-    android:background="#E0E9FC"
+    android:background="@drawable/btn_primary"
     tools:context=".activity.ChatActivity"
     android:orientation="vertical">
 
@@ -27,34 +27,37 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/chat_circle_main_avatar"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
         </de.hdodenhof.circleimageview.CircleImageView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/chat_tv_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
         android:layout_below="@+id/constraint_layout_avatar"
-        android:textSize="20dp"
-        android:textColor="#f594b7"
+        android:layout_marginTop="3dp"
+        android:fontFamily="sans-serif-black"
         android:gravity="center_horizontal"
+        android:text="npv1510"
+        android:textColor="@color/black"
+        android:textSize="18dp"
         tools:ignore="MissingConstraints"></TextView>
 
     <TextView
         android:id="@+id/chat_tv_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:text="npv1510"
         android:layout_below="@+id/chat_tv_username"
         android:gravity="center_horizontal"
-        android:textSize="12dp"
-        android:textColor="@color/black"
+        android:textSize="14dp"
+        android:textColor="@color/primary_text_2"
         tools:ignore="MissingConstraints"></TextView>
 
     <ListView
@@ -70,7 +73,7 @@
         android:scrollbars="none"></ListView>
 
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -86,9 +89,10 @@
             <EditText
                 android:id="@+id/chat_edt_input"
                 android:layout_width="260dp"
-                android:layout_height="48dp"
+                android:layout_height="42dp"
                 android:layout_marginLeft="15dp"
-                android:textColor="#f594b7"
+                android:text="ABCDEF"
+                android:textColor="@color/primary_text_1"
                 android:hint="Typing here..."></EditText>
 
             <ImageButton
@@ -99,17 +103,17 @@
                 android:background="@drawable/chat_btn_share_location"
                 android:layout_marginRight="10dp"
                 android:layout_toRightOf="@+id/chat_edt_input"></ImageButton>
+
         </FrameLayout>
 
         <ImageButton
             android:id="@+id/chat_btn_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="-40dp"
+            app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/chat_btn_send"></ImageButton>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </RelativeLayout>
