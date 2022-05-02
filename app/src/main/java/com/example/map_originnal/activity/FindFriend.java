@@ -51,7 +51,7 @@ public class FindFriend extends AppCompatActivity {
         imgSearch = findViewById(R.id.searchImg);
         autoCompleteTextView = findViewById(R.id.search_bar);
 
-     //   Log.e("Hello",mRef.getKey()) ;
+        //   Log.e("Hello",mRef.getKey()) ;
         ValueEventListener event = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -96,6 +96,17 @@ public class FindFriend extends AppCompatActivity {
                     ArrayList<String> listUserID = new ArrayList<>();
                     for(DataSnapshot ds: snapshot.getChildren()){
 
+//                        User user = new User(String.valueOf(ds.child("id").getValue()),
+//                                String.valueOf(ds.child("email").getValue()),
+//                                String.valueOf(ds.child("avatar").getValue()),
+//                                String.valueOf(ds.child("first_name").getValue()),
+//                                String.valueOf(ds.child("last_name").getValue()),
+//                                String.valueOf(ds.child("online").getValue()),
+//                                String.valueOf(ds.child("lat_X").getValue()),
+//                                String.valueOf(ds.child("long_Y").getValue())
+//                                );
+
+
                         User user = new User(String.valueOf(ds.child("id").getValue()),
                                 String.valueOf(ds.child("email").getValue()),
                                 String.valueOf(ds.child("avatar").getValue()),
@@ -106,7 +117,7 @@ public class FindFriend extends AppCompatActivity {
                                 String.valueOf(ds.child("online").getValue()),
                                 String.valueOf(ds.child("lat_X").getValue()),
                                 String.valueOf(ds.child("long_Y").getValue())
-                                );
+                        );
                         listUser.add(user.getEmail());
                         listUserID.add(ds.getKey());
                     }

@@ -106,7 +106,7 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
                 return true;
 
             case R.id.request:
-                startActivity(new Intent(this, FriendRequest.class));
+                startActivity(new Intent(this, ViewListFriend.class));
                 return true;
 
             case R.id.map:

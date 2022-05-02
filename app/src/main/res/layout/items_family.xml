@@ -20,7 +20,9 @@
             android:src="@drawable/ic_person_foreground"
             app:civ_border_color="@color/black"
             app:civ_border_width="2dp"
-            ></de.hdodenhof.circleimageview.CircleImageView>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"></de.hdodenhof.circleimageview.CircleImageView>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/user_status"

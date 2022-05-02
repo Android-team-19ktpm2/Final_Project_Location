@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light">
         <activity
-            android:name=".activity.FriendRequest"
+            android:name=".activity.ViewListFriend"
             android:exported="false" />
         <activity
             android:name=".activity.ViewFriend"
