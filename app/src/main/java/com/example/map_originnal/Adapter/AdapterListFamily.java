@@ -50,7 +50,7 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
 
     TextView txtTenDetail,txtActiveDetail,txtDiaChiDetail;
     ImageButton imgChat,imgLocation;
-    ImageView imgAvatarDetail;
+    ImageView imgAvatarDetail,imgFriendStatus;
 
     String defaultAvatar = "https://res.cloudinary.com/imag/image/upload/v1651484190/apploction/download_r06nnc.jpg\n";
 
@@ -101,7 +101,7 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
                 imgChat = bottomSheetView.findViewById(R.id.imgChat);
                 imgLocation = bottomSheetView.findViewById(R.id.imgLocation);
                 imgAvatarDetail = bottomSheetView.findViewById(R.id.imgAvatarDetail);
-
+                imgFriendStatus = bottomSheetView.findViewById(R.id.friend_status);
 
                 txtTenDetail.setText(users.get(position).getFull_name());
                 txtDiaChiDetail.setText(getAddressUser(users.get(position).getLat_X(),users.get(position).getLong_Y()));
@@ -129,6 +129,13 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
                         }
                     }
                 });
+
+
+                if (getStatusUser(users.get(position).getOnline()).equals("Online")){
+                    imgFriendStatus.setImageResource(R.drawable.user_status1);
+                }else {
+                    imgFriendStatus.setImageResource(R.drawable.user_status);
+                }
 
 
 

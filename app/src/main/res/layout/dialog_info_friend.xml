@@ -43,13 +43,18 @@
                     android:id="@+id/imgAvatarDetail"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:src="@drawable/mother_avatar"></ImageView>dp
+                    android:src="@drawable/mother_avatar"></ImageView>
+
+
+
                 <ImageView
+                    android:id="@+id/friend_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_marginLeft="45dp"
                     android:src="@drawable/user_status"></ImageView>
+
             </FrameLayout>
 
             <LinearLayout
