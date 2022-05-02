@@ -32,14 +32,13 @@
                 android:id="@+id/profile_tv_favourite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableStart="@drawable/icon_star"
+                android:drawablePadding="5dp"
                 android:fontFamily="casual"
                 android:text="Favourite"
                 android:textColor="#446775"
                 android:textSize="18dp"
-                android:textStyle="bold"
-                android:drawableStart="@drawable/icon_star"
-                android:drawablePadding="5dp">
-            </TextView>
+                android:textStyle="bold"></TextView>
 
             <TextView
                 android:id="@+id/profile_tv_history"

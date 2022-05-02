@@ -441,7 +441,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
 
     @Override
     public boolean onMarkerClick(@NonNull Marker marker) {
-        /*loction_focus = marker.getPosition();
+        loction_focus = marker.getPosition();
         if(loction_focus != null){
             try {
                 displayLocation(loction_focus);
@@ -449,7 +449,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
                 e.printStackTrace();
             }
         }
-*/
+
         return false;
     }
 
