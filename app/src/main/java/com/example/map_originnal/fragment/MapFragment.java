@@ -143,7 +143,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
                                 isGps = false;
                                 btn_gps.setImageResource(R.drawable.icon_gps_off);
                                 mMap.setMyLocationEnabled(false);
-                                Toast.makeText(main,"Using Towner + Wifi",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(main,"Turn off GPS",Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

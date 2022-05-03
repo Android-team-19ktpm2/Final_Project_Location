@@ -187,9 +187,9 @@ public class ProfileFragment extends Fragment {
                         tv_dob.setText("");
 
                     if (current_user.getAvatar().equals("default"))
-                        Glide.with(getActivity()).load(default_avatar).into(avatar);
+                        Glide.with(main).load(default_avatar).into(avatar);
                     else
-                        Glide.with(getActivity()).load(snapshot.child("avatar").getValue().toString()).into(avatar);
+                        Glide.with(main).load(snapshot.child("avatar").getValue().toString()).into(avatar);
                 }
 
                 @Override

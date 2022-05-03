@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,14 +17,12 @@ import android.widget.Toast;
 
 import com.example.map_originnal.Adapter.AdapterListFamily;
 import com.example.map_originnal.fragment.HideMapFragment;
-import com.example.map_originnal.fragment.HomeFragment;
 import com.example.map_originnal.ke_thua.MainCallbacks;
 import com.example.map_originnal.fragment.MapFragment;
 import com.example.map_originnal.model.User;
 import com.example.map_originnal.fragment.ProfileFragment;
 import com.example.map_originnal.R;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
@@ -52,7 +49,6 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
     // Create Fragment
     ProfileFragment profileFragment_activity = new ProfileFragment();
     MapFragment map_Fragment_activity = new MapFragment();
-    HomeFragment home_Fragment_activity = new HomeFragment();
     HideMapFragment hideMap = new HideMapFragment();
 
     //Family scroll
@@ -134,7 +130,7 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
             bottom_Dialog_List_Family.hide();
         }
         if (sender.equals("List-Family") && strValue.equals("Dialog-AddMember")) {
-            chuyenSangDialogAddFamily();
+            startActivity(new Intent(this, FindFriend.class));
         }
         if (sender.equals("Hide-MapFragment") && strValue.equals("ShowMap")) {
             getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, map_Fragment_activity).commit();
@@ -160,19 +156,7 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         FirebaseAuth.getInstance().signOut();
     }
 
-    // function Tự tạo
 
-    private void chuyenSangDialogAddFamily() {
-        bottomSheetDialogAddFamily = new BottomSheetDialog(
-                MainActivity.this, R.style.BottomSheetDialogTheme
-        );
-        View bottomSheetView = LayoutInflater.from(getApplicationContext()).inflate(
-                R.layout.dialog_signin,
-                (LinearLayout) findViewById(R.id.dialog_addfamily)
-        );
-        bottomSheetDialogAddFamily.setContentView(bottomSheetView);
-        bottomSheetDialogAddFamily.show();
-    }
 
     private void chuyenSangProflie() {
         bottomSheetDialog = new BottomSheetDialog(
@@ -207,6 +191,15 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
 
+        //setup btn add family
+        bottomSheetView.findViewById(R.id.imgAddFamily).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FindFriend.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
 
         // setup Recyclerview same list view
         lvFamilys = bottomSheetView.findViewById(R.id.lvFamily);

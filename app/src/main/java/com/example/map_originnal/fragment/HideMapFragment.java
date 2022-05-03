@@ -3,8 +3,10 @@ package com.example.map_originnal.fragment;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -78,6 +80,7 @@ public class HideMapFragment extends Fragment implements FrangmentCallbacks {
 
 
         layout_hide_map.findViewById(R.id.btnShowMap).setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 main.onMsgFromFragToMain("Hide-MapFragment", "ShowMap");

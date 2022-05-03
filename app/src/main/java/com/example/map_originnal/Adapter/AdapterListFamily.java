@@ -40,6 +40,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 //
 public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.ViewHolder>  {
 
@@ -51,6 +53,7 @@ public class AdapterListFamily extends RecyclerView.Adapter<AdapterListFamily.Vi
     TextView txtTenDetail,txtActiveDetail,txtDiaChiDetail;
     ImageButton imgChat,imgLocation;
     ImageView imgAvatarDetail,imgFriendStatus;
+    CircleImageView imgAddFamily;
 
     String defaultAvatar = "https://res.cloudinary.com/imag/image/upload/v1651484190/apploction/download_r06nnc.jpg\n";
 
