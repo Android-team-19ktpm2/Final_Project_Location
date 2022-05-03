@@ -34,6 +34,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class MainActivity extends FragmentActivity implements BottomNavigationView.OnNavigationItemSelectedListener , MainCallbacks {
 
@@ -85,6 +86,38 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         //load friends
         loadUsers();
 
+        Intent intent = getIntent();
+        String mess =null;
+        mess = intent.getStringExtra("shareLocation");
+        if (mess!= null){
+            StringTokenizer tokenizer = new StringTokenizer(mess);
+            double latt;
+            double longg;
+            if (tokenizer.hasMoreTokens()){
+                latt =Double.parseDouble(tokenizer.nextToken());
+            }else{
+                latt= 0;
+                longg= 0;
+            }
+            if (tokenizer.hasMoreTokens()){
+                longg =Double.parseDouble(tokenizer.nextToken());
+            }else{
+                longg = 0;
+            }
+            LatLng latlng = new LatLng(latt,longg);
+            System.out.println("___________________________________________________-");
+            System.out.println("___________________________________________________-");
+            System.out.println("___________________________________________________-");
+            System.out.println("___________________________________________________-");
+            System.out.println("___________________________________________________-");
+            System.out.println("___________________________________________________-");
+            System.out.println(mess);
+            locationCurrent = latlng;
+            getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, map_Fragment_activity).commit();
+
+            //khong chay dc cho nay
+            onLocationFromAdapToMain("main", latlng);
+        }
 
     }
 
@@ -146,8 +179,14 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
 
     @Override
     public void onLocationFromAdapToMain(String sender, LatLng Value) {
+        System.out.println("RUNNINGGGGGGGGGGGG");
         locationFriend = Value;
         map_Fragment_activity.onLocationFromMainToFrag("main",locationFriend);
+    }
+
+    public void shareLocation( LatLng Value) {
+        System.out.println("RUNNINGGGGGGGGGGGG");
+        map_Fragment_activity.MarkerVitriHienTai(Value);
     }
 
     @Override

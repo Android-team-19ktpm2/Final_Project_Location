@@ -7,7 +7,7 @@ public class Message implements Serializable {
     private String dst;
     private String content;
     private String sendAt;
-
+    private String location = null;
     public Message()
     {
 
@@ -34,6 +34,14 @@ public class Message implements Serializable {
 
     public String getSendAt() {
         return sendAt;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+         this.location = location;
     }
 
     public void setSrc(String src) {

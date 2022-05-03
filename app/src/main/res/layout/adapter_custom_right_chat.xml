@@ -10,12 +10,13 @@
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
                 <TextView
                     android:id="@+id/right_chat_tv_content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/container_right_message"
-                    android:paddingLeft="16dp"
+                    android:paddingLeft="30dp"
                     android:paddingTop="10dp"
                     android:paddingRight="16dp"
                     android:paddingBottom="10dp"
@@ -23,6 +24,7 @@
                     android:textSize="16dp"
                     app:layout_constraintRight_toRightOf="parent"
                     tools:ignore="MissingConstraints"></TextView>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -43,5 +45,11 @@
                     app:layout_constraintBottom_toBottomOf="parent"></TextView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <ImageButton
+            android:id="@+id/right_share_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chat_btn_share_location"
+            android:visibility="invisible"></ImageButton>
 
 </RelativeLayout>

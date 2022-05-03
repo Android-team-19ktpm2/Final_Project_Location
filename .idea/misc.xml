@@ -99,7 +99,7 @@
         <entry key="app/src/main/res/drawable/ic_map_foreground.xml" value="0.1665" />
         <entry key="app/src/main/res/drawable/ic_person_background.xml" value="0.294" />
         <entry key="app/src/main/res/drawable/ic_person_foreground.xml" value="0.14" />
-        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.15729166666666666" />
+        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/layout/activity_family.xml" value="0.12318840579710146" />
         <entry key="app/src/main/res/layout/activity_find_friend.xml" value="0.19895833333333332" />

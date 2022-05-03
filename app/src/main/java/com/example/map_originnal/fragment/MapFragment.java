@@ -82,9 +82,9 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
 
 
     //---------------APIs---------------//
-    GoogleMap mMap;
+    private static GoogleMap mMap;
     LatLng loction_focus = null;
-    LatLng locationFriend;
+    public static LatLng locationFriend;
     GoogleMap.OnMyLocationChangeListener locationChangeListener = new GoogleMap.OnMyLocationChangeListener() {
         @Override
         public void onMyLocationChange(@NonNull Location location) {
@@ -445,18 +445,31 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
     }
 
     @Override
-    public void onLocationFromMainToFrag(String sender, LatLng Value) {
+    public  void onLocationFromMainToFrag(String sender, LatLng Value) {
         locationFriend = Value;
         MarkerVitriCuaFriend();
     }
 
-    private void MarkerVitriCuaFriend() {
-
+    private  void MarkerVitriCuaFriend() {
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(locationFriend).icon(BitmapDescriptorFactory.fromResource(R.drawable.icon_friend));
+
         mMap.clear();
+        System.out.println("BUG CHO NAY");
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(locationFriend, 16.0f));
         mMap.addMarker(markerOptions);
 
     }
+
+    public static void MarkerVitriHienTai(LatLng latLng) {
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(latLng);
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.icon_friend));
+
+        mMap.clear();
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
+        mMap.addMarker(markerOptions);
+
+    }
+
 }
