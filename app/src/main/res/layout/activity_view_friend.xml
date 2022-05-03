@@ -5,36 +5,50 @@
     android:id="@+id/txtUsername"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:orientation="vertical"
     tools:context=".activity.ViewFriend">
+
+    <ImageButton
+        android:id="@+id/signup_btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/chat_btn_back"
+        tools:ignore="MissingConstraints"></ImageButton>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:padding="50dp"
         android:orientation="vertical">
 
-        <ImageButton
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/txtImage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </ImageButton>
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center">
+        </de.hdodenhof.circleimageview.CircleImageView>
 
         <TextView
             android:id="@+id/txtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Anh Pham"
+            android:textSize="26dp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_text_1"
             android:textAlignment="center">
 
         </TextView>
 
         <TextView
-            android:id="@+id/txtAddress"
+            android:id="@+id/txtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="New York"
+            android:text="son@gmail.com"
             android:textAlignment="center"></TextView>
     </LinearLayout>
 
@@ -42,19 +56,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/btnRequest"
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
+            android:gravity="center"
             android:layout_height="wrap_content"
-            android:text="Send Request" />
+            android:text="Send Request"
+            android:background="@drawable/btn_primary_2"
+            android:textColor="@color/primary_text_2"
+            />
 
         <Button
             android:id="@+id/btnDecline"
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/btn_primary_2"
+            android:textColor="@color/primary_text_2"
             android:text="Decline Request" />
+
     </LinearLayout>
 
 </LinearLayout>
