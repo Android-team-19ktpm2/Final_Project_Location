@@ -13,6 +13,7 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -33,8 +34,11 @@ import java.util.ArrayList;
 public class FindFriend extends AppCompatActivity {
     DatabaseReference mRef;
     private ListView listData;
+
     ImageView imgSearch;
     AutoCompleteTextView autoCompleteTextView;
+    ImageButton btn_back;
+
     FirebaseUser firebaseUser;
     FirebaseAuth auth;
 
@@ -47,11 +51,21 @@ public class FindFriend extends AppCompatActivity {
 
         mRef = FirebaseDatabase.getInstance().getReference("Users");
 
-        listData = (ListView) findViewById(R.id.foundUsers);
+        listData = findViewById(R.id.foundUsers);
         imgSearch = findViewById(R.id.searchImg);
         autoCompleteTextView = findViewById(R.id.search_bar);
+        btn_back =findViewById(R.id.signup_btn_back);
 
-        //   Log.e("Hello",mRef.getKey()) ;
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent(FindFriend.this,MainActivity.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(intent);
+                finish();
+            }
+        });
+
         ValueEventListener event = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -96,15 +110,7 @@ public class FindFriend extends AppCompatActivity {
                     ArrayList<String> listUserID = new ArrayList<>();
                     for(DataSnapshot ds: snapshot.getChildren()){
 
-//                        User user = new User(String.valueOf(ds.child("id").getValue()),
-//                                String.valueOf(ds.child("email").getValue()),
-//                                String.valueOf(ds.child("avatar").getValue()),
-//                                String.valueOf(ds.child("first_name").getValue()),
-//                                String.valueOf(ds.child("last_name").getValue()),
-//                                String.valueOf(ds.child("online").getValue()),
-//                                String.valueOf(ds.child("lat_X").getValue()),
-//                                String.valueOf(ds.child("long_Y").getValue())
-//                                );
+
 
 
                         User user = new User(String.valueOf(ds.child("id").getValue()),

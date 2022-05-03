@@ -8,9 +8,19 @@
     tools:context=".activity.ViewListFriend"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Request Friend"
+        android:textSize="30dp"
+        android:textColor="@color/primary_text_1"
+        android:textStyle="bold"
+        android:gravity="center"
+        ></TextView>
+
     <ListView
         android:layout_margin="20dp"
-
         android:id="@+id/lvFriends"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

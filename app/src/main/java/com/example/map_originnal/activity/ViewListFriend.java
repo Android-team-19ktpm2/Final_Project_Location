@@ -11,7 +11,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.map_originnal.Adapter.AdapterReqFriend;
 import com.example.map_originnal.R;
+import com.example.map_originnal.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -68,21 +70,20 @@ public class ViewListFriend extends AppCompatActivity {
 
     }
     private void ShowFriends(DataSnapshot snapshot){
-        ArrayList<String> searchedListFriend =  new ArrayList<>();
+        ArrayList<User> searchedListFriend =  new ArrayList<>();
         if(snapshot.exists()) {
             for (DataSnapshot ds : snapshot.getChildren()) {
-//                Log.e("Test 1",String.valueOf(ds.child(ds.getKey())));
 
                 for(String str:searchedList){
                     if(str.equals(ds.getKey())){
-                        searchedListFriend.add(String.valueOf(ds.child("email").getValue()));
+                        searchedListFriend.add(ds.getValue(User.class));
                         idGuess = ds.getKey();
 
                     }
                 }
 
             }
-            ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,searchedListFriend);
+            AdapterReqFriend arrayAdapter = new AdapterReqFriend(this, R.layout.items_friends,searchedListFriend);
             lv.setAdapter(arrayAdapter);
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override

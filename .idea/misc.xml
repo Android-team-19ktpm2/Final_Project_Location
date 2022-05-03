@@ -101,6 +101,7 @@
         <entry key="app/src/main/res/drawable/ic_person_foreground.xml" value="0.14" />
         <entry key="app/src/main/res/layout/activity_chat.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/layout/activity_family.xml" value="0.12318840579710146" />
+        <entry key="app/src/main/res/layout/activity_find_friend.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.12318840579710146" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.31979166666666664" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18" />
@@ -117,6 +118,7 @@
         <entry key="app/src/main/res/layout/dialog_list_family.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/layout/dialog_signin.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/layout/fragment_hide_map.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.31979166666666664" />
         <entry key="app/src/main/res/layout/fragment_map.xml" value="0.15" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.15729166666666666" />
@@ -124,6 +126,8 @@
         <entry key="app/src/main/res/layout/fragment_setting_menu.xml" value="0.31979166666666664" />
         <entry key="app/src/main/res/layout/fragment_start.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/layout/items_family.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/items_find_friends.xml" value="0.19895833333333332" />
+        <entry key="app/src/main/res/layout/items_friends.xml" value="0.31979166666666664" />
         <entry key="app/src/main/res/layout/layout_current_location.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/layout/list_family.xml" value="0.18" />
         <entry key="app/src/main/res/layout/main_menu.xml" value="0.1" />

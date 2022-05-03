@@ -42,7 +42,6 @@ public class ViewFriend extends AppCompatActivity {
     Button btnRequest;
     Button btnDecline;
     ImageButton btn_back;
-
     String currentState="nothing_happen";
     FirebaseUser firebaseUser;
 
@@ -78,9 +77,9 @@ public class ViewFriend extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ViewFriend.this,FindFriend.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+//                Intent intent = new Intent(ViewFriend.this,FindFriend.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(intent);
                 finish();
             }
         });
