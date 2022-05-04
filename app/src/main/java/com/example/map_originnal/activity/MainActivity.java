@@ -95,6 +95,7 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
         //load friends
         loadUsers();
 
+        // share your location in chat still bug
         Intent intent = getIntent();
         String mess =null;
         mess = intent.getStringExtra("shareLocation");
@@ -114,18 +115,8 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
                 longg = 0;
             }
             LatLng latlng = new LatLng(latt,longg);
-            System.out.println("___________________________________________________-");
-            System.out.println("___________________________________________________-");
-            System.out.println("___________________________________________________-");
-            System.out.println("___________________________________________________-");
-            System.out.println("___________________________________________________-");
-            System.out.println("___________________________________________________-");
-            System.out.println(mess);
-            locationCurrent = latlng;
-            getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, map_Fragment_activity).commit();
 
-            //khong chay dc cho nay
-            onLocationFromAdapToMain("main", latlng);
+            map_Fragment_activity.onLocationFromMainToFrag("main", latlng);
         }
 
     }

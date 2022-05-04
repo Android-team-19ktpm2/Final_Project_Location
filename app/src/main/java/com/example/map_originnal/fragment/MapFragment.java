@@ -449,14 +449,16 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
     }
 
     private  void MarkerVitriCuaFriend() {
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(locationFriend).icon(BitmapDescriptorFactory.fromResource(R.drawable.icon_friend));
-
-        mMap.clear();
-        System.out.println("BUG CHO NAY");
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(locationFriend, 16.0f));
-        mMap.addMarker(markerOptions);
-
+        mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+            @Override
+            public void onMapLoaded() {
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.position(locationFriend).icon(BitmapDescriptorFactory.fromResource(R.drawable.icon_friend));
+                mMap.clear();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(locationFriend.latitude,locationFriend.longitude), 16.0f));
+                mMap.addMarker(markerOptions);
+            }
+        });
     }
 
     public static void MarkerVitriHienTai(LatLng latLng) {
