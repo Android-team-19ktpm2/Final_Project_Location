@@ -180,8 +180,6 @@ public class MapFragment extends Fragment implements GoogleMap.OnMarkerClickList
         FavoriteRef = FirebaseDatabase.getInstance().getReference("Favorites");
 
 
-
-
         main = (MainActivity) getActivity();
 
         ConstraintLayout linearLayout = (ConstraintLayout) inflater.inflate(R.layout.fragment_map, container, false);

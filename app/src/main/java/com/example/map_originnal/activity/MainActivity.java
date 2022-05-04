@@ -3,9 +3,12 @@ package com.example.map_originnal.activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -49,7 +52,10 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
 
     // Create Fragment
     ProfileFragment profileFragment_activity = new ProfileFragment();
+
     MapFragment map_Fragment_activity = new MapFragment();
+    String mapFragmentName = map_Fragment_activity.getClass().getName();
+
     HideMapFragment hideMap = new HideMapFragment();
 
     //Family scroll
@@ -64,18 +70,21 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
     ValueEventListener friendsListener;
 
 
+
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //BackStack
+        getSupportFragmentManager().beginTransaction().addToBackStack(mapFragmentName);
 
         // set up menu bottom
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.map);
-
 
 
         // Định danh user
@@ -139,12 +148,27 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
                 return true;
 
             case R.id.map:
-                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, map_Fragment_activity).commit();
+                LoadMapFragment();
                 return true;
         }
         return false;
     }
 
+    private void LoadMapFragment(){
+        FragmentManager manager = getSupportFragmentManager();
+        boolean fragmentPopped = manager.popBackStackImmediate (mapFragmentName, 0);
+        if (!fragmentPopped)
+        {
+            if (!fragmentPopped){ //fragment not in back stack, create it.
+
+
+                FragmentTransaction ft = manager.beginTransaction();
+                ft.replace(R.id.flFragment, map_Fragment_activity);
+                ft.addToBackStack(mapFragmentName);
+                ft.commit();
+            }
+        }
+    }
 
     // function override
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -179,13 +203,11 @@ public class MainActivity extends FragmentActivity implements BottomNavigationVi
 
     @Override
     public void onLocationFromAdapToMain(String sender, LatLng Value) {
-        System.out.println("RUNNINGGGGGGGGGGGG");
         locationFriend = Value;
         map_Fragment_activity.onLocationFromMainToFrag("main",locationFriend);
     }
 
     public void shareLocation( LatLng Value) {
-        System.out.println("RUNNINGGGGGGGGGGGG");
         map_Fragment_activity.MarkerVitriHienTai(Value);
     }
 
