@@ -14,7 +14,11 @@ public class User implements Serializable {
     private String online;
     private String lat_X;
     private String long_Y;
+<<<<<<< HEAD
     private String long_Z;
+=======
+    private String long_;U
+>>>>>>> 4b5f3c3d143481ee00a89ab55fdf5748cc24e781
 
     public User()
     {
